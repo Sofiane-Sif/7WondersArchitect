@@ -1,5 +1,6 @@
 # II.1102 – Algorithmique et Programmation 
-## Projet : Mini RPG Lite 3000.
-### Auteur : Charles_Mailley
+## Projet : 7 Wonders Architects
+### Auteur : Charles_Mailley Theophile_Wemaere
 ISEP - A1 - G7C  
-Date de rendu  :
+Date de rendu  : fin janvier 2023
+
