@@ -1,4 +1,4 @@
-package com.isep.domain;
+package com.isep.cards;
 
 public enum ScienceCategory {
 

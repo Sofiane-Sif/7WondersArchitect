@@ -1,4 +1,4 @@
-package com.isep.domain;
+package com.isep.cards;
 
 import java.util.Arrays;
 import java.util.List;
