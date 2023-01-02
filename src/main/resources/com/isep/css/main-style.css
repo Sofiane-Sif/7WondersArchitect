@@ -1,0 +1,18 @@
+
+
+
+.slider {
+    -fx-font-size: 24px;
+    -fx-font: bold 20pt "Rockwell Extra Bold";
+}
+
+.slider > .track {
+    -fx-background-color: #ffffff;
+    -fx-background-insets: 0;
+}
+
+.slider > .thumb {
+    -fx-shape: "M-1 0 H20 V13 H-1 z";
+    -fx-background-color: linear-gradient(to bottom right, rgb(500, 255, 28), rgb(8, 225, 0));
+    -fx-background-insets: 0;
+}

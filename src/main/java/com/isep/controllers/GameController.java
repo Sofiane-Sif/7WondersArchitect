@@ -1,5 +1,6 @@
 package com.isep.controllers;
 
+import com.isep.MainApplication;
 import com.isep.domain.cards.Card;
 import com.isep.domain.conflictToken.ConflictTokens;
 import com.isep.domain.progressToken.ProgressToken;
@@ -8,14 +9,18 @@ import com.isep.the7WondersArchitect.Game;
 import com.isep.the7WondersArchitect.Player;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,20 +51,6 @@ public class GameController extends ControlleurBase {
     public void initialize() {
 
 
-        // New player // A faire dans une page intermediaire entre main et game
-        // Alexandrie, Halicarnasse, Ephese, Olympie, Babylone, Rhodes, Gizeh
-        Game.option.addPlayer("Admin-1", 20, "Ephese");
-        Game.option.addPlayer("Admin-2", 19, "Rhodes");
-        Game.option.addPlayer("Admin-3", 60, "Alexandrie");
-
-        /*Game.option.addPlayer("Jon", 45, "Halicarnasse");
-        Game.option.addPlayer("Brutus", 30, "Olympie");
-        Game.option.addPlayer("Apollo", 70, "Babylone");
-        Game.option.addPlayer("Astride", 42, "Gizeh");*/
-
-
-
-        Game.option.setNbPlayers();
         this.initialisePlayerZonesList();
 
         // Positionnement des Players
@@ -88,7 +79,6 @@ public class GameController extends ControlleurBase {
             Wonder wonderPlayer = player.createWonder();
 
 
-            System.out.println(wonderPlayer);
 
 
         }
@@ -159,6 +149,11 @@ public class GameController extends ControlleurBase {
         }
     }
 
+
+    @FXML
+    protected void onMenuButtonClick() {
+        super.loadPage("main");
+    }
 
 
 

@@ -7,6 +7,8 @@ package com.isep.controllers;
 
 import com.isep.MainApplication;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCombination;
@@ -47,16 +49,30 @@ public class ControlleurBase {
             int AnchorPointY = (int) (midScreenY - screenElements.getHeight()/2);
             screenElements.setLayoutX(AnchorPointX);
             screenElements.setLayoutY(AnchorPointY);
+            // Zoom sur screenElements
+            this.screenElements.setScaleX(1.5);
+            this.screenElements.setScaleY(1.5);
 
             /*
-             * On aggrandi le background et on place le screenElements au centre
-             * Mais on prend pas toute la place de l'ecran
-             * Il faudrai replacer chaque element de screenElements à un %
+             * this.screenElements.setScaleX(1.5);
+             * this.screenElements.setScaleY(1.5);
+             * C'est deux lignes permettent de zoomer l'AnchorPane qui contient tous les elements
+             * C'est pour l'instant zoomé à 1.5 - une valeur fixe...
+             * Ca doit pas donner la meme chose en fonction du type d'ecran
+             * Faire une fonction qui recupère la taille de l'ecran et renvoi une valeur de zoom
              */
         }
     }
 
+    protected void loadPage(String pageName) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("fxml/"+ pageName +"-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            ((Stage) stage.getScene().getWindow()).setScene(scene);
+        }
+        catch (IOException e) {throw new RuntimeException(e);}
 
+    }
     public static Image setAnImage(String path) {
         // Attention mauvais path pour : token-education -> il faut bien renommer le nom de l'image correctement
         try {return new Image(Objects.requireNonNull(MainApplication.class.getResource(path)).openStream());}

@@ -44,6 +44,7 @@ public class Game {
     /* _______ */
     public int getProgressTokensListSize() {return this.progressTokensList.size();}
     public List<Player> getPlayerList() {return this.playerList;}
+    public int getNbPlayers() {return this.nbPlayers;}
 
 
     /* _______ */
@@ -68,7 +69,7 @@ public class Game {
 
 
 
-    public void setNbPlayers() {this.nbPlayers = this.playerList.size();}
+    public void setNbPlayers(int nbPlayers) {this.nbPlayers = nbPlayers;}
 
     public String settingCat() {
         this.cat = new Cat();

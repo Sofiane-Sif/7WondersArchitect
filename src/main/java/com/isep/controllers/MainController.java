@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -13,7 +14,8 @@ import java.io.IOException;
 public class MainController extends ControlleurBase {
 
 
-
+    @FXML
+    private Slider sliderNbPlayers;
 
     @FXML
     public void initialize() {
@@ -21,17 +23,39 @@ public class MainController extends ControlleurBase {
     }
 
 
-/*
-* Definition du nombre de joueur et de si on choisit ou pas les civilisations -> fait ici
- */
 
     @FXML
-    protected void startGame() throws IOException {
-        System.out.println();
+    protected void startGame() {
+        // Récureration du nombre de heros pour la partie
+        int nbHeroesChoose = (int) sliderNbPlayers.getValue();
+        Game.option.setNbPlayers(nbHeroesChoose);
+        // Chargement de la nouvelle scene
+        super.loadPage("playerCreation");
+    }
+
+
+    @FXML
+    protected void startGameTest() {
+        // Récureration du nombre de heros pour la partie
+        int nbHeroesChoose = (int) sliderNbPlayers.getValue();
+        Game.option.setNbPlayers(nbHeroesChoose);
+
+        // Alexandrie, Babylone, Gizeh, Ephese, Halicarnasse, Olympie, Rhodes
+        Game.option.setNbPlayers(3);
+        Game.option.addPlayer("Admin-1", 20, "Ephese");
+        Game.option.addPlayer("Admin-2", 19, "Rhodes");
+        Game.option.addPlayer("Admin-3", 60, "Alexandrie");
+
+        /*Game.option.addPlayer("Jon", 45, "Halicarnasse");
+        Game.option.addPlayer("Brutus", 30, "Olympie");
+        Game.option.addPlayer("Apollo", 70, "Babylone");
+        Game.option.addPlayer("Astride", 42, "Gizeh");*/
 
         // Chargement de la nouvelle scene
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("fxml/game-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        ((Stage) stage.getScene().getWindow()).setScene(scene);
+        super.loadPage("game");
     }
+
+    @FXML
+    protected void exitGame() {((Stage) stage.getScene().getWindow()).close();}
+
 }
