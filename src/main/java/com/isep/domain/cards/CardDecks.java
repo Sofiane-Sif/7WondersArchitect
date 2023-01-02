@@ -1,4 +1,4 @@
-package com.isep.cards;
+package com.isep.domain.cards;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,6 +13,10 @@ public class CardDecks {
 			this.cardType = cardType;
 		}
 	}
+
+
+
+
 	
 	/** Card Types x Quantities for Gizeh Deck */
 	public static final List<CardTypeQuantity> deckCardQuantities_Gizeh = Arrays.asList(new CardTypeQuantity[] {
@@ -24,16 +28,16 @@ public class CardDecks {
 			new CardTypeQuantity(2, CardType.CardMaterialGlass), //
 			new CardTypeQuantity(3, CardType.CardMaterialGold), // 2+1
 			// science
-			new CardTypeQuantity(1, CardType.CardScienceLaw), // 
-			new CardTypeQuantity(1, CardType.CardScienceMechanic), // 
-			new CardTypeQuantity(2, CardType.CardScienceArchitect), // 
+			new CardTypeQuantity(1, CardType.CardScienceLaw), //
+			new CardTypeQuantity(1, CardType.CardScienceMechanic), //
+			new CardTypeQuantity(2, CardType.CardScienceArchitect), //
 			// war
-			new CardTypeQuantity(2, CardType.CardWar_barbarian), // 
-			new CardTypeQuantity(2, CardType.CardWar_centurion), // 
-			new CardTypeQuantity(0, CardType.CardWar_archer), // 0 ! 
+			new CardTypeQuantity(2, CardType.CardWar_barbarian), //
+			new CardTypeQuantity(2, CardType.CardWar_centurion), //
+			new CardTypeQuantity(0, CardType.CardWar_archer), // 0 !
 			// politics
-			new CardTypeQuantity(2, CardType.CardPolitic_emperor), // 
-			new CardTypeQuantity(3, CardType.CardPolitic_cat), // 
+			new CardTypeQuantity(2, CardType.CardPolitic_emperor), //
+			new CardTypeQuantity(3, CardType.CardPolitic_cat), //
 	});
 
 	/** Card Types x Quantities for Rhodes Deck */

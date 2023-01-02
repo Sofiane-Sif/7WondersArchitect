@@ -1,4 +1,4 @@
-package com.isep.cards;
+package com.isep.domain.cards;
 
 public enum CardCategory {
 

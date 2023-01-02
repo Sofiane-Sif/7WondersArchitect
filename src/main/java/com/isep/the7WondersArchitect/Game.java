@@ -1,9 +1,14 @@
 package com.isep.the7WondersArchitect;
 
-import com.isep.cards.*;
-import com.isep.progressToken.ProgressToken;
-import com.isep.progressToken.ProgressTokens;
+import com.isep.domain.cards.*;
+import com.isep.domain.cat.Cat;
+import com.isep.domain.conflictToken.ConflictTokens;
+import com.isep.domain.progressToken.*;
+import com.isep.domain.wonders.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Game {
@@ -26,10 +31,19 @@ public class Game {
     /* _________________ */
     /* Variable de class */
     /* _________________ */
+    private Cat cat;
+    private ArrayList<ConflictTokens> conflictTokensList = new ArrayList<>();
+    private int nbPlayers = 3;
+    private List<Player> playerList = new ArrayList<>();
+    private List<ProgressToken> progressTokensList;
+    private List<Card> centralDeck = new ArrayList<>();
+
 
     /* _______ */
     /* Getters */
     /* _______ */
+    public int getProgressTokensListSize() {return this.progressTokensList.size();}
+    public List<Player> getPlayerList() {return this.playerList;}
 
 
     /* _______ */
@@ -40,13 +54,102 @@ public class Game {
     /* ______ */
     /* Adders */
     /* ______ */
+    public void addPlayer(String name, int age, String civilisationName) {
+        // Alexandrie, Halicarnasse, Ephese, Olympie, Babylone, Rhodes, Gizeh
+        Player newPlayer = new Player(name, age);
+        newPlayer.setCivilisationName(civilisationName);
+        this.playerList.add(newPlayer);
+    }
 
 
     /* ______ */
     /* Methodes de la Class Game */
     /* ______ */
 
-    public void settingUpGame() {
+
+
+    public void setNbPlayers() {this.nbPlayers = this.playerList.size();}
+
+    public String settingCat() {
+        this.cat = new Cat();
+        // Return pour affichage image
+        return this.cat.getImagePathCat();
+    }
+
+
+
+
+    public ArrayList<ConflictTokens> settingConflictTokens() {
+        // Calcul du nombre de ConflictTokens
+        int nbConflictTokens = switch (this.nbPlayers) {
+            case 2, 3 -> 3;
+            case 4 -> 4;
+            case 5 -> 5;
+            case 6, 7 -> 6;
+            default -> 0;
+        };
+        // Creation du nombre de ConflictTokens calculé
+        for (int num = 0; num < nbConflictTokens; num++) {
+            this.conflictTokensList.add(new ConflictTokens());
+        }
+        // Return pour affichage image
+        return this.conflictTokensList;
+    }
+
+
+
+    public List<ProgressToken> settingProgressTokens() {
+        // Création de la liste des ProgressToken
+        this.progressTokensList = ProgressTokens.TOKENS;
+        // Return pour affichage image
+        return this.progressTokensList;
+    }
+
+
+
+
+
+
+    public List<Card> settingCentralDeck() {
+        String civilisationName = "CentralDeck";
+        List<CardDecks.CardTypeQuantity> CardTypeList = CardsCivilisation.valueOf(civilisationName).lstCards;
+        CardBack cardBack = CardBack.valueOf(civilisationName);
+        // Constitution de la liste des cartes avec un front et un back
+        // Boucle sur le nombre de type de cartes
+        for (CardDecks.CardTypeQuantity cardFront: CardTypeList) {
+            // Boucle sur le nombre de cartes pour ce type
+            for (int num = 0; num < cardFront.quantity; num++) {
+                this.centralDeck.add(new Card(cardFront.cardType, cardBack));
+            }
+        }
+        // Return pour affichage image
+        return this.centralDeck;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void printsettingUpGame() {
         System.out.println("Préparation du jeu");
 
         /**
@@ -102,8 +205,13 @@ public class Game {
           *
          */
 
-        List<CardDecks.CardTypeQuantity> CardDecksCivilisation = CardDecks.deckCardQuantities_Gizeh;
-        CardBack cardBackCivilisation = CardBack.Gizeh;
+
+        // CentralDeck, Alexandrie, Halicarnasse, Ephese, Olympie, Babylone, Rhodes, Gizeh
+        String civilisationName = "CentralDeck";
+        List<CardDecks.CardTypeQuantity> CardDecksCivilisation = CardsCivilisation.valueOf(civilisationName).lstCards;
+        CardBack cardBackCivilisation = CardBack.valueOf(civilisationName);
+
+
 
         for (CardDecks.CardTypeQuantity c: CardDecksCivilisation) {
 
@@ -112,10 +220,10 @@ public class Game {
 
             CardType ct =  theCard.front;
             CardBack cb = theCard.back;
-            Wonder w = theCard.back.wonderDeck;
+            WonderHold w = theCard.back.wonderDeck;
 
             System.out.println(
-                    "Deck : deckCardQuantities_Extra \n"
+                    "Deck : "+civilisationName+" \n"
 
                     + c.quantity +" - "+ ct + "\n  front=["
 
@@ -127,18 +235,18 @@ public class Game {
                     + "\n   back=[" + cb.centralDeck + " - " + cb.wonderDeck
                     + "]"
 
-                    + "\n           [" + w.displayName + " - " + w.frenchName + " - " + w.effectDescription
+                    + "\n           [" + (cb.wonderDeck!=null ? w.displayName + " - " + w.frenchName + " - " + w.effectDescription : "Pas de wonders")
                     + "]"
 
             + "\n");
         }
-
+/*
         System.out.println("--------------------------------------------");
 
         /**
          * Fonctionnement de la gestion des jetons Progrès
          */
-
+/*
         for (ProgressToken token : ProgressTokens.TOKENS) {
             System.out.println(
                     "Jeton = " + token
@@ -149,7 +257,24 @@ public class Game {
         }
 
 
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
+
+        /**
+         * Ensemble des Wonders
+         */
+/*
+        // Alexandrie, Halicarnasse, Ephese, Olympie, Babylone, Rhodes, Gizeh
+        civilisationName = "Olympie";
+        Wonder myWonder = Wonder.valueOf(civilisationName);
+
+        System.out.println(myWonder.displayName +" - "+ myWonder.frenchName +" -\n"+ myWonder.effectDescription +"\n"+ myWonder.imagePath);
+
+*/
     }
+
+
+
+
 
 
 }

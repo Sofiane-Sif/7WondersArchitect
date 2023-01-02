@@ -1,4 +1,4 @@
-package com.isep.progressToken;
+package com.isep.domain.progressToken;
 
 public enum ProgressToken {
 

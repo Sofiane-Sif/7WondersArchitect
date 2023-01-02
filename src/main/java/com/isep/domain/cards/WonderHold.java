@@ -1,6 +1,6 @@
-package com.isep.cards;
+package com.isep.domain.cards;
 
-public enum Wonder {
+public enum WonderHold {
 
 	Alexandrie("Alexandrie", "Alexandrie", //
 			"Prenez la premi�re carte d'une pioche au choix, n'importe o� sur la table, et posez-la devant vous"),
@@ -34,7 +34,7 @@ public enum Wonder {
 	
 	// ------------------------------------------------------------------------
 	
-	Wonder(String displayName, String frenchName, String effectDescription) {
+	WonderHold(String displayName, String frenchName, String effectDescription) {
 		this.displayName = displayName;
 		this.frenchName = frenchName;
 		this.effectDescription = effectDescription;
