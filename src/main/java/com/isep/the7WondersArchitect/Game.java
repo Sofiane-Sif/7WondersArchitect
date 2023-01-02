@@ -31,6 +31,7 @@ public class Game {
     /* _________________ */
     /* Variable de class */
     /* _________________ */
+    public MusiquePlayer musiquePlayer = new MusiquePlayer();
     private Cat cat;
     private ArrayList<ConflictTokens> conflictTokensList = new ArrayList<>();
     private int nbPlayers = 3;

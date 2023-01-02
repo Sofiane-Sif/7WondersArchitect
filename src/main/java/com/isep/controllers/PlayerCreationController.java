@@ -119,7 +119,7 @@ public class PlayerCreationController extends ControlleurBase {
         // Recuperation de l'age du player
         int age;
         try {age = Integer.parseInt(this.spinnerAge.getEditor().getText());}
-        catch (NumberFormatException e) {this.labelError.setText("Erreur sur l'âge"); return;}
+        catch (NumberFormatException ignored) {this.labelError.setText("Erreur sur l'âge"); return;}
         // Verification de civilisationChoice
         if (this.civilisationChoice == null) {this.labelError.setText("civilisation non selectionné"); return;}
         // Verification du nom du player

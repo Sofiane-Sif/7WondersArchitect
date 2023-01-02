@@ -58,6 +58,11 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency> <!-- Ajout de cette dependency pour l'utilisation de la musique (MediaPlayer) -->
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
+            <version>19</version>
+        </dependency>
     </dependencies>
 
     <build>

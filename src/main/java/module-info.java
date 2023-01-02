@@ -1,6 +1,7 @@
 module com.isep.the7wondersarchitect {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.media;
 
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;

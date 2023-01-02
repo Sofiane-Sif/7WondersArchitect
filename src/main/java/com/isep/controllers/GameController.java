@@ -78,9 +78,6 @@ public class GameController extends ControlleurBase {
             // Positionnement des Wonder Players
             Wonder wonderPlayer = player.createWonder();
 
-
-
-
         }
 
 

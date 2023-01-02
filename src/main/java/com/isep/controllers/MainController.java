@@ -19,7 +19,13 @@ public class MainController extends ControlleurBase {
 
     @FXML
     public void initialize() {
+        // Stop la musique est en cours
+        try {Game.option.musiquePlayer.stopMedia();
+        } catch (Exception ignored) {}
+        // Création de la partie de jeu
         Game.startNewGame();
+        // Joue une nouvelle musique
+        Game.option.musiquePlayer.playMedia();
     }
 
 
