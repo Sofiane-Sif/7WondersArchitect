@@ -4,11 +4,8 @@ import com.isep.domain.cards.*;
 import com.isep.domain.cat.Cat;
 import com.isep.domain.conflictToken.ConflictTokens;
 import com.isep.domain.progressToken.*;
-import com.isep.domain.wonders.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class Game {

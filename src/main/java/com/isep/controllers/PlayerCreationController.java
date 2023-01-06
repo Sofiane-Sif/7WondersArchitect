@@ -1,23 +1,14 @@
 package com.isep.controllers;
 
-import com.isep.MainApplication;
 import com.isep.the7WondersArchitect.Game;
 import com.isep.the7WondersArchitect.Player;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.Arrays;
 import java.util.Objects;
-import java.util.ResourceBundle;
 
 public class PlayerCreationController extends ControlleurBase {
 
@@ -118,7 +109,7 @@ public class PlayerCreationController extends ControlleurBase {
     protected void onCreatePlayerClick() {
         // Recuperation de l'age du player
         int age;
-        try {age = Integer.parseInt(this.spinnerAge.getEditor().getText());}
+        try {age = Integer.parseInt(this.spinnerAge.getEditor().getText().trim());}
         catch (NumberFormatException ignored) {this.labelError.setText("Erreur sur l'âge"); return;}
         // Verification de civilisationChoice
         if (this.civilisationChoice == null) {this.labelError.setText("civilisation non selectionné"); return;}

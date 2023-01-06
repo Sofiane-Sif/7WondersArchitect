@@ -20,7 +20,7 @@
       </ImageView>
       <AnchorPane fx:id="screenElements" prefHeight="500.0" prefWidth="900.0">
          <children>
-            <TextField fx:id="nameHeroe" alignment="CENTER" layoutX="363.0" layoutY="336.0" promptText="Player Name">
+            <TextField fx:id="nameHeroe" alignment="CENTER" layoutX="363.0" layoutY="336.0" onAction="#onCreatePlayerClick" promptText="Player Name">
                <font>
                   <Font size="14.0" />
                </font>

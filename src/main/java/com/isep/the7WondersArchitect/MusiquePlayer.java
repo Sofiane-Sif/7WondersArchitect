@@ -4,15 +4,12 @@ import com.isep.MainApplication;
 
 import java.net.URL;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-import javafx.collections.FXCollections;
-import javafx.scene.control.ListView;
+
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
 
 public class MusiquePlayer {
 

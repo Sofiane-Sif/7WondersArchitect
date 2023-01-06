@@ -1,24 +1,18 @@
 package com.isep.controllers;
 
-import com.isep.MainApplication;
 import com.isep.domain.cards.Card;
 import com.isep.domain.conflictToken.ConflictTokens;
 import com.isep.domain.progressToken.ProgressToken;
-import com.isep.domain.wonders.Wonder;
+import com.isep.domain.wonders.Wonders;
 import com.isep.the7WondersArchitect.Game;
 import com.isep.the7WondersArchitect.Player;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import javafx.scene.layout.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -48,7 +42,7 @@ public class GameController extends ControlleurBase {
 
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
 
 
         this.initialisePlayerZonesList();
@@ -56,6 +50,7 @@ public class GameController extends ControlleurBase {
         // Positionnement des Players
         List<Player> playerList = Game.option.getPlayerList();
         for (Player player: playerList) {
+
 
             // Recuperation de la boite d'affichage du player
             AnchorPane playerZone = this.playerZonesList.get(playerList.indexOf(player));
@@ -76,8 +71,35 @@ public class GameController extends ControlleurBase {
             imgZone.setImage(imgCardPlayer);
 
             // Positionnement des Wonder Players
-            Wonder wonderPlayer = player.createWonder();
+            Wonders wonderPlayer = player.createWonder();
+            VBox wonderBox = wonderPlayer.placeImage();
 
+            //System.out.println(playerZone);
+
+          /* System.out.println("\n-------------------"+player.getCivilisationName()+"------------");
+            for (Node n: wonderBox.getChildren()) {
+                System.out.println(n);
+                if (n instanceof HBox) {System.out.println("	["+ ((HBox) n).getChildren() +"]");}
+            }*/
+
+
+
+            playerZone.getChildren().add(wonderBox);
+
+            // Deplaces les images sur le sreen
+            // wonderBox.setTranslateX(-400);
+            // wonderBox.setTranslateY(-400);
+            // Mets la wonderBox à une position précise sur l'AnchorPane
+            wonderBox.setLayoutX(150);
+            wonderBox.setLayoutY(0);
+
+            // Encadres les AnchorPanes en couleurs
+           /* wonderBox.setStyle("-fx-border-color: red;" +
+                    "-fx-border-width: 5");
+            playerZone.setStyle("-fx-border-color: blue;" +
+                    "-fx-border-width: 5");
+            playerZone.getChildren().get(2).setStyle("-fx-border-color: yellow;" +
+                    "-fx-border-width: 5");*/
         }
 
 

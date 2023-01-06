@@ -4,7 +4,7 @@ import com.isep.domain.cards.Card;
 import com.isep.domain.cards.CardBack;
 import com.isep.domain.cards.CardDecks;
 import com.isep.domain.cards.CardsCivilisation;
-import com.isep.domain.wonders.Wonder;
+import com.isep.domain.wonders.Wonders;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,11 +12,11 @@ import java.util.List;
 
 public class Player {
 
-    private String name;
-    private int age;
+    private final String name;
+    private final int age;
     private String civilisationName;
-    private Wonder wonderPlayer;
-    private List<Card> deckPlayer = new ArrayList<>();
+    private Wonders wonder;
+    private final List<Card> deckPlayer = new ArrayList<>();
 
     public Player(String name, int age) {
         this.name = name;
@@ -26,11 +26,9 @@ public class Player {
 
     public void setCivilisationName(String civilisationName) {this.civilisationName=civilisationName;}
 
-
-
     public String getName() {return this.name;}
     public String getCivilisationName() {return this.civilisationName;}
-    public Wonder getWonderPlayer() {return this.wonderPlayer;}
+    public Wonders getWonder() {return this.wonder;}
     public List<Card> getDeckPlayer() {return this.deckPlayer;}
 
 
@@ -53,9 +51,9 @@ public class Player {
     }
 
 
-    public Wonder createWonder() {
-        this.wonderPlayer = Wonder.valueOf(this.civilisationName);
-        return this.wonderPlayer;
+    public Wonders createWonder() {
+        this.wonder = Wonders.valueOf(this.civilisationName);
+        return this.wonder;
     }
 
 }

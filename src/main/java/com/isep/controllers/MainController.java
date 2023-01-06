@@ -1,15 +1,9 @@
 package com.isep.controllers;
 
-import com.isep.MainApplication;
 import com.isep.the7WondersArchitect.Game;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class MainController extends ControlleurBase {
 

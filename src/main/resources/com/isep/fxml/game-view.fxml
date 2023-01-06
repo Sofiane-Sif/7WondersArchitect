@@ -134,7 +134,7 @@
             </AnchorPane>
             <AnchorPane fx:id="anchorPlayers" disable="true" focusTraversable="true" prefHeight="500.0" prefWidth="900.0">
                <children>
-                  <AnchorPane layoutX="403.0" layoutY="335.0">
+                  <AnchorPane layoutX="218.0" layoutY="340.0">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -144,7 +144,7 @@
                         <Label layoutX="36.0" layoutY="144.0" text="Player 1" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="299.0" layoutY="22.0">
+                  <AnchorPane layoutX="126.0">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -154,7 +154,7 @@
                         <Label layoutX="27.0" layoutY="-16.0" text="Player 2" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="477.0" layoutY="14.0" visible="false">
+                  <AnchorPane layoutX="567.0" visible="false">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
