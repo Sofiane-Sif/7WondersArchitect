@@ -1,4 +1,4 @@
-package com.isep.domain.conflictToken;
+package com.isep.items.conflictToken;
 
 
 

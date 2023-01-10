@@ -18,10 +18,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class ControlleurBase {
+public abstract class ControlleurBase {
 
     @FXML
-    protected AnchorPane stage, screenElements;
+    protected AnchorPane stageAP, screenElements;
 
     @FXML
     protected ImageView background;
@@ -35,16 +35,16 @@ public class ControlleurBase {
             // Seulement à la création à chaque changement de scene
             this.isInit = true;
             // Full screen
-            Stage window = ((Stage) stage.getScene().getWindow());
+            Stage window = ((Stage) stageAP.getScene().getWindow());
             window.setFullScreen(true);
             window.setResizable(false);
             window.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
             // Aggrandi l'image au max
-            background.setFitWidth(stage.getWidth());
-            background.setFitHeight(stage.getHeight());
+            background.setFitWidth(stageAP.getWidth());
+            background.setFitHeight(stageAP.getHeight());
             // Remet les elements au centre
-            double midScreenX = stage.getWidth()/2;
-            double midScreenY = stage.getHeight()/2;
+            double midScreenX = stageAP.getWidth()/2;
+            double midScreenY = stageAP.getHeight()/2;
             int AnchorPointX = (int) (midScreenX - screenElements.getWidth()/2);
             int AnchorPointY = (int) (midScreenY - screenElements.getHeight()/2);
             screenElements.setLayoutX(AnchorPointX);
@@ -59,7 +59,7 @@ public class ControlleurBase {
              * C'est deux lignes permettent de zoomer l'AnchorPane qui contient tous les elements
              * C'est pour l'instant zoomé à 1.5 - une valeur fixe...
              * Ca doit pas donner la meme chose en fonction du type d'ecran
-             * Faire une fonction qui recupère la taille de l'ecran et renvoi une valeur de zoom
+             * Faire une fonction qui recup la taille de l'ecran et renvoi une valeur de zoom
              */
         }
     }
@@ -68,7 +68,7 @@ public class ControlleurBase {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("fxml/"+ pageName +"-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
-            ((Stage) stage.getScene().getWindow()).setScene(scene);
+            ((Stage) stageAP.getScene().getWindow()).setScene(scene);
         }
         catch (IOException e) {throw new RuntimeException(e);}
 

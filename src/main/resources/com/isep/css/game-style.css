@@ -1,0 +1,19 @@
+
+
+.label {
+    -fx-font-size: 12px;
+}
+
+
+.firstPlayerSelection {
+    -fx-effect: dropshadow( three-pass-box , rgba(250, 0, 0, 0.4) , 10, 0.8 , 0 , 0 );
+}
+
+
+.selectWonder {
+    -fx-effect: dropshadow( three-pass-box , rgba(30, 200, 100, 0.4) , 15, 0.8 , 0 , 0 );
+}
+
+.selectDeck {
+    -fx-effect: dropshadow( three-pass-box , rgba(150, 100, 2000, 0.4) , 10, 0.8 , 0 , 0 );
+}

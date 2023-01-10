@@ -41,21 +41,21 @@ public class MainController extends ControlleurBase {
         Game.option.setNbPlayers(nbHeroesChoose);
 
         // Alexandrie, Babylone, Gizeh, Ephese, Halicarnasse, Olympie, Rhodes
-        Game.option.setNbPlayers(3);
+        Game.option.setNbPlayers(7);
         Game.option.addPlayer("Admin-1", 20, "Ephese");
         Game.option.addPlayer("Admin-2", 19, "Rhodes");
-        Game.option.addPlayer("Admin-3", 60, "Alexandrie");
+        Game.option.addPlayer("Admin-3", 60, "Gizeh");
 
-        /*Game.option.addPlayer("Jon", 45, "Halicarnasse");
-        Game.option.addPlayer("Brutus", 30, "Olympie");
+        Game.option.addPlayer("Jon", 45, "Halicarnasse");
+        Game.option.addPlayer("Brutus", 10, "Olympie");
         Game.option.addPlayer("Apollo", 70, "Babylone");
-        Game.option.addPlayer("Astride", 42, "Gizeh");*/
+        Game.option.addPlayer("Astride", 42, "Alexandrie");
 
         // Chargement de la nouvelle scene
         super.loadPage("game");
     }
 
     @FXML
-    protected void exitGame() {((Stage) stage.getScene().getWindow()).close();}
+    protected void exitGame() {((Stage) stageAP.getScene().getWindow()).close();}
 
 }

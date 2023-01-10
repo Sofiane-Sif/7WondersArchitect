@@ -1,4 +1,4 @@
-package com.isep.domain.cards;
+package com.isep.items.cards;
 
 public enum Material {
 	Wood, //

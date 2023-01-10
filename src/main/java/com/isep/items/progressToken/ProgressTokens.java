@@ -1,4 +1,4 @@
-package com.isep.domain.progressToken;
+package com.isep.items.progressToken;
 
 import java.util.ArrayList;
 import java.util.Arrays;

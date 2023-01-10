@@ -1,9 +1,9 @@
 package com.isep.the7WondersArchitect;
 
-import com.isep.domain.cards.*;
-import com.isep.domain.cat.Cat;
-import com.isep.domain.conflictToken.ConflictTokens;
-import com.isep.domain.progressToken.*;
+import com.isep.items.cards.*;
+import com.isep.items.cat.Cat;
+import com.isep.items.conflictToken.ConflictTokens;
+import com.isep.items.progressToken.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,15 +35,20 @@ public class Game {
     private List<Player> playerList = new ArrayList<>();
     private List<ProgressToken> progressTokensList;
     private List<Card> centralDeck = new ArrayList<>();
-
+    private boolean gameOver = false;
+    private int numPlayerTurn = 0;
 
     /* _______ */
     /* Getters */
     /* _______ */
+    public int getNumPlayerTurn() {return this.numPlayerTurn;}
+
     public int getProgressTokensListSize() {return this.progressTokensList.size();}
     public List<Player> getPlayerList() {return this.playerList;}
     public int getNbPlayers() {return this.nbPlayers;}
+    public boolean isGameOver() {return this.gameOver;}
 
+    public List<Card> getCentralDeck() {return this.centralDeck;}
 
     /* _______ */
     /* Setters */
@@ -66,6 +71,7 @@ public class Game {
     /* ______ */
 
 
+    public void setNumPlayer() {this.numPlayerTurn++;}
 
     public void setNbPlayers(int nbPlayers) {this.nbPlayers = nbPlayers;}
 
@@ -125,7 +131,20 @@ public class Game {
         return this.centralDeck;
     }
 
+    public void definePlayerOrder(Player firstPlayer) {
+        // Recupère le joueur le plus jeune et change l'ordre des joueurs
+        List<Player> newList = new ArrayList<>();
+        int indexFirstPlayer = this.playerList.indexOf(firstPlayer);
+        for (int numPlayer = indexFirstPlayer; numPlayer < this.nbPlayers+indexFirstPlayer; numPlayer++) {
+            newList.add(this.playerList.get(numPlayer % this.nbPlayers));
+        }
+        this.playerList = newList;
+    }
 
+
+
+
+    public void setVictory() {this.gameOver=true;}
 
 
 

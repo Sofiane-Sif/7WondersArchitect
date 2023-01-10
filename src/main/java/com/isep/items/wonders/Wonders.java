@@ -1,4 +1,4 @@
-package com.isep.domain.wonders;
+package com.isep.items.wonders;
 
 import com.isep.MainApplication;
 import javafx.geometry.Pos;
@@ -20,7 +20,7 @@ public enum Wonders {
 	Halicarnasse("Halicarnasse", "Halicarnasse", //
 			"Prenez les 5 premi�res cartes de la pioche � votre gauche ou � votre droite, choisissez-en 1 et posez-la devant vous" //
 			+ "M�langez-les cartes restantes dans leur pioche",
-			4, 2, 2, 10),
+			4, 1, 2, 10),
 
 	Ephese("Ephese", "Eph�se", //
 			"Prenez la premi�re carte de la pioche centrale et posez-la devant vous",
@@ -28,7 +28,7 @@ public enum Wonders {
 
 	Olympie("Olympie", "Olympie", //
 			"Prenez la premi�re carte de la pioche � votre cauche et de celle � votre droite, et posez-les devant vous",
-			4, 1, 2, 5),
+			4, 2, 2, 5),
 
 	Babylone("Babylone", "Babylone", //
 			"Choisissez 1 jeton Progr�s parmi les 4 disponibles, et posez-le devant vous",
@@ -80,7 +80,7 @@ public enum Wonders {
 
 
 
-	public VBox placeImage() throws IOException {
+	public VBox createImage() throws IOException {
 
 		// folderImagesPath of the wonder
 		String path = ("images/wonders/" + this.name.toLowerCase());
@@ -91,18 +91,19 @@ public enum Wonders {
 		// all filesPath in the folder
 		File[] listImage = nameDir.listFiles();
 
-		// Divise les images en deux List - contruit et non construit
 		assert listImage != null;
+		Arrays.sort(listImage, Comparator.comparing(File::getName));
+		/*for (File i: listImage ) {System.out.println(i.getName());}
+		System.out.println();
+		System.out.println(Arrays.toString(listImage));*/
+
+		// Divise les images en deux List - contruit et non construit
 		int half = listImage.length / 2;
 		this.imgConstructionList = Arrays.copyOfRange(listImage, 0, half);
 		this.imgBuildList = Arrays.copyOfRange(listImage, half, listImage.length);
 		// Renverse l'ordre des images
 		Collections.reverse(Arrays.asList(this.imgConstructionList));
 		Collections.reverse(Arrays.asList(this.imgBuildList));
-
-		for (File f:listImage) {System.out.println(f.getName());}
-		//for (File f:this.imgBuildList) {System.out.println(f.getName());}
-		System.out.println("************\n");
 
 		HBox hBox = null;
 		this.vBoxWonderImages = new VBox();
@@ -111,7 +112,7 @@ public enum Wonders {
 		// Pour chaque images trouvé dans le dossier
 		for (int numImg = 0; numImg < listImage.length/2; numImg++) {
 			// Mise en place de l'ImageView
-			Image image = new Image(String.valueOf(this.imgConstructionList[numImg]));
+			Image image = new Image(String.valueOf(this.imgBuildList[numImg]));
 			ImageView imageView = new ImageView(image);
 			// Redimention de l'iamge en conservant le ratio
 			imageView.setPreserveRatio(true);
@@ -128,7 +129,7 @@ public enum Wonders {
 				assert hBox != null;
 				hBox.getChildren().add(imageView);
 				imageView.setFitWidth(diviseurZoom/this.nbCase);
-				imageView.setFitHeight(diviseurZoom/this.nbCase);
+				//imageView.setFitHeight(diviseurZoom/this.nbCase);
 			}
 			else {
 				// Sinon ajout de l'ImageView dans le HBox

@@ -1,4 +1,4 @@
-package com.isep.domain.cat;
+package com.isep.items.cat;
 
 public class Cat {
 
