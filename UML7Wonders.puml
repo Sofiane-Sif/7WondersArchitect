@@ -1,0 +1,77 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+!pragma layout smetana
+
+package com.isep.controllers{
+    abstract class ControlleurBase{
+
+    }
+
+    class MainControlleur{
+
+    }
+
+    class GameControlleur{
+        }
+
+     class PlayerCreationControlleur{
+         }
+
+
+
+
+    ControlleurBase <|-- MainControlleur
+    ControlleurBase <|-- GameControlleur
+    ControlleurBase <|-- PlayerCreationControlleur
+}
+package com.isep.game{
+
+package com.isep.item{
+
+    abstract class Cards{}
+
+        class MaterialCard extends Cards
+        class ScienceCard extends Cards
+        class WarCard extends Cards
+        class PoliticCard extends Cards
+        class VictoryPointsCard extends PoliticCard
+        class Cat extends PoliticCard
+
+    abstract class Tokens{}
+    class ConflictToken extends Tokens
+    class ProgressToken extends Tokens
+    enum Wonders{
+    Gizeh
+    Rhodes
+    Babylone
+    Ephese
+    Halicarnasse
+    Alexandrie
+    Olympie
+    }
+
+    Wonders *--- Cards
+
+}
+    class Game{
+    }
+
+    class MusicPlayer{
+    }
+
+    class Player{
+    }
+
+    class Bot7Wonder
+
+    Game *-- Player
+    Game *-- MusicPlayer
+    Game *-- Bot7Wonder
+
+  Game o- ControlleurBase
+
+}
+
+
+@enduml
