@@ -20,6 +20,7 @@ import javafx.scene.layout.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class GameController extends ControlleurBase {
 
@@ -55,6 +56,7 @@ public class GameController extends ControlleurBase {
         int posFirstPlayer = 10;
         for (Player player: playerList) {
 
+
             // Recuperation de la boite d'affichage du player
             AnchorPane playerZone = this.playerZonesList.get(playerList.indexOf(player));
             ObservableList<Node> playerZoneChildren = playerZone.getChildren();
@@ -66,13 +68,20 @@ public class GameController extends ControlleurBase {
             ImageView imgZone = (ImageView) playerZoneChildren.get(0);
             String imgPathCardPlayer = cardListPlayer.get(0).front.imageResource;
             Image imgCardPlayer = ControlleurBase.setAnImage(imgPathCardPlayer);
+            // Application du style null pour pouvoir recuperer le nom de la merveille du deck
+            imgZone.setId(player.getCivilisationName());
+            // Positionnement et affichage du nombre de carte restante
+            Label labeNbCardDeck = (Label) playerZoneChildren.get(2);
+            labeNbCardDeck.setText(" "+cardListPlayer.size());
+            labeNbCardDeck.setLayoutY(135);
+
             // Affichage des cardDeckPlayer
             imgZone.setImage(imgCardPlayer);
 
             // Positionnement des Wonder Players
             Wonders wonderPlayer = player.createWonder();
             // Recuperation de la Vbox Existante
-            VBox wonderBox = (VBox) playerZoneChildren.get(2);
+            VBox wonderBox = (VBox) playerZoneChildren.get(3);
             // generation de la VBox bien comme il faut
             ObservableList <Node> wonderBoxElements = wonderPlayer.createImage().getChildren();
             wonderBox.getChildren().addAll(wonderBoxElements);
@@ -102,12 +111,10 @@ public class GameController extends ControlleurBase {
 
         }
 
-
         // Positionnement du chat
         String imgPathCat = Game.option.settingCat();
         Image imgCat = ControlleurBase.setAnImage(imgPathCat);
         this.imgViewCat.setImage(imgCat);
-
 
         // Positionnement des conflictTokens
         ArrayList<ConflictTokens> conflictTokensArrayList = Game.option.settingConflictTokens();
@@ -122,7 +129,6 @@ public class GameController extends ControlleurBase {
             imageConflictToken.setVisible(true);
             imageConflictToken.setImage(imgconflictTokens);
         }
-
 
         // Positionnement des progressTokens visibles
         List<ProgressToken> progressTokensList = Game.option.settingProgressTokens();
@@ -147,6 +153,7 @@ public class GameController extends ControlleurBase {
         String imagePathCentralDeck = cardListCentralDeck.get(0).back.imgBackPath;
         Image imgCentralDeck = ControlleurBase.setAnImage(imagePathCentralDeck);
         this.imgViewCentralDeck.setImage(imgCentralDeck);
+        this.imgViewCentralDeck.setId("CentralDeck");
 
         // Met dans l'ordre la liste des player en fonction du premier joueur
         Game.option.definePlayerOrder(firstPlayer);
@@ -162,12 +169,10 @@ public class GameController extends ControlleurBase {
         }
     }
 
-
     @FXML
     protected void onMenuButtonClick() {
         super.loadPage("main");
     }
-
 
     @FXML
     protected void onStartGameButton(Event event) {
@@ -180,7 +185,6 @@ public class GameController extends ControlleurBase {
         this.startGame();
     }
 
-
     public void changeListAnchorPaneOrder(int posFirstPlayer) {
         // Recupère le joueur le plus jeune et change l'ordre des joueurs
         List<AnchorPane> newList = new ArrayList<>();
@@ -192,21 +196,19 @@ public class GameController extends ControlleurBase {
     }
 
 
-
     public void startGame() {
         /*
-         * While !gameOver
-             * Le premier joueur pioche une carte
-                * On regarde la type de la carte
-                * En fonction de son type on execute une fonction verifiant les possiblilité assosié à cette carte
-                * Verfi si a gagné
-          * Tour du player suivant
+         *OK While !gameOver
+             *OK Le premier joueur pioche une carte
+                *OK On regarde la type de la carte
+                *-> En fonction de son type on execute une fonction verifiant les possiblilité assosié à cette carte
+                *-> Verfi si a gagné
+          *OK Tour du player suivant
           * ...
-      * On compte les points pour savoir qui a gangné
+      *-> On compte les points pour savoir qui a gangné
          */
-        System.out.println("Lancement pour un tour de jeu");
-
         this.nextPlayerTurn();
+
     }
 
 
@@ -221,6 +223,7 @@ public class GameController extends ControlleurBase {
     private Wonders wonderPlayer;
     private ImageView deckRightPlayerImg;
     private List<Card> deckRightPlayer;
+    private List<Card> centraldeck;
 
 
 
@@ -234,33 +237,41 @@ public class GameController extends ControlleurBase {
         this.deckPlayerImg = (ImageView) this.visualPlayerTurn.get(0);
         this.deckPlayer = this.playerTurn.getDeckPlayer();
         // Va chercher la WonderPlayer
-        this.wonderPlayerImg = (VBox) this.visualPlayerTurn.get(2);
+        this.wonderPlayerImg = (VBox) this.visualPlayerTurn.get(3);
         this.wonderPlayer = this.playerTurn.getWonder();
         // Va chercher le cardDeck présent à la droite du Player ainsi que son image
         int posRightPlayer = (this.numPlayer-1+Game.option.getNbPlayers()) % Game.option.getNbPlayers();
         Player playerDroite = Game.option.getPlayerList().get(posRightPlayer);
         this.deckRightPlayer = playerDroite.getDeckPlayer();
         this.deckRightPlayerImg = (ImageView) this.playerZonesList.get(posRightPlayer).getChildren().get(0);
+        // Va recuperer le centralDeck
+        this.centraldeck = Game.option.getCentralDeck();
+
     }
 
 
     private void nextPlayerTurn() {
         // Récupération des infos du player qui doit jouer
         this.setInfoPlayerTurn();
-
         // Met en couleur le joueur qui joue;
         this.wonderPlayerImg.getStyleClass().add("selectWonder");
 
             // Mets les jeux de cartes disponibles en couleur  et clickable
         // Deck du Player
-        this.deckPlayerImg.getStyleClass().add("selectDeck");
-        this.deckPlayerImg.setOnMouseClicked(this::onSelectionCartePlayerButton);
+        if (this.deckPlayer.size()>=1) {
+            this.deckPlayerImg.getStyleClass().add("selectDeck");
+            this.deckPlayerImg.setOnMouseClicked(this::onSelectionCartePlayerButton);
+        }
         // Deck de droite
-        this.deckRightPlayerImg.getStyleClass().add("selectDeck");
-        this.deckRightPlayerImg.setOnMouseClicked(this::onSelectionCartePlayerButton);
+        if (this.deckRightPlayer.size()>=1) {
+            this.deckRightPlayerImg.getStyleClass().add("selectDeck");
+            this.deckRightPlayerImg.setOnMouseClicked(this::onSelectionCartePlayerButton);
+        }
         // Deck du millieu
-        this.imgViewCentralDeck.getStyleClass().add("selectDeck");
-        this.imgViewCentralDeck.setOnMouseClicked(this::onSelectionCartePlayerButton);
+        if (this.centraldeck.size()>=1) {
+            this.imgViewCentralDeck.getStyleClass().add("selectDeck");
+            this.imgViewCentralDeck.setOnMouseClicked(this::onSelectionCartePlayerButton);
+        }
 
         /*
          * L'IA / RobotPlayer est à mettre ici
@@ -285,18 +296,35 @@ public class GameController extends ControlleurBase {
         this.deckRightPlayerImg.getStyleClass().remove("selectDeck");
         this.deckRightPlayerImg.setOnMouseClicked(null);
 
+        // recupératon de la carteImg et du nom de la civilisation du deck
+        ImageView selectCardImg = (ImageView) event.getSource();
+        String civNameCard = selectCardImg.getId();
 
-        // recupereaton de la carte
-        System.out.println("Carte click");
+        // Pioche la carte du deck selectionné
+        String newCardDeckImgPath = playerTurn.piocheCarte(civNameCard);
+        Image newCardDeckImg = ControlleurBase.setAnImage(newCardDeckImgPath);
+        selectCardImg.setImage(newCardDeckImg);
+        // Met à jour le nombre de cartes restants
+        this.majInfoSizeDeck();
 
-        // Effet de la carte
-
+        // Joue la carte
+        this.playerTurn.usePowerCard();
 
         // Passe au player suivant ou GameOver
         Game.option.setNumPlayer();
-        if (Game.option.getNumPlayerTurn() < Game.option.getNbPlayers()*10) {this.nextPlayerTurn();}
+        if (Game.option.getNumPlayerTurn() < Game.option.getNbPlayers()*100) {this.nextPlayerTurn();}
         else {Game.option.isGameOver();
             System.out.println("Nombre de tour de jeu dépassé. \nGAME OVER");}
+    }
+
+    private void majInfoSizeDeck() {
+        int sizeDeck = Game.option.getCentralDeck().size();
+        this.labelCentralDeck.setText(""+sizeDeck);
+        // Met à jour le l'affichage du nombre de carte poru chaque Deck
+        for (int numPlayer = 0; numPlayer < Game.option.getNbPlayers(); numPlayer++) {
+            sizeDeck = Game.option.getPlayerList().get(numPlayer).getDeckPlayer().size();
+            ((Label) this.playerZonesList.get(numPlayer).getChildren().get(2)).setText(" "+sizeDeck);
+        }
     }
 
 

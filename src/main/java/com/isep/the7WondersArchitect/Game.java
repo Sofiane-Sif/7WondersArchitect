@@ -6,6 +6,7 @@ import com.isep.items.conflictToken.ConflictTokens;
 import com.isep.items.progressToken.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Game {
@@ -128,6 +129,7 @@ public class Game {
             }
         }
         // Return pour affichage image
+        Collections.shuffle(this.centralDeck);
         return this.centralDeck;
     }
 
@@ -142,6 +144,13 @@ public class Game {
     }
 
 
+    public int getnNbConfict() {
+        int nbConflit = 0;
+        for (ConflictTokens conflictTokens : this.conflictTokensList){
+            if (conflictTokens.getIsWar())  {nbConflit++;}
+        }
+        return nbConflit;
+    }
 
 
     public void setVictory() {this.gameOver=true;}

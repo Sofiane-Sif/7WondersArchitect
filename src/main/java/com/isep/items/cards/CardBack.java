@@ -4,11 +4,11 @@ public enum CardBack {
 
 	CentralDeck(null, "images/cards/card-back/card-back-question.png"), //
 	
-	Alexandrie(WonderHold.Alexandrie, "images/cards/card-back/card-alexandrie-none.png"), //
-	Halicarnasse(WonderHold.Halicarnasse, "images/cards/card-back/card-back-alicarnasse.png"),
+	Alexandrie(WonderHold.Alexandrie, "images/cards/card-back/card-back-alexandrie.png"), //
+	Halicarnasse(WonderHold.Halicarnasse, "images/cards/card-back/card-back-halicarnasse.png"),
 	Ephese(WonderHold.Ephese, "images/cards/card-back/card-back-ephese.png"), //
 	Olympie(WonderHold.Olympie, "images/cards/card-back/card-back-olympie.png"), //,
-	Babylone(WonderHold.Babylone, "images/cards/card-back/card-back-babylone.png"), //
+	Babylone(WonderHold.Babylone, "images/cards/card-back/card-back-babylon.png"), //
 	Rhodes(WonderHold.Rhodes, "images/cards/card-back/card-back-rhodes.png"), //
 	Gizeh(WonderHold.Gizeh, "images/cards/card-back/card-back-gizeh.png"); //
 	

@@ -112,7 +112,7 @@ public enum Wonders {
 		// Pour chaque images trouvé dans le dossier
 		for (int numImg = 0; numImg < listImage.length/2; numImg++) {
 			// Mise en place de l'ImageView
-			Image image = new Image(String.valueOf(this.imgBuildList[numImg]));
+			Image image = new Image(String.valueOf(this.imgConstructionList[numImg]));
 			ImageView imageView = new ImageView(image);
 			// Redimention de l'iamge en conservant le ratio
 			imageView.setPreserveRatio(true);
@@ -142,6 +142,23 @@ public enum Wonders {
 		return this.vBoxWonderImages;
 	}
 
+	public int getLevelCiv() {return this.levelCiv;}
+
+	public void getInfoConstruction() {
+		/*
+		* Pour chaque Wonders on a 5 pieces
+		* l'ordre des nombres de ressources est : 2-2-3-3-4
+		* Le type de resources : diff-equal-diff-equal-diff
+		*
+		* Le programme suivant doit normalement calculer ça (à partir du numero de l'etage de la wonder)
+		*
+		* if (this.levelCiv > 5) {GAME_OVER}
+		*/
+		int nbRessource = (this.levelCiv%2==0) ? 2+(this.levelCiv/2) : 2+(this.levelCiv/2)-1;
+		boolean isEqualRessource = this.levelCiv % 2 == 0;
+		System.out.println("Level : " + this.levelCiv);
+		System.out.println("Condition suivante : " + nbRessource + " resources. diferentes ? " + isEqualRessource);
+	}
 
 
 }
