@@ -6,7 +6,7 @@ import com.isep.items.wonders.Wonders;
 import java.util.List;
 
 
-public class Bot7Wonder {
+/*public class Bot7Wonder {
     private Game gameState;//état actuel du jeu qui possède une méthode 'play'
     private final String name;
     private final int age;
@@ -57,6 +57,6 @@ public class Bot7Wonder {
     //ia agressive / ia passive ...
     //random entre 1 2 ou 3
 
-}
+}*/
 
 

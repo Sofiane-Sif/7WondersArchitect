@@ -84,14 +84,22 @@ public enum Wonders {
 
 		// folderImagesPath of the wonder
 		String path = ("images/wonders/" + this.name.toLowerCase());
-		File fullPath = new File(Objects.requireNonNull(MainApplication.class.getResource(path)).toString());
+		System.out.println(path);
+		System.out.println(MainApplication.class.getResource(path));
+		File fullPath = new File(Objects.requireNonNull(MainApplication.class.getResource(path)).toString().replace("%20", " "));
+		System.out.println(fullPath);
 		String modifiedPath = fullPath.toString().substring(5);
+		System.out.println(modifiedPath);
 		// folderImages
 		File nameDir  = new File(modifiedPath);
+		System.out.println(nameDir);
 		// all filesPath in the folder
 		File[] listImage = nameDir.listFiles();
+		System.out.println(Arrays.toString(listImage));
 
+		// C:\Users\Charles Radolanirina\Documents\Isep\Algo_et_prog\Tp\7WondersArchitect\src\main\resources\com\isep\images\wonders\alexandrie
 		assert listImage != null;
+		System.out.println(Arrays.toString(listImage));
 		Arrays.sort(listImage, Comparator.comparing(File::getName));
 		/*for (File i: listImage ) {System.out.println(i.getName());}
 		System.out.println();
