@@ -3,7 +3,7 @@ package com.isep.items.cards;
 import java.util.Arrays;
 import java.util.List;
 
-public interface CardDecks {
+public abstract class CardDecks {
 
 	public static class CardTypeQuantity {
 		public final int quantity;
