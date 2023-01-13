@@ -19,13 +19,15 @@ public class Player {
     private Wonders wonder;
     private final List<Card> deckPlayer = new ArrayList<>();
     private Card cardInIsHand = null;
-    private Cat cat = null;
     // Ressources Player
-    List<Card> materialCardList = new ArrayList<>();
-    List<Card> progressCardList = new ArrayList<>();
-    List<Card> warCardList = new ArrayList<>();
-    List<Card> politicCardList = new ArrayList<>();
-
+    private List<Card> materialCardList = new ArrayList<>();
+    private List<Card> progressCardList = new ArrayList<>();
+    private List<Card> warCardList = new ArrayList<>();
+    private List<Card> politicCardList = new ArrayList<>();
+    // Autre
+    private List<Card> progressTokenList = new ArrayList<>();
+    int militaryVictoryPoint = 0;
+    private Cat cat = null;
 
 
     public Player(String name, int age) {
@@ -128,6 +130,12 @@ public class Player {
         }
         // La player n'a pluas la carte en main
         this.cardInIsHand = null;
+
+        /*
+        * Pour le pouvoir du chat : Creer fonction dans GameController pour deplacer le chat
+        * Ajouter un socle image de ressources
+        *
+         */
     }
 
 
