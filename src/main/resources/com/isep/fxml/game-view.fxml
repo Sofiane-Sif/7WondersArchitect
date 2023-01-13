@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="stageAP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#autoResize" onMouseExited="#autoResize" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.controllers.GameController">
+<AnchorPane fx:id="stageAP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#autoResize" onMouseExited="#autoResize" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.controllers.GameController">
    <children>
-      <ImageView fx:id="background" fitHeight="500.0" fitWidth="900.0" pickOnBounds="true">
+      <ImageView fx:id="background" fitHeight="600.0" fitWidth="1000.0" pickOnBounds="true">
          <image>
             <Image url="@../images/background/fond_papier.jpg" />
          </image>
@@ -30,7 +30,7 @@
             </ImageView>
             <AnchorPane fx:id="anchorPlayers" prefHeight="500.0" prefWidth="900.0">
                <children>
-                  <AnchorPane layoutX="586.0" layoutY="351.0" visible="false">
+                  <AnchorPane layoutX="584.0" layoutY="338.0" visible="false">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -40,6 +40,11 @@
                         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 5" textAlignment="CENTER" />
                         <Label contentDisplay="CENTER" layoutX="37.0" layoutY="-6.0" prefWidth="100.0" text="20" textAlignment="CENTER" />
                         <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-52.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/decks/supportCards.PNG" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="292.0" layoutY="339.0">
@@ -52,9 +57,14 @@
                         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="144.0" prefWidth="100.0" text="Player 1" textAlignment="CENTER" />
                         <Label contentDisplay="CENTER" prefWidth="100.0" text="20" textAlignment="CENTER" />
                         <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-62.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/decks/supportCards.PNG" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutY="351.0" visible="false">
+                  <AnchorPane layoutX="14.0" layoutY="337.0" visible="false">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -64,6 +74,11 @@
                         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 4" textAlignment="CENTER" />
                         <Label contentDisplay="CENTER" prefWidth="100.0" text="20" textAlignment="CENTER" />
                         <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-52.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/decks/supportCards.PNG" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                   <AnchorPane visible="false">
@@ -76,6 +91,11 @@
                         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 6" textAlignment="CENTER" />
                         <Label contentDisplay="CENTER" prefWidth="100.0" text="20" textAlignment="CENTER" />
                         <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-52.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/decks/supportCards.PNG" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="232.0" visible="false">
@@ -88,6 +108,11 @@
                         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 2" textAlignment="CENTER" />
                         <Label contentDisplay="CENTER" prefWidth="100.0" text="20" textAlignment="CENTER" />
                         <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-52.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/decks/supportCards.PNG" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="460.0" visible="false">
@@ -100,6 +125,11 @@
                         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 3" textAlignment="CENTER" />
                         <Label contentDisplay="CENTER" prefWidth="100.0" text="20" textAlignment="CENTER" />
                         <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-52.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/decks/supportCards.PNG" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="680.0" layoutY="7.0" visible="false">
@@ -112,6 +142,11 @@
                         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 7" textAlignment="CENTER" />
                         <Label contentDisplay="CENTER" prefWidth="100.0" text="20" textAlignment="CENTER" />
                         <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-52.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/decks/supportCards.PNG" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                </children>
