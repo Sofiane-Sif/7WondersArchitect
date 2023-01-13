@@ -29,19 +29,26 @@ package com.isep.game{
 
 package com.isep.item{
 
-    abstract class Cards{}
+    class VictoryPointsCard
+    class Cat
+    class ConflictToken
+    class ProgressToken
 
-        class MaterialCard extends Cards
-        class ScienceCard extends Cards
-        class WarCard extends Cards
-        class PoliticCard extends Cards
-        class VictoryPointsCard extends PoliticCard
-        class Cat extends PoliticCard
 
-    abstract class Tokens{}
-    class ConflictToken extends Tokens
-    class ProgressToken extends Tokens
-    enum Wonders{
+
+    abstract Cards{}
+
+    class MaterialCard extends Cards
+    class ScienceCard extends Cards
+    class WarCard extends Cards
+    class PoliticCard extends Cards
+
+   Wonders *-- WondersList
+   WondersList *-- Cards
+
+
+
+    enum WondersList {
     Gizeh
     Rhodes
     Babylone
@@ -51,24 +58,34 @@ package com.isep.item{
     Olympie
     }
 
-    Wonders *--- Cards
+
+
 
 }
     class Game{
+    List<ConflictToken>
     }
 
     class MusicPlayer{
     }
 
-    class Player{
+    abstract Player{
+    Wonders
+    List<Cards>
+    List<ProgressToken>
+    VictoryPointsCard
+    Cat
     }
 
-    class Bot7Wonder
+    abstract Player
+        class Human
+        class Bot
 
     Game *-- Player
     Game *-- MusicPlayer
-    Game *-- Bot7Wonder
 
+    Player *-- Bot
+    Player *-- Human
   Game o- ControlleurBase
 
 }
