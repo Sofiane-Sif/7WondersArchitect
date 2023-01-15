@@ -74,9 +74,11 @@ public abstract class ControlleurBase {
 
     }
     public static Image setAnImage(String path) {
-        // Attention mauvais path pour : token-education -> il faut bien renommer le nom de l'image correctement
         try {return new Image(Objects.requireNonNull(MainApplication.class.getResource(path)).openStream());}
-        catch (IOException e) {throw new RuntimeException(e);}
+        catch (IOException | NullPointerException | IllegalArgumentException ignored) {
+            System.out.println("Erreur d'affichage");
+            return ControlleurBase.setAnImage("images/background/qrCode_rules.PNG");
+        }
     }
 
 
