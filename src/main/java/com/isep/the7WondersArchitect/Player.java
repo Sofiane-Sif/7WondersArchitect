@@ -29,6 +29,14 @@ public class Player {
     int militaryVictoryPoint = 0;
     private Cat cat = null;
 
+    /*
+    * getNbRessource(nameRessource) -- 6 cases ressources
+    * getNbScience(nameScience)     -- 3 cases ressources
+    * getNbShildPeace()             -- 1 cases ressources
+    * getNbShildWar()               -- 1 cases ressources
+    * getNbPolilicPoint()           -- 1 cases ressources
+    * getmilitaryVictoryPoint()     -- 1 cases ressources
+     */
 
     public Player(String name, int age) {
         this.name = name;
@@ -87,6 +95,14 @@ public class Player {
         // enleve la carte du deck
         cardListDeckChoose.remove(this.cardInIsHand);
 
+        // Ajout de la carte dans la bonne liste de carte
+        switch (this.cardInIsHand.front.cardCategory) {
+            case MaterialCard ->  this.materialCardList.add(this.cardInIsHand);
+            case ProgressCard -> this.progressCardList.add(this.cardInIsHand);
+            case WarCard -> this.warCardList.add(this.cardInIsHand);
+            case PoliticCard -> this.politicCardList.add(this.cardInIsHand);
+        }
+
         // S'il y a encore des cartes dans le deck
         if ((cardListDeckChoose.size()>0)) {
             // Revoi la carte suivante pour remplacer l'affichage
@@ -115,19 +131,19 @@ public class Player {
 
     }
 
+    public String getTypeCardInIsHand() {return this.cardInIsHand.front.cardDisplayName;}
+
+    public List<Card> getMaterialCardList() {return this.materialCardList;}
+    public List<Card> getProgressCardList() {return this.progressCardList;}
+    public List<Card> getWarCardList() {return this.warCardList;}
+    public List<Card> getPoliticCardList() {return this.politicCardList;}
 
     public void usePowerCard() {
 
-        System.out.println("Carte pioché : " + this.cardInIsHand.front.cardCategory + " -->"
-        +this.cardInIsHand.front.cardDisplayName);
+        System.out.println("Carte pioché : " + this.cardInIsHand.front.cardCategory + " --> "
+        +getTypeCardInIsHand());
 
-        // Ajout de la carte dans la bonne liste de carte
-        switch (this.cardInIsHand.front.cardCategory) {
-            case MaterialCard ->  this.materialCardList.add(this.cardInIsHand);
-            case ProgressCard -> this.progressCardList.add(this.cardInIsHand);
-            case WarCard -> this.warCardList.add(this.cardInIsHand);
-            case PoliticCard -> this.politicCardList.add(this.cardInIsHand);
-        }
+
         // La player n'a pluas la carte en main
         this.cardInIsHand = null;
 
