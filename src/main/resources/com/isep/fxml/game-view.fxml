@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -28,129 +30,6 @@
                   <Image url="@../images/tokens-progress/back/token-back.png" />
                </image>
             </ImageView>
-            <AnchorPane fx:id="anchorPlayers" prefHeight="500.0" prefWidth="900.0">
-               <children>
-                  <AnchorPane layoutX="584.0" layoutY="338.0" visible="false">
-                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/cards/card-back/card-back-ephese.png" />
-                           </image>
-                        </ImageView>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 5" textAlignment="CENTER" />
-                        <Label contentDisplay="CENTER" layoutX="37.0" layoutY="-6.0" prefWidth="100.0" text="20" textAlignment="CENTER" />
-                        <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-52.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/decks/supportCards.PNG" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="292.0" layoutY="339.0">
-                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/cards/card-back/card-back-olympie.png" />
-                           </image>
-                        </ImageView>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="144.0" prefWidth="100.0" text="Player 1" textAlignment="CENTER" />
-                        <Label contentDisplay="CENTER" prefWidth="100.0" text="20" textAlignment="CENTER" />
-                        <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-62.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/decks/supportCards.PNG" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="14.0" layoutY="337.0" visible="false">
-                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/cards/card-back/card-back-ephese.png" />
-                           </image>
-                        </ImageView>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 4" textAlignment="CENTER" />
-                        <Label contentDisplay="CENTER" prefWidth="100.0" text="20" textAlignment="CENTER" />
-                        <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-52.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/decks/supportCards.PNG" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane visible="false">
-                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/cards/card-back/card-back-ephese.png" />
-                           </image>
-                        </ImageView>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 6" textAlignment="CENTER" />
-                        <Label contentDisplay="CENTER" prefWidth="100.0" text="20" textAlignment="CENTER" />
-                        <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-52.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/decks/supportCards.PNG" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="232.0" visible="false">
-                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/cards/card-back/card-back-ephese.png" />
-                           </image>
-                        </ImageView>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 2" textAlignment="CENTER" />
-                        <Label contentDisplay="CENTER" prefWidth="100.0" text="20" textAlignment="CENTER" />
-                        <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-52.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/decks/supportCards.PNG" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="460.0" visible="false">
-                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/cards/card-back/card-back-ephese.png" />
-                           </image>
-                        </ImageView>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 3" textAlignment="CENTER" />
-                        <Label contentDisplay="CENTER" prefWidth="100.0" text="20" textAlignment="CENTER" />
-                        <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-52.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/decks/supportCards.PNG" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="680.0" layoutY="7.0" visible="false">
-                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/cards/card-back/card-back-ephese.png" />
-                           </image>
-                        </ImageView>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 7" textAlignment="CENTER" />
-                        <Label contentDisplay="CENTER" prefWidth="100.0" text="20" textAlignment="CENTER" />
-                        <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-52.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/decks/supportCards.PNG" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
             <GridPane fx:id="GridPaneConflictTokens" layoutX="171.0" layoutY="205.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" />
@@ -227,7 +106,1719 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="336.0" layoutY="182.0">
+            <AnchorPane fx:id="anchorPlayers" prefHeight="500.0" prefWidth="900.0">
+               <children>
+                  <AnchorPane layoutX="584.0" layoutY="338.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/cards/card-back/card-back-ephese.png" />
+                           </image>
+                        </ImageView>
+                        <Label contentDisplay="CENTER" disable="true" layoutX="37.0" layoutY="-6.0" prefWidth="100.0" text="20" textAlignment="CENTER" />
+                        <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
+                        <ImageView id="labelIcon" fitHeight="110.0" fitWidth="270.0" layoutX="-57.0" layoutY="137.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../images/decks/supportCards.PNG" />
+                           </image>
+                        </ImageView>
+                        <GridPane alignment="CENTER" layoutX="-50.0" layoutY="160.0" styleClass="labelIcon">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="1.0" prefHeight="4.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label contentDisplay="CENTER" text="10" textAlignment="CENTER">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-wood.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="wood" />
+                                 </styleClass>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="1">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-stone.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="stone" />
+                                 </styleClass>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" styleClass="labelIcon">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-brick.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="brick" />
+                                 </styleClass>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="3">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-glass.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="glass" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="4">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-paper.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="paper" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-gold.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="gold" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="6">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-shild-war.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="war" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="7">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-shild-peace.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="peace" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-science-architect.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="architect" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-science-law.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="law" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-science-mechanic.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="mechanic" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-point-winScience.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="winScience" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="7" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-point-winWar.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="winWar" />
+                                 </styleClass>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 5" textAlignment="CENTER" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="292.0" layoutY="339.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/cards/card-back/card-back-olympie.png" />
+                           </image>
+                        </ImageView>
+                        <Label contentDisplay="CENTER" disable="true" prefWidth="100.0" text="20" textAlignment="CENTER" />
+                        <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
+                        <ImageView id="labelIcon" fitHeight="110.0" fitWidth="270.0" layoutX="-67.0" layoutY="127.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../images/decks/supportCards.PNG" />
+                           </image>
+                        </ImageView>
+                        <GridPane alignment="CENTER" layoutX="-60.0" layoutY="150.0" styleClass="labelIcon">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="1.0" prefHeight="4.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label contentDisplay="CENTER" text="10" textAlignment="CENTER">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-wood.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="wood" />
+                                 </styleClass>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="1">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-stone.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="stone" />
+                                 </styleClass>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" styleClass="labelIcon">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-brick.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="brick" />
+                                 </styleClass>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="3">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-glass.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="glass" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="4">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-paper.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="paper" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-gold.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="gold" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="6">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-shild-war.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="war" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="7">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-shild-peace.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="peace" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-science-architect.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="architect" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-science-law.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="law" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-science-mechanic.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="mechanic" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-point-winScience.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="winScience" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="7" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-point-winWar.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="winWar" />
+                                 </styleClass>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="144.0" prefWidth="100.0" text="Player 1" textAlignment="CENTER" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="14.0" layoutY="337.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/cards/card-back/card-back-ephese.png" />
+                           </image>
+                        </ImageView>
+                        <Label contentDisplay="CENTER" disable="true" prefWidth="100.0" text="20" textAlignment="CENTER" />
+                        <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
+                        <ImageView id="labelIcon" fitHeight="110.0" fitWidth="270.0" layoutX="-57.0" layoutY="137.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../images/decks/supportCards.PNG" />
+                           </image>
+                        </ImageView>
+                        <GridPane alignment="CENTER" layoutX="-50.0" layoutY="160.0" styleClass="labelIcon">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="1.0" prefHeight="4.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label contentDisplay="CENTER" text="10" textAlignment="CENTER">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-wood.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="wood" />
+                                 </styleClass>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="1">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-stone.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="stone" />
+                                 </styleClass>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" styleClass="labelIcon">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-brick.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="brick" />
+                                 </styleClass>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="3">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-glass.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="glass" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="4">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-paper.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="paper" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-gold.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="gold" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="6">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-shild-war.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="war" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="7">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-shild-peace.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="peace" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-science-architect.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="architect" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-science-law.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="law" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-science-mechanic.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="mechanic" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-point-winScience.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="winScience" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="7" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-point-winWar.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="winWar" />
+                                 </styleClass>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 4" textAlignment="CENTER" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane visible="false">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/cards/card-back/card-back-ephese.png" />
+                           </image>
+                        </ImageView>
+                        <Label contentDisplay="CENTER" disable="true" prefWidth="100.0" text="20" textAlignment="CENTER" />
+                        <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
+                        <ImageView id="labelIcon" fitHeight="110.0" fitWidth="270.0" layoutX="-57.0" layoutY="137.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../images/decks/supportCards.PNG" />
+                           </image>
+                        </ImageView>
+                        <GridPane alignment="CENTER" layoutX="-50.0" layoutY="160.0" styleClass="labelIcon">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="1.0" prefHeight="4.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label contentDisplay="CENTER" text="10" textAlignment="CENTER">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-wood.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="wood" />
+                                 </styleClass>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="1">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-stone.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="stone" />
+                                 </styleClass>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" styleClass="labelIcon">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-brick.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="brick" />
+                                 </styleClass>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="3">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-glass.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="glass" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="4">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-paper.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="paper" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-gold.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="gold" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="6">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-shild-war.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="war" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="7">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-shild-peace.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="peace" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-science-architect.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="architect" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-science-law.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="law" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-science-mechanic.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="mechanic" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-point-winScience.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="winScience" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="7" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-point-winWar.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="winWar" />
+                                 </styleClass>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 6" textAlignment="CENTER" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="232.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/cards/card-back/card-back-ephese.png" />
+                           </image>
+                        </ImageView>
+                        <Label contentDisplay="CENTER" disable="true" prefWidth="100.0" text="20" textAlignment="CENTER" />
+                        <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
+                        <ImageView id="labelIcon" fitHeight="110.0" fitWidth="270.0" layoutX="-57.0" layoutY="137.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../images/decks/supportCards.PNG" />
+                           </image>
+                        </ImageView>
+                        <GridPane alignment="CENTER" layoutX="-50.0" layoutY="160.0" styleClass="labelIcon">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="1.0" prefHeight="4.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label contentDisplay="CENTER" text="10" textAlignment="CENTER">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-wood.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="wood" />
+                                 </styleClass>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="1">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-stone.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="stone" />
+                                 </styleClass>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" styleClass="labelIcon">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-brick.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="brick" />
+                                 </styleClass>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="3">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-glass.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="glass" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="4">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-paper.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="paper" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-gold.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="gold" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="6">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-shild-war.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="war" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="7">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-shild-peace.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="peace" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-science-architect.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="architect" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-science-law.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="law" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-science-mechanic.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="mechanic" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-point-winScience.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="winScience" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="7" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-point-winWar.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="winWar" />
+                                 </styleClass>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 2" textAlignment="CENTER" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="460.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/cards/card-back/card-back-ephese.png" />
+                           </image>
+                        </ImageView>
+                        <Label contentDisplay="CENTER" disable="true" prefWidth="100.0" text="20" textAlignment="CENTER" />
+                        <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
+                        <ImageView id="labelIcon" fitHeight="110.0" fitWidth="270.0" layoutX="-57.0" layoutY="137.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../images/decks/supportCards.PNG" />
+                           </image>
+                        </ImageView>
+                        <GridPane alignment="CENTER" layoutX="-50.0" layoutY="160.0" styleClass="labelIcon">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="1.0" prefHeight="4.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label contentDisplay="CENTER" text="10" textAlignment="CENTER">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-wood.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="wood" />
+                                 </styleClass>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="1">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-stone.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="stone" />
+                                 </styleClass>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" styleClass="labelIcon">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-brick.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="brick" />
+                                 </styleClass>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="3">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-glass.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="glass" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="4">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-paper.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="paper" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-gold.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="gold" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="6">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-shild-war.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="war" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="7">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-shild-peace.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="peace" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-science-architect.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="architect" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-science-law.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="law" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-science-mechanic.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="mechanic" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-point-winScience.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="winScience" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="7" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-point-winWar.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="winWar" />
+                                 </styleClass>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 3" textAlignment="CENTER" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="680.0" layoutY="7.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/cards/card-back/card-back-ephese.png" />
+                           </image>
+                        </ImageView>
+                        <Label contentDisplay="CENTER" disable="true" prefWidth="100.0" text="20" textAlignment="CENTER" />
+                        <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
+                        <ImageView id="labelIcon" fitHeight="110.0" fitWidth="270.0" layoutX="-57.0" layoutY="137.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../images/decks/supportCards.PNG" />
+                           </image>
+                        </ImageView>
+                        <GridPane alignment="CENTER" layoutX="-50.0" layoutY="160.0" styleClass="labelIcon">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="1.0" prefHeight="4.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label contentDisplay="CENTER" text="10" textAlignment="CENTER">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-wood.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="wood" />
+                                 </styleClass>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="1">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-stone.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="stone" />
+                                 </styleClass>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" styleClass="labelIcon">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-brick.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="brick" />
+                                 </styleClass>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="3">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-glass.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="glass" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" textAlignment="CENTER" GridPane.columnIndex="4">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-paper.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="paper" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-material-gold.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="gold" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="6">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-shild-war.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="war" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="7">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-shild-peace.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="peace" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-science-architect.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="architect" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-science-law.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="law" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-science-mechanic.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="mechanic" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-point-winScience.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="winScience" />
+                                 </styleClass>
+                              </Label>
+                              <Label contentDisplay="CENTER" text="10" GridPane.columnIndex="7" GridPane.rowIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <image>
+                                          <Image url="@../images/icons/icon-point-winWar.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="labelIcon" />
+                                    <String fx:value="winWar" />
+                                 </styleClass>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 7" textAlignment="CENTER" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="336.0" layoutY="250.0">
                <children>
                   <HBox>
                      <children>
@@ -249,7 +1840,7 @@
                         </ImageView>
                      </children>
                   </HBox>
-                  <Label fx:id="labelCentralDeck" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutY="100.0" prefHeight="35.0" prefWidth="103.0" text="100">
+                  <Label fx:id="labelCentralDeck" alignment="BOTTOM_CENTER" contentDisplay="CENTER" disable="true" layoutY="100.0" prefHeight="35.0" prefWidth="103.0" text="100">
                      <font>
                         <Font size="24.0" />
                      </font>
