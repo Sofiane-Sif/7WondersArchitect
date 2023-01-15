@@ -3,7 +3,7 @@ import java.util.List;
 
 
 public class Bot7Wonder {
-    private GameState gameState;//état actuel du jeu qui possède une méthode 'play'
+  /*  private GameState gameState;//état actuel du jeu qui possède une méthode 'play'
 
     public Bot7Wonder (GameState gameState) {
         this.gameState = gameState;
@@ -35,7 +35,7 @@ public class Bot7Wonder {
 
     //ia agressive / ia passive ...
     //random entre 1 2 ou 3
-
+*/
 }
 
 
