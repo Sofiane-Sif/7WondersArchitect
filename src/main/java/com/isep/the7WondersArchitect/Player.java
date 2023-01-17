@@ -109,6 +109,7 @@ public class Player {
             Card newCarte = cardListDeckChoose.get(0);
             return  (!newCarte.back.centralDeck) ?  newCarte.front.imageResource:  newCarte.back.imgBackPath;
         }
+        // Sinon on affiche le dos de la carte
         if (!Objects.equals(nameCivSelect, "CentralDeck")) {return this.cardInIsHand.back.imgBackPath;}
         else {return "images/cards/card-back/card-back-none.png";}
 
@@ -131,12 +132,63 @@ public class Player {
 
     }
 
+    public String getCardInIsHandImgPath() {
+        // Recuperation de l'image de la carte
+        String imgPath = this.cardInIsHand.front.imageResource;
+        // Vide la main du Player
+        this.cardInIsHand = null;
+        // Retourne le path pour l'afficher dans la defausse
+        return imgPath;
+
+    }
+
     public String getTypeCardInIsHand() {return this.cardInIsHand.front.cardDisplayName;}
 
     public List<Card> getMaterialCardList() {return this.materialCardList;}
     public List<Card> getProgressCardList() {return this.progressCardList;}
     public List<Card> getWarCardList() {return this.warCardList;}
     public List<Card> getPoliticCardList() {return this.politicCardList;}
+
+
+
+    private int getNbValueCard(List<Card> lstCard, String scienceName) {
+        int numRessource = 0;
+        for (Card card: lstCard) {
+            String[] type = card.front.cardDisplayName.split(":");
+            if (Objects.equals(type[1], scienceName)) {numRessource++;}
+        }
+        return numRessource;
+    }
+    public int getNbRessource(String materialName){return this.getNbValueCard(this.materialCardList, materialName);}
+    public int getNbScience(String scienceName){return this.getNbValueCard(this.progressCardList, scienceName);}
+
+
+    private int getNbShildType(boolean isCenturion){
+        int numRessource = 0;
+        for (Card card: this.warCardList) {
+            String[] type = card.front.cardDisplayName.split(":");
+            if (isCenturion == Objects.equals(type[1], "centurion")) {
+                numRessource += card.front.shieldCount;
+            }
+        }
+        return numRessource;
+    }
+    public int getNbShildPeace(){return this.getNbShildType(true);}
+    public int getNbShildWar(){return this.getNbShildType(false);}
+
+
+    public int getNbPolilicPoint(){
+        int numRessource = 0;
+        for (Card card: this.politicCardList) {
+            String[] type = card.front.cardDisplayName.split(":");
+            numRessource += card.front.laurelCount;
+        }
+        return numRessource;
+    }
+
+    public int getmilitaryVictoryPoint() {return this.militaryVictoryPoint;}
+
+
 
     public void usePowerCard() {
 
@@ -145,7 +197,7 @@ public class Player {
 
 
         // La player n'a pluas la carte en main
-        this.cardInIsHand = null;
+       // this.cardInIsHand = null;
 
         /*
         * Pour le pouvoir du chat : Creer fonction dans GameController pour deplacer le chat
