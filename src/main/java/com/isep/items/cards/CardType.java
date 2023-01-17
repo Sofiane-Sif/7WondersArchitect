@@ -89,4 +89,5 @@ public enum CardType {
 		this(cardDisplayName, CardCategory.PoliticCard, null, null, 0, 0, laurelCount, cat, imageResource);
 	}
 
+
 }

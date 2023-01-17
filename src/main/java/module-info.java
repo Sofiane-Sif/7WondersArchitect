@@ -13,4 +13,7 @@ module com.isep.the7wondersarchitect {
     opens com.isep to javafx.fxml;
     exports com.isep.the7WondersArchitect;
     opens com.isep.the7WondersArchitect to javafx.fxml;
+
+    // For testClass
+    exports com.isep.items.cards;
 }

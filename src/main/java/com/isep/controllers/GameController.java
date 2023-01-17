@@ -325,6 +325,13 @@ public class GameController extends ControlleurBase {
         // Joue la carte
         this.playerTurn.usePowerCard();
 
+        // Met la carte dans la defausse
+        String pathImgGet = this.playerTurn.getCardInIsHandImgPath();
+        Image newRubbichImg = ControlleurBase.setAnImage(pathImgGet);
+        this.imgViewTrash.setImage(newRubbichImg);
+
+
+
         // Passe au player suivant ou GameOver
         Game.option.setNumPlayer();
         if (Game.option.getNumPlayerTurn() < Game.option.getNbPlayers()*100) {this.nextPlayerTurn();}
@@ -334,203 +341,42 @@ public class GameController extends ControlleurBase {
 
     private void majInfoRessourcesPlayer() {
 
-        System.out.println("Maj des infos ressources en cours d'implementation");
-        /*
-        * switch (type[0]) {
-            case "material" -> getNbRessource(nameRessource);
-            case "science" -> getNbScience(nameScience);
-            case "war" -> getNbShildPeace() & getNbShildWar();
-            case "politic" -> getNbPolilicPoint();
-            default -> new ArrayList<>();
-        };
-        *
-        * if ("material") maj le material en question
-        * if ("science") maj le science en question
-        * if ("war") maj les deux labels war
-        * if ("politic") maj politic
-        *
-        *
-        * On peut meme rassembler ces deux blocs
-         */
-
-
-
-
-
-
-
-        // Lecture des types de la carte choisi
+        // Lecture du type de la carte choisi
         String typeCard = this.playerTurn.getTypeCardInIsHand();
         String[] type = typeCard.split(":");
-/*
-        // Recuperation du bon deck
-        System.out.println();
-        List<Card> cardList = switch (type[0]) {
-            case "material" -> this.playerTurn.getMaterialCardList();
-            case "science" -> this.playerTurn.getProgressCardList();
-            case "war" -> this.playerTurn.getWarCardList();
-            case "politic" -> this.playerTurn.getPoliticCardList();
-            default -> new ArrayList<>();
-        };
-
-        // Compte le nombre de carte pareil
-        int nbCard = 0;
-        for (Card card: cardList) {
-
-            if (Objects.equals(type[0], "material") | Objects.equals(type[0], "science")) {
-                String typeOfTheCard = card.front.cardDisplayName.split(":")[0];
-                System.out.println(typeOfTheCard +" - "+type[0]);
-
-                if (Objects.equals(typeOfTheCard, type[0])) {nbCard++;}
-            }
-
-
-        }
-        /*
-         * Fonctionne pour material and science but not for war and politic
-         *
-         */
-
-      //  System.out.println(type[1]+" = " + nbCard);
-
-
 
         // Recuperation des elements d'affichage
         GridPane gridPaneRessources = ((GridPane) this.visualPlayerTurn.get(4));
         ObservableList<Node> gridPaneChild= gridPaneRessources.getChildren();
-        // Trensformation en dictionnaire avec key=n.getStyleClass().get(2) et value=Label
-        HashMap<String, Label> dictionary = new HashMap<String, Label>();
+        // Transformation en dictionnaire avec key=n.getStyleClass().get(2) et value=Label
+        HashMap<String, Label> dicLabel = new HashMap<String, Label>();
         for (Node n: gridPaneChild) {
             Label labelRessource = ((Label) n);
             String typeLabel = n.getStyleClass().get(2);
-            dictionary.put(typeLabel, labelRessource);
-        }
-/*
-
-        for (Label l : dictionary.values()) {
-            System.out.println(l);
+            dicLabel.put(typeLabel, labelRessource);
         }
 
-
-        Label labelRessource;
-
-        if (Objects.equals(type[1], "barbarian") | Objects.equals(type[1], "archer")) {
-            labelRessource = dictionary.get("war");
-        }
-        else if (Objects.equals(type[1], "centurion")) {
-
-        }
-
-        /*
-         * Dico ressource
-         * -> recuperer soustypecarte
-            * if barbarian or archer -> label = dico.get(corne)
-            * else if centurion -> label = dico.get(shild)
-            * else (material ou science) -> label = dico.get(soustypecarte)
-
-        * -> recuperer typecarte
-         * * Si politic -> label = dico.get(typecarte)
-         */
-
-/*
-        for (Node n: gridPaneChild) {
-            String typeLabel = n.getStyleClass().get(2);
-
-            if (Objects.equals(type[1], "wood") & Objects.equals(typeLabel, "wood")) {}
-            else if (Objects.equals(type[1], "paper") & Objects.equals(typeLabel, "paper")) {}
-            else if (Objects.equals(type[1], "brick") & Objects.equals(typeLabel, "brick")) {}
-            else if (Objects.equals(type[1], "stone") & Objects.equals(typeLabel, "stone")) {}
-            else if (Objects.equals(type[1], "glass") & Objects.equals(typeLabel, "glass")) {}
-            else if (Objects.equals(type[1], "gold") & Objects.equals(typeLabel, "gold")) {}
-
-            else if (Objects.equals(type[1], "law") & Objects.equals(typeLabel, "law")) {}
-            else if (Objects.equals(type[1], "mechanic") & Objects.equals(typeLabel, "mechanic")) {}
-            else if (Objects.equals(type[1], "architect") & Objects.equals(typeLabel, "architect")) {}
-
-            else if (Objects.equals(type[1], "centurion") & Objects.equals(typeLabel, "winScience")) {}
-            else if ((Objects.equals(type[1], "archer") | Objects.equals(type[1], "winScience")) & Objects.equals(typeLabel, "winScience")) {}
-
-            else if (Objects.equals(type[1], "emperor") & Objects.equals(typeLabel, "winScience")) {}
-            else if (Objects.equals(type[1], "cat") & Objects.equals(typeLabel, "winScience")) {}
-        }
-                /*
-                "material:wood"
-                "material:paper"
-                "material:brick"
-                "material:stone"
-                "material:glass"
-                // joker (mandatory replacing any material)
-                "material:gold"
-                // Science cards
-                "science:law"
-                "science:mechanic"
-                "science:architect"
-
-                // War Cards
-                "war:barbarian"
-                "war:centurion"
-                "war:archer"
-
-                // Polics Cards
-                "politic:emperor"
-                "politic:cat"
-                */
-
-/*
-
-
-        // En fonction du type et du sous type de la carte
+        // recup la nouvelle value et l'affiche dans le label
         switch (type[0]) {
             case "material" -> {
-
-                Label labelRessource;
-                int newValue;
-
-                switch (type[1]) {
-                    case "wood" -> {System.out.println("wood");}
-                    case "paper" -> {System.out.println("paper");}
-                    case "brick" -> {System.out.println("brick");}
-                    case "stone" -> {System.out.println("stone");}
-                    case "glass" -> {System.out.println("glass");}
-                    case "gold" -> {System.out.println("gold");}
-                }
-
-
+                int value = this.playerTurn.getNbRessource(type[1]);
+                dicLabel.get(type[1]).setText(value+"");
             }
             case "science" -> {
-                System.out.println("science");
+                int value = this.playerTurn.getNbScience(type[1]);
+                dicLabel.get(type[1]).setText(value+"");
             }
             case "war" -> {
-                System.out.println("war");
+                int value1 = this.playerTurn.getNbShildPeace();
+                int value2 = this.playerTurn.getNbShildWar();
+                dicLabel.get("peace").setText(value1+"");
+                dicLabel.get("war").setText(value2+"");
             }
             case "politic" -> {
-                System.out.println("politic");
+                int value = this.playerTurn.getNbPolilicPoint();
+                dicLabel.get("winScience").setText(value+"");
             }
         }
-
-
-*/
-
-        // Error Pas la bonne implementation !!!!
-        for (Node n: gridPaneChild) {
-            Label labelRessource = ((Label) n);
-            int newValue = Integer.parseInt(labelRessource.getText());
-            // For Material and ScienceCategory
-
-            if (Objects.equals(n.getStyleClass().get(2), type[1])) {
-                //System.out.println(newValue);
-                switch (type[0]) {
-                    case "material" -> newValue = this.playerTurn.getMaterialCardList().size();
-                    case "science" -> newValue = this.playerTurn.getProgressCardList().size();
-                }
-            //    System.out.println(newValue);
-           //     System.out.println(this.playerTurn.getMaterialCardList().size());
-            //    System.out.println(this.playerTurn.getProgressCardList().size());
-             //   System.out.println(n.getStyleClass().get(2) + " - "+type[0]+" - "+type[1]);
-            }
-            labelRessource.setText(newValue+"");
-        }
-
 
     }
 
