@@ -76,7 +76,7 @@ public abstract class ControlleurBase {
     public static Image setAnImage(String path) {
         try {return new Image(Objects.requireNonNull(MainApplication.class.getResource(path)).openStream());}
         catch (IOException | NullPointerException | IllegalArgumentException ignored) {
-            System.out.println("Erreur d'affichage");
+            System.out.println("Erreur d'affichage : " + path);
             return ControlleurBase.setAnImage("images/background/qrCode_rules.PNG");
         }
     }

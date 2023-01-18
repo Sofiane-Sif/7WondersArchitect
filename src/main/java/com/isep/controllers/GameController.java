@@ -50,7 +50,7 @@ public class GameController extends ControlleurBase {
 
 
     @FXML
-    public void initialize() throws IOException {
+    public void initialize() {
 
         this.initialisePlayerZonesList();
 
@@ -148,7 +148,7 @@ public class GameController extends ControlleurBase {
         for (int numProgressToken = 0; numProgressToken < 3; numProgressToken++) {
             // Recuperation de l'image
             ProgressToken progressToken = progressTokensList.get(numProgressToken);
-            String imagePathProgressToken = progressToken.imageResource;
+            String imagePathProgressToken = progressToken.getImageResource();
             Image imgProgressToken = ControlleurBase.setAnImage(imagePathProgressToken);
             // Récuperation de l'imageView
             ImageView imageProgressToken = ((ImageView) this.vBoxProgressTokens.getChildren().get(numProgressToken+1));
@@ -325,6 +325,9 @@ public class GameController extends ControlleurBase {
         // Joue la carte
         this.playerTurn.usePowerCard();
 
+        // Maj de la Wonder
+        this.majViewWonderPlayer();
+
         // Met la carte dans la defausse
         String pathImgGet = this.playerTurn.getCardInIsHandImgPath();
         Image newRubbichImg = ControlleurBase.setAnImage(pathImgGet);
@@ -334,9 +337,8 @@ public class GameController extends ControlleurBase {
 
         // Passe au player suivant ou GameOver
         Game.option.setNumPlayer();
-        if (Game.option.getNumPlayerTurn() < Game.option.getNbPlayers()*100) {this.nextPlayerTurn();}
-        else {Game.option.isGameOver();
-            System.out.println("Nombre de tour de jeu dépassé. \nGAME OVER");}
+        if(Game.option.isGameOver()) {System.out.println("");}
+        else {this.nextPlayerTurn();}
     }
 
     private void majInfoRessourcesPlayer() {
@@ -388,6 +390,22 @@ public class GameController extends ControlleurBase {
             sizeDeck = Game.option.getPlayerList().get(numPlayer).getDeckPlayer().size();
             ((Label) this.playerZonesList.get(numPlayer).getChildren().get(1)).setText(" "+sizeDeck);
         }
+    }
+
+
+    private void majViewWonderPlayer() {
+        // Positionnement de la nouvelle Wonder Players
+        Wonders wonderPlayer = this.playerTurn.getWonder();
+        // Recuperation de la Vbox Existante
+        AnchorPane playerZone = this.playerZonesList.get(this.numPlayer);
+        ObservableList<Node> playerZoneChildren = playerZone.getChildren();
+        VBox wonderBox = (VBox) playerZoneChildren.get(2);
+        // On vide la VBox Existante
+        wonderBox.getChildren().removeAll(wonderBox.getChildren());
+        // Generation de la VBox
+        ObservableList <Node> wonderBoxElements = wonderPlayer.createImage().getChildren();
+        // Ajout de la nouvelle VBox sur le plateau de jeu
+        wonderBox.getChildren().addAll(wonderBoxElements);
     }
 
 

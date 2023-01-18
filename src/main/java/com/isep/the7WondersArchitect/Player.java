@@ -1,9 +1,6 @@
 package com.isep.the7WondersArchitect;
 
-import com.isep.items.cards.Card;
-import com.isep.items.cards.CardBack;
-import com.isep.items.cards.CardDecks;
-import com.isep.items.cards.CardsCivilisation;
+import com.isep.items.cards.*;
 import com.isep.items.cat.Cat;
 import com.isep.items.wonders.Wonders;
 
@@ -20,23 +17,15 @@ public class Player {
     private final List<Card> deckPlayer = new ArrayList<>();
     private Card cardInIsHand = null;
     // Ressources Player
-    private List<Card> materialCardList = new ArrayList<>();
-    private List<Card> progressCardList = new ArrayList<>();
-    private List<Card> warCardList = new ArrayList<>();
-    private List<Card> politicCardList = new ArrayList<>();
+    private final List<Card> materialCardList = new ArrayList<>();
+    private final List<Card> scienceCardList = new ArrayList<>();
+    private final List<Card> warCardList = new ArrayList<>();
+    private final List<Card> politicCardList = new ArrayList<>();
     // Autre
-    private List<Card> progressTokenList = new ArrayList<>();
+    private final List<Card> progressTokenList = new ArrayList<>();
     int militaryVictoryPoint = 0;
     private Cat cat = null;
 
-    /*
-    * getNbRessource(nameRessource) -- 6 cases ressources
-    * getNbScience(nameScience)     -- 3 cases ressources
-    * getNbShildPeace()             -- 1 cases ressources
-    * getNbShildWar()               -- 1 cases ressources
-    * getNbPolilicPoint()           -- 1 cases ressources
-    * getmilitaryVictoryPoint()     -- 1 cases ressources
-     */
 
     public Player(String name, int age) {
         this.name = name;
@@ -98,7 +87,7 @@ public class Player {
         // Ajout de la carte dans la bonne liste de carte
         switch (this.cardInIsHand.front.cardCategory) {
             case MaterialCard ->  this.materialCardList.add(this.cardInIsHand);
-            case ProgressCard -> this.progressCardList.add(this.cardInIsHand);
+            case ProgressCard -> this.scienceCardList.add(this.cardInIsHand);
             case WarCard -> this.warCardList.add(this.cardInIsHand);
             case PoliticCard -> this.politicCardList.add(this.cardInIsHand);
         }
@@ -116,19 +105,6 @@ public class Player {
 
 
 
-        /*
-         * Ajouter card back sous les deckPlayer pour quand il y aura de l'annimation
-         *OK Ajouter label nbCardsDeck pour chaque deckPlayer
-         *OK Mettre a jour ces labels
-         *
-         *OK La fonction pour maj l'image et le label est seulement lié à l'interface graphique et doit doit etre ecrit dedant
-
-        *OK Un fois :
-            * la carte pioché
-            * l'imgDack changé
-            * Le label maj
-        * Alors on peut utiliser son pouvoir
-         */
 
     }
 
@@ -145,7 +121,7 @@ public class Player {
     public String getTypeCardInIsHand() {return this.cardInIsHand.front.cardDisplayName;}
 
     public List<Card> getMaterialCardList() {return this.materialCardList;}
-    public List<Card> getProgressCardList() {return this.progressCardList;}
+    public List<Card> getScienceCardList() {return this.scienceCardList;}
     public List<Card> getWarCardList() {return this.warCardList;}
     public List<Card> getPoliticCardList() {return this.politicCardList;}
 
@@ -160,7 +136,7 @@ public class Player {
         return numRessource;
     }
     public int getNbRessource(String materialName){return this.getNbValueCard(this.materialCardList, materialName);}
-    public int getNbScience(String scienceName){return this.getNbValueCard(this.progressCardList, scienceName);}
+    public int getNbScience(String scienceName){return this.getNbValueCard(this.scienceCardList, scienceName);}
 
 
     private int getNbShildType(boolean isCenturion){
@@ -192,19 +168,93 @@ public class Player {
 
     public void usePowerCard() {
 
-        System.out.println("Carte pioché : " + this.cardInIsHand.front.cardCategory + " --> "
-        +getTypeCardInIsHand());
+
+        // Lecture du type de la carte choisi
+        String typeCard = this.getTypeCardInIsHand();
+        String[] type = typeCard.split(":");
+        //System.out.println("Carte pioché : " + this.cardInIsHand.front.cardCategory + " --> " + getTypeCardInIsHand());
+
+        // En fonction du type de la carte : effectue des actions differentes
+        switch (type[0]) {
+            case "material" -> {
+                this.wonderConstruction();
+            }
+            case "science" -> {
+                //System.out.println("science : Non implementé");
+            }
+            case "war" -> {
+                //System.out.println("war : Non implementé");
+            }
+            case "politic" -> {
+                //System.out.println("politic : Non implementé");
+            }
 
 
-        // La player n'a pluas la carte en main
-       // this.cardInIsHand = null;
+        }
 
-        /*
-        * Pour le pouvoir du chat : Creer fonction dans GameController pour deplacer le chat
-        * Ajouter un socle image de ressources
-        *
-         */
     }
 
+
+    private void wonderConstruction() {
+        /*
+        Quand pour un etage il y a plusieurs pieces, c'est dans l'ordre que l'on veut
+         * Pour chaque pieces constructible
+            *Si on a les ressources neccessaires :
+                * On enleve les ressources utilisé
+                * On contruit un etage
+                * Il est possible que le pouvoir de la merveille peut etre activé
+                * On recommence tant qu'une autre construction est possible
+                * On affiche les ressources restantes -> GameController
+                * on affiche le nouvelle etage de la wonder -> GameController
+         */
+
+
+
+        // Que faut t'il pour construire la pieces
+        int nbRessourceNeed = (int) wonder.getInfoConstruction(wonder.countNbStepBuid()).get(0);
+        boolean isEqualRessource = (boolean) wonder.getInfoConstruction(wonder.countNbStepBuid()).get(1);
+        System.out.println("Condition suivante : " + nbRessourceNeed + " resources. diferentes ? " + isEqualRessource);
+
+        // Recherche et prelevement du prix de la construction
+        boolean canBuild = false;
+        // nbRessource pareil
+
+        if(isEqualRessource) {
+         /*   // Nombre de pieces d'or
+            int nbGold = this.getNbRessource("gold");
+            // Pour chaque materiaux gold exclu
+            List<Material> lstMat = new ArrayList<>(Arrays.stream(Material.values()).toList());
+            lstMat.remove(lstMat.size() - 1);
+
+            // Pour chaque list de materiaux, on regarde s'il y a nbRessourceNeed
+            for (Material material: lstMat){
+                int nbMat = this.getNbRessource(material.name().toLowerCase());
+                // S'il y en  a le nombre necessaire avec le sac d'or
+                if (nbMat + nbGold >= nbRessourceNeed) {
+                    canBuild = true;
+                    System.out.println("construction possible sans or");
+                    // On remove le nombre de ressouce nessessaire  + le nombre d'or qui manque
+                    break;
+                }
+            }*/
+            System.out.println("Free for no long time!");
+            canBuild = true;
+        }
+        // nbRessource differentes
+        else {
+            System.out.println("Free!");
+            canBuild = true;
+        }
+
+
+
+
+        if (canBuild) {
+            this.wonder.buildWonderLevel(this.wonder.countNbStepBuid());
+        }
+
+
+
+    }
 
 }

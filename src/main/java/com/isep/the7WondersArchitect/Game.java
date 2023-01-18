@@ -21,6 +21,7 @@ public class Game {
     // Création de l'unique Game
     public static void startNewGame() {
         // A chaque fois qu''on retourne sur le menu principal, on remet les options du jeu à zero
+        Game.option = null;
         Game.option = new Game();
     }
 
@@ -36,7 +37,7 @@ public class Game {
     private List<Player> playerList = new ArrayList<>();
     private List<ProgressToken> progressTokensList;
     private List<Card> centralDeck = new ArrayList<>();
-    private boolean gameOver = false;
+    //private boolean gameOver = false;
     private int numPlayerTurn = 0;
 
     /* _______ */
@@ -47,7 +48,7 @@ public class Game {
     public int getProgressTokensListSize() {return this.progressTokensList.size();}
     public List<Player> getPlayerList() {return this.playerList;}
     public int getNbPlayers() {return this.nbPlayers;}
-    public boolean isGameOver() {return this.gameOver;}
+    //public boolean isGameOver() {return this.gameOver;}
 
     public List<Card> getCentralDeck() {return this.centralDeck;}
 
@@ -153,7 +154,15 @@ public class Game {
     }
 
 
-    public void setVictory() {this.gameOver=true;}
+    public boolean isGameOver() {
+        for (Player player: this.playerList) {
+            if (player.getWonder().countNbStepBuid()>=5) {
+                System.out.println("\nGAME OVER\n"+player.getName()+"["+player.getCivilisationName()+"] is the winner !");
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 
