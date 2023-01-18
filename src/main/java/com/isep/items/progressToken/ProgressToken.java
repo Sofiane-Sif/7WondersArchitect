@@ -72,14 +72,14 @@ public enum ProgressToken {
 			"token-culture.png");
 	
 	// ------------------------------------------------------------------------
-	
-	public final String displayName;
 
-	public final String frenchName;
+	private final String displayName;
+
+	private final String frenchName;
+
+	private final String effectDescription; // in french
 	
-	public final String effectDescription; // in french
-	
-	public final String imageResource;
+	private final String imageResource;
 	
 	// ------------------------------------------------------------------------
 	
@@ -89,5 +89,10 @@ public enum ProgressToken {
 		this.effectDescription = effectDescription;
 		this.imageResource = "images/tokens-progress/" + imageResource;
 	}
+
+	public String getDisplayName() {return this.displayName;}
+	public String getFrenchName() {return this.frenchName;}
+	public String getEffectDescription() {return this.effectDescription;}
+	public String getImageResource() {return this.imageResource;}
 
 }

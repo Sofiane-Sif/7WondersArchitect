@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+import java.util.function.Predicate;
 
 public enum Wonders {
 
@@ -58,10 +59,8 @@ public enum Wonders {
 	private final Integer padding;
 
 	// Autre parametres non input
-	private int levelCiv = 0;
-	private List<String> imgConstructionList = new ArrayList<>();
-	private List<String> imgBuildList = new ArrayList<>();
-	private VBox vBoxWonderImages;
+	//private int levelCiv = 0;
+	private final List<Boolean> levelCivByStep = Arrays.asList(false, false, false, false, false); // [E5, E4, E3, E2, E1]
 
 	// ------------------------------------------------------------------------
 
@@ -82,30 +81,33 @@ public enum Wonders {
 
 
 	public VBox createImage() {
-
+		List<String> imgConstructionList = new ArrayList<>();
+		List<String> imgBuildList = new ArrayList<>();
+		VBox vBoxWonderImages;
 		// Va recuperer dans le dossier de la Wonders toutes ses images en deux listes distinctes
 		String nameCiv = this.name.toLowerCase();
 		String pathStart = "images/wonders/"+nameCiv+"/piece-";
-		for (int i = 5; i >= 0; i--) {
-			this.imgConstructionList.add(pathStart + "back-"+nameCiv+"-"+(i)+".png");
-			this.imgBuildList.add(pathStart + "front-"+nameCiv+"-"+(i)+".png");
+		for (int i = 5; i >= 1; i--) {
+			imgConstructionList.add(pathStart + "back-"+nameCiv+"-"+(i)+".png");
+			imgBuildList.add(pathStart + "front-"+nameCiv+"-"+(i)+".png");
 		}
-		//for (String i: lstImgBack ) {System.out.println(i);}
-		//for (String i: lstImgFront) {System.out.println(i);}
-		//System.out.println();
-
+		//for(String i: this.imgConstructionList) {System.out.println(i);}
+		//for(String i: this.imgBuildList) {System.out.println(i);}
+		//System.out.println(this.levelCiv);
 		HBox hBox = null;
-		this.vBoxWonderImages = new VBox();
-		this.vBoxWonderImages.setAlignment(Pos.BOTTOM_CENTER);
+		vBoxWonderImages = new VBox();
+		vBoxWonderImages.setAlignment(Pos.BOTTOM_CENTER);
 		int diviseurZoom = 70;
 		// Pour chaque images trouvé dans le dossier
-		for (int numImg = 0; numImg < this.imgConstructionList.size()-1; numImg++) {
+		for (int numImg = 0; numImg < imgConstructionList.size(); numImg++) {
+			// Etage construit ?
+			//List<String> lstImgPath = (numImg < this.levelCiv) ? imgBuildList : imgConstructionList;
+			List<String> lstImgPath = (this.levelCivByStep.get(numImg)) ? imgBuildList : imgConstructionList;
 			// Mise en place de l'ImageView
-			Image image = ControlleurBase.setAnImage(this.imgBuildList.get(numImg));
+			Image image = ControlleurBase.setAnImage(lstImgPath.get(numImg));
 			ImageView imageView = new ImageView(image);
 			// Redimention de l'iamge en conservant le ratio
 			imageView.setPreserveRatio(true);
-		//	System.out.println(imageView.getLayoutBounds().getWidth() +" - " +imageView.getLayoutBounds().getHeight());
 			// Si on est dans le multiEtage
 			if (numImg >= this.numMultiLine & numImg < (this.numMultiLine + this.nbCase)) {
 				// Si c'est le 1er bloc
@@ -113,7 +115,7 @@ public enum Wonders {
 					hBox = new HBox();
 					hBox.setAlignment(Pos.BOTTOM_CENTER);
 					hBox.setSpacing(this.padding);
-					this.vBoxWonderImages.getChildren().add(hBox);
+					vBoxWonderImages.getChildren().add(hBox);
 				}
 				// ajout de l'ImageView dans le VBox
 				assert hBox != null;
@@ -123,19 +125,17 @@ public enum Wonders {
 			}
 			else {
 				// Sinon ajout de l'ImageView dans le HBox
-				this.vBoxWonderImages.getChildren().add(imageView);
+				vBoxWonderImages.getChildren().add(imageView);
 				int fit = diviseurZoom + this.padding * (this.nbCase-1);
 				//imageView.setFitWidth(fit/2);
 				imageView.setFitHeight(imageView.getLayoutBounds().getHeight()/4); // fit/2.3
 			}
-
 		}
-		return this.vBoxWonderImages;
+		return vBoxWonderImages;
 	}
 
-	public int getLevelCiv() {return this.levelCiv;}
 
-	public void getInfoConstruction() {
+	public List<?> getInfoConstruction(int etage) {
 		/*
 		* Pour chaque Wonders on a 5 pieces
 		* l'ordre des nombres de ressources est : 2-2-3-3-4
@@ -145,11 +145,18 @@ public enum Wonders {
 		*
 		* if (this.levelCiv > 5) {GAME_OVER}
 		*/
-		int nbRessource = (this.levelCiv%2==0) ? 2+(this.levelCiv/2) : 2+(this.levelCiv/2)-1;
-		boolean isEqualRessource = this.levelCiv % 2 == 0;
-		System.out.println("Level : " + this.levelCiv);
-		System.out.println("Condition suivante : " + nbRessource + " resources. diferentes ? " + isEqualRessource);
+		//int levelCiv = this.countNbStepBuid();
+		int nbRessource = 2 + etage / 2;
+		boolean isEqualRessource = etage % 2 != 0;
+		return Arrays.asList(nbRessource, isEqualRessource);
 	}
 
 
+
+	public int countNbStepBuid() {return (int) this.levelCivByStep.stream().filter(Predicate.isEqual(true)).count();}
+
+	public void buildWonderLevel(int levelBuild) {
+		int nbStepBuild = (5-1) - (levelBuild) ;
+		levelCivByStep.set(nbStepBuild, true);
+	}
 }

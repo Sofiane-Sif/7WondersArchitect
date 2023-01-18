@@ -37,7 +37,7 @@ public class testCardListPlayer {
 
         // Affiche l'ensemble des cartes contenu dans les quatres List possible
         for (Card i: player.getMaterialCardList()) {System.out.println(i.front.cardDisplayName);}
-        for (Card i: player.getProgressCardList()) {System.out.println(i.front.cardDisplayName);}
+        for (Card i: player.getScienceCardList()) {System.out.println(i.front.cardDisplayName);}
         for (Card i: player.getPoliticCardList()) {System.out.println(i.front.cardDisplayName);}
         for (Card i: player.getWarCardList()) {System.out.println(i.front.cardDisplayName);}
         System.out.println();
