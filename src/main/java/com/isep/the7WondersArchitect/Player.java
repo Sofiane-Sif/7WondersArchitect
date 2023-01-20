@@ -220,14 +220,18 @@ public class Player {
         // nbRessource pareil
 
         if(isEqualRessource) {
-         /*   // Nombre de pieces d'or
+
+
+/*
+            // Nombre de pieces d'or
             int nbGold = this.getNbRessource("gold");
             // Pour chaque materiaux gold exclu
             List<Material> lstMat = new ArrayList<>(Arrays.stream(Material.values()).toList());
-            lstMat.remove(lstMat.size() - 1);
+            lstMat.remove(Material.Gold); // voir si on l'enleve
 
             // Pour chaque list de materiaux, on regarde s'il y a nbRessourceNeed
             for (Material material: lstMat){
+                System.out.println(material);
                 int nbMat = this.getNbRessource(material.name().toLowerCase());
                 // S'il y en  a le nombre necessaire avec le sac d'or
                 if (nbMat + nbGold >= nbRessourceNeed) {
@@ -239,6 +243,11 @@ public class Player {
             }*/
             System.out.println("Free for no long time!");
             canBuild = true;
+
+
+
+
+
         }
         // nbRessource differentes
         else {
