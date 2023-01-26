@@ -17,7 +17,7 @@ public class Player {
     private final List<Card> deckPlayer = new ArrayList<>();
     private Card cardInIsHand = null;
     // Ressources Player
-    private final List<Card> materialCardList = new ArrayList<>();
+    private List<Card> materialCardList = new ArrayList<>();
     private final List<Card> scienceCardList = new ArrayList<>();
     private final List<Card> warCardList = new ArrayList<>();
     private final List<Card> politicCardList = new ArrayList<>();
@@ -222,7 +222,7 @@ public class Player {
         if(isEqualRessource) {
 
 
-/*
+
             // Nombre de pieces d'or
             int nbGold = this.getNbRessource("gold");
             // Pour chaque materiaux gold exclu
@@ -231,18 +231,50 @@ public class Player {
 
             // Pour chaque list de materiaux, on regarde s'il y a nbRessourceNeed
             for (Material material: lstMat){
-                System.out.println(material);
                 int nbMat = this.getNbRessource(material.name().toLowerCase());
                 // S'il y en  a le nombre necessaire avec le sac d'or
                 if (nbMat + nbGold >= nbRessourceNeed) {
                     canBuild = true;
-                    System.out.println("construction possible sans or");
+                    System.out.println("\nBuild !");
+                    for (Card c: this.materialCardList){System.out.print(c.front.cardDisplayName+" - ");}
+                    System.out.println();
+
+
+                    // Supprime le nombre de ressources necessaire
+                    List<Card> cardsToRemove = new ArrayList<>(this.materialCardList);
+                    // Pour l'ensemble des ressources gold exclu
+                    for (Card cardRess : this.materialCardList) {
+                        // S'il y a besoin de jeter des cartes et si la carte est la bonne ressource
+                        String nomMat = material.name().toLowerCase();
+                        String nomCard = cardRess.front.cardDisplayName.split(":")[1];
+                        //System.out.println((nbRessourceNeed > 0) + "(" + nbRessourceNeed + ") - " + nomCard + " - " + nomMat);
+                        if (nbRessourceNeed > 0 & Objects.equals(nomCard, nomMat)) {
+                            // On la met dans la defause
+                           // System.out.println("Card for trash : "material.name() + " - " + nbRessourceNeed);
+                            cardsToRemove.add(cardRess);
+                            // Moins une carte au compteur
+                            nbRessourceNeed--;
+
+                        }
+                    }
+
+
+                    for (Card c: this.materialCardList){System.out.print(c.front.cardDisplayName+" - ");}
+
+                    //this.materialCardList.removeAll(cardsToRemove);
+                    for (Card c: cardsToRemove){this.materialCardList.remove(c);}
+
+
+                    for (Card c: this.materialCardList){System.out.print(c.front.cardDisplayName+" - ");}
+                    System.out.println("_____" + this.materialCardList.size());
+
+                    //System.out.println("construction possible sans or");
                     // On remove le nombre de ressouce nessessaire  + le nombre d'or qui manque
                     break;
                 }
-            }*/
-            System.out.println("Free for no long time!");
-            canBuild = true;
+            }
+            //System.out.println("Free for no long time!");
+           // canBuild = true;
 
 
 
@@ -251,10 +283,10 @@ public class Player {
         }
         // nbRessource differentes
         else {
-            System.out.println("Free!");
+            System.out.println("\nFree!");
             canBuild = true;
-        }
 
+        }
 
 
 
