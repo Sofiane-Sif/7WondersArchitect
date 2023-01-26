@@ -1,21 +1,22 @@
 package com.isep.the7WondersArchitect;
 import com.isep.items.cards.Card;
+import com.isep.items.cards.CardDecks;
 import com.isep.items.cards.CardType;
+import com.isep.items.cat.Cat;
 import com.isep.items.wonders.Wonders;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
-/*public class Bot7Wonder {
+public class Bot7Wonder extends Player {
     private Game gameState;//état actuel du jeu qui possède une méthode 'play'
-    private final String name;
-    private final int age;
-    private String civilisationName;
-    // Possession Player
-    private Wonders wonder;
+
+    Card carteSelect;
+
     public Bot7Wonder (String name, int age) {
-            this.name = name;
-            this.age = age;
+        super(name, age);
     }
 
     public void play() {//méthode qui boucle jusqu'à la fin de la partie
@@ -30,14 +31,61 @@ import java.util.List;
 
     //méthode permettant de déterminer la meilleure action possible à chaque tour
     //ça dépend de notre stratégie et de nos objectifs pour le bot
-    private Action chooseBestAction(List<Action> actions) {
+    private void chooseBestAction(List<Card> cad) {
 
+        //si je n'ai pas de carte ressources dans mon deck
+        if (super.materialCardList.size() - super.getNbRessource("gold") == 0){
+
+            //si carte gold dans les pioches
+            for (Card i : cad) { //pour tous les i contenu dans " List<Card> cad "
+                String[] type = i.front.cardDisplayName.split(":");
+                if (Objects.equals(type[1], "gold")){
+                    //je récupère la carte dans mon deck
+                    carteSelect = i;
+                    return;
+                }
+            }
+
+            //si carte grise dans la pioche
+            for(Card i : cad) {//pour tous les i contenu dans " List<Card> cad "
+                String[] type = i.front.cardDisplayName.split(":");
+                if (Objects.equals(type[0], "material")){
+                    //je récupère la carte dans mon deck
+                    carteSelect = i;
+                    return;
+                }
+
+            }
+            //pioche carte deck milieu
+            carteSelect = gameState.getCentralDeck().get(0);
+            return;
+
+        }
+
+        //si step == ressources identiques
+        else if ((boolean) (wonder.getInfoConstruction(wonder.countNbStepBuid()).get(1))){
+
+        }
+
+        //si step == ressources différentes
+        else {
+            if()
+        }
     }
 
     public void readGame (List<Card> deckPlayer, List<Card> deckRightPlayer, List<Card> centraldeck){
+        // recup the game
         this.gameState = Game.option;
 
+        List<Card> listCardICanPiocher = new ArrayList<>();
+        // recup ls cartes dispo
+        listCardICanPiocher.add(deckPlayer.get(0));
+        listCardICanPiocher.add(deckRightPlayer.get(0));
+        if(!(super.cat == null)) {centraldeck.add(deckPlayer.get(0));}
+
         System.out.println(deckRightPlayer.get(0).front.cardCategory);
+
+        chooseBestAction(listCardICanPiocher) ;
     }
 
     private bestChoice(){
@@ -57,6 +105,6 @@ import java.util.List;
     //ia agressive / ia passive ...
     //random entre 1 2 ou 3
 
-}*/
+}
 
 

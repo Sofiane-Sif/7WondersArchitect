@@ -9,22 +9,24 @@ import java.util.*;
 public class Player {
 
     // Info player
-    private final String name;
-    private final int age;
-    private String civilisationName;
+    protected final String name;
+    protected final int age;
+    protected String civilisationName;
     // Possession Player
-    private Wonders wonder;
-    private final List<Card> deckPlayer = new ArrayList<>();
-    private Card cardInIsHand = null;
+    protected Wonders wonder;
+    protected final List<Card> deckPlayer = new ArrayList<>();
+    protected Card cardInIsHand = null;
     // Ressources Player
-    private List<Card> materialCardList = new ArrayList<>();
-    private final List<Card> scienceCardList = new ArrayList<>();
-    private final List<Card> warCardList = new ArrayList<>();
-    private final List<Card> politicCardList = new ArrayList<>();
+
+    protected final List<Card> materialCardList = new ArrayList<>();
+    protected final List<Card> scienceCardList = new ArrayList<>();
+    protected final List<Card> warCardList = new ArrayList<>();
+    protected final List<Card> politicCardList = new ArrayList<>();
+
     // Autre
-    private final List<Card> progressTokenList = new ArrayList<>();
-    int militaryVictoryPoint = 0;
-    private Cat cat = null;
+    protected final List<Card> progressTokenList = new ArrayList<>();
+    protected int militaryVictoryPoint = 0;
+    protected Cat cat = null;
 
 
     public Player(String name, int age) {
