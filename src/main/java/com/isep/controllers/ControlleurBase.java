@@ -50,8 +50,8 @@ public abstract class ControlleurBase {
             screenElements.setLayoutX(AnchorPointX);
             screenElements.setLayoutY(AnchorPointY);
             // Zoom sur screenElements
-            this.screenElements.setScaleX(1.3);
-            this.screenElements.setScaleY(1.3);
+            //this.screenElements.setScaleX(1.3);
+            //this.screenElements.setScaleY(1.3);
 
             /*
              * this.screenElements.setScaleX(1.5);

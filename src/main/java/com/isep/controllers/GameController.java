@@ -339,6 +339,8 @@ public class GameController extends ControlleurBase {
         this.playerTurn.usePowerCard();
 
         // Maj de la Wonder
+        this.majInfoSizeDeck();
+        this.majInfoRessourcesPlayer();
         this.majViewWonderPlayer();
 
         // Met la carte dans la defausse
