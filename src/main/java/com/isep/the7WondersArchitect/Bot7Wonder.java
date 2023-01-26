@@ -19,6 +19,7 @@ public class Bot7Wonder extends Player {
         super(name, age);
     }
 
+
     //méthode permettant de déterminer la meilleure action possible à chaque tour
     //ça dépend de notre stratégie et de nos objectifs pour le bot
     private void chooseBestAction(List<Card> cardsView) { // cardsView permet de voir les différentes cartes visibles
@@ -137,6 +138,7 @@ public class Bot7Wonder extends Player {
         //si step == ressources différentes
         else {
 
+
             //si carte gold dans les pioches
             for (Card i : cardsView) { //pour tous les i contenu dans " List<Card> cardsView "
                 String[] type = i.front.cardDisplayName.split(":");
@@ -237,6 +239,7 @@ public class Bot7Wonder extends Player {
         chooseBestAction(listCardICanPiocher) ;
     }
 
+
     //Deep learning trop compliqué pour les jeux de plateau stratégique
     //faisable avec plus de temps
     //meilleur choix possible avec du temps là actuellement pas de temps donc infaisable
@@ -247,7 +250,7 @@ public class Bot7Wonder extends Player {
 
     //ia agressive / ia passive ...
     //random entre 1 2 ou 3
-
+*/
 }
 
 

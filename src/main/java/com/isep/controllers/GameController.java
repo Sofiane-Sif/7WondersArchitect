@@ -386,8 +386,13 @@ public class GameController extends ControlleurBase {
         // recup la nouvelle value et l'affiche dans le label
         switch (type[0]) {
             case "material" -> {
-                int value = this.playerTurn.getNbRessource(type[1]);
-                dicLabel.get(type[1]).setText(value+"");
+                // On  met à jour tous les valeurs
+                dicLabel.get("wood").setText(this.playerTurn.getNbRessource("wood")+"");
+                dicLabel.get("paper").setText(this.playerTurn.getNbRessource("paper")+"");
+                dicLabel.get("brick").setText(this.playerTurn.getNbRessource("brick")+"");
+                dicLabel.get("stone").setText(this.playerTurn.getNbRessource("stone")+"");
+                dicLabel.get("glass").setText(this.playerTurn.getNbRessource("glass")+"");
+                dicLabel.get("gold").setText(this.playerTurn.getNbRessource("gold")+"");
             }
             case "science" -> {
                 int value = this.playerTurn.getNbScience(type[1]);
