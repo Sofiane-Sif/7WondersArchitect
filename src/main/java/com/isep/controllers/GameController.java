@@ -6,6 +6,7 @@ import com.isep.items.cards.ScienceCategory;
 import com.isep.items.conflictToken.ConflictTokens;
 import com.isep.items.progressToken.ProgressToken;
 import com.isep.items.wonders.Wonders;
+import com.isep.the7WondersArchitect.Bot7Wonder;
 import com.isep.the7WondersArchitect.Game;
 import com.isep.the7WondersArchitect.Player;
 import javafx.collections.ObservableList;
@@ -267,6 +268,20 @@ public class GameController extends ControlleurBase {
     private void nextPlayerTurn() {
         // Récupération des infos du player qui doit jouer
         this.setInfoPlayerTurn();
+
+        /*
+         * L'IA / RobotPlayer est à mettre ici
+         * Soit on a un Player Humain et c'est le code plus haut
+         * Soit c'est l'IA et c'est un code qui choisit une carte puis appele onSelectionCartePlayerButton()
+         */
+
+        if(this.playerTurn instanceof Bot7Wonder) {
+         //   bot.cesttontour(dectgauche, deckdro, dekcen);
+            ((Bot7Wonder) this.playerTurn).readGame(deckPlayer, deckRightPlayer, centraldeck);
+
+        }
+
+
         // Met en couleur le joueur qui joue;
         this.wonderPlayerImg.getStyleClass().add("selectWonder");
 
@@ -287,11 +302,9 @@ public class GameController extends ControlleurBase {
             this.imgViewCentralDeck.setOnMouseClicked(this::onSelectionCartePlayerButton);
         }
 
-        /*
-         * L'IA / RobotPlayer est à mettre ici
-            * Soit on a un Player Humain et c'est le code plus haut
-            * Soit c'est l'IA et c'est un code qui choisit une carte puis appele onSelectionCartePlayerButton()
-         */
+
+
+
     }
 
 
