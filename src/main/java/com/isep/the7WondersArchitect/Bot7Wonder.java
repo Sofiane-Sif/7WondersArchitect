@@ -18,7 +18,7 @@ public class Bot7Wonder extends Player {
     public Bot7Wonder (String name, int age) {
         super(name, age);
     }
-
+/*
     public void play() {//méthode qui boucle jusqu'à la fin de la partie
 
         //À chaque tour le bot récupère la liste des actions possibles et en choisit une en utilisant la méthode 'chooseBestAction' et l'applique à l'état du jeu
@@ -27,7 +27,7 @@ public class Bot7Wonder extends Player {
             Action action = chooseBestAction(possibleActions);
             gameState.applyAction(action);
         }
-    }
+    }*/
 
     //méthode permettant de déterminer la meilleure action possible à chaque tour
     //ça dépend de notre stratégie et de nos objectifs pour le bot
@@ -69,7 +69,7 @@ public class Bot7Wonder extends Player {
 
         //si step == ressources différentes
         else {
-            if()
+            //if()
         }
     }
 
@@ -88,7 +88,7 @@ public class Bot7Wonder extends Player {
         chooseBestAction(listCardICanPiocher) ;
     }
 
-    private bestChoice(){
+   /* private bestChoice(){
 
 
         if (cartetype != CardType.valueOf("materrial"))
@@ -104,7 +104,7 @@ public class Bot7Wonder extends Player {
 
     //ia agressive / ia passive ...
     //random entre 1 2 ou 3
-
+*/
 }
 
 

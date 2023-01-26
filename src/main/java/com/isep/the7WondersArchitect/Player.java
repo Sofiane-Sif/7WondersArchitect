@@ -5,6 +5,8 @@ import com.isep.items.cat.Cat;
 import com.isep.items.wonders.Wonders;
 
 import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Player {
 
@@ -197,107 +199,137 @@ public class Player {
     }
 
 
+
+    private void printOmplype(String msg, boolean isOneLine) {
+        if (Objects.equals(this.civilisationName, "Olympie")){
+            System.out.print(msg);}}
+    private void printOmplype(String msg) {
+        if (Objects.equals(this.civilisationName, "Olympie")){
+            System.out.println(msg);}}
+
     private void wonderConstruction() {
         /*
-        Quand pour un etage il y a plusieurs pieces, c'est dans l'ordre que l'on veut
-         * Pour chaque pieces constructible
-            *Si on a les ressources neccessaires :
-                * On enleve les ressources utilisé
-                * On contruit un etage
-                * Il est possible que le pouvoir de la merveille peut etre activé
-                * On recommence tant qu'une autre construction est possible
-                * On affiche les ressources restantes -> GameController
-                * on affiche le nouvelle etage de la wonder -> GameController
+        Quand pour un etage il y a plusieurs pieces, c'est dans l'ordre que l'on veut -- NOT IMPLEMENT
+         * Pour chaque pieces constructible -- NOT IMPLEMENT
+            *Si on a les ressources neccessaires : -- OK
+                * On enleve les ressources utilisé -- OK
+                * On contruit un etage -- OK
+                * Il est possible que le pouvoir de la merveille peut etre activé -- NOT IMPLEMENT
+                * On recommence tant qu'une autre construction est possible -- NOT IMPLEMENT
+                * On affiche les ressources restantes -> GameController -- OK
+                * on affiche le nouvelle etage de la wonder -> GameController -- OK
          */
-
-
-
         // Que faut t'il pour construire la pieces
-        int nbRessourceNeed = (int) wonder.getInfoConstruction(wonder.countNbStepBuid()).get(0);
-        boolean isEqualRessource = (boolean) wonder.getInfoConstruction(wonder.countNbStepBuid()).get(1);
-        System.out.println("Condition suivante : " + nbRessourceNeed + " resources. diferentes ? " + isEqualRessource);
+        List<?> lstInfo = wonder.getInfoConstruction(wonder.countNbStepBuid());
+        int nbRessourceNeed = (int) lstInfo.get(0);
+        boolean isEqualRessource = (boolean) lstInfo.get(1);
 
-        // Recherche et prelevement du prix de la construction
+        // Affiche la condition et les ressources dispos
+        //printOmplype("\nCondition suivante : " + nbRessourceNeed + " resources pareil ? " + isEqualRessource);
+        //printOmplype("- Ressource base");
+        //for (Card c: this.materialCardList){printOmplype(c.front.cardDisplayName+" - ", true);}
+        //printOmplype("");
+
+        // Recherche et prelevement du prix de la construction si ok
         boolean canBuild = false;
+
         // nbRessource pareil
-
         if(isEqualRessource) {
-
-
-
             // Nombre de pieces d'or
             int nbGold = this.getNbRessource("gold");
-            // Pour chaque materiaux gold exclu
+            // List de tous les materiaux gold exclu
             List<Material> lstMat = new ArrayList<>(Arrays.stream(Material.values()).toList());
-            lstMat.remove(Material.Gold); // voir si on l'enleve
-
-            // Pour chaque list de materiaux, on regarde s'il y a nbRessourceNeed
+            lstMat.remove(Material.Gold);
+            // Pour chaque list de materiaux
             for (Material material: lstMat){
                 int nbMat = this.getNbRessource(material.name().toLowerCase());
-                // S'il y en  a le nombre necessaire avec le sac d'or
+                // S'il y en  a le nombre necessaire gold compris
                 if (nbMat + nbGold >= nbRessourceNeed) {
+                    // On peut construire
                     canBuild = true;
-                    System.out.println("\nBuild !");
-                    for (Card c: this.materialCardList){System.out.print(c.front.cardDisplayName+" - ");}
-                    System.out.println();
-
-
-                    // Supprime le nombre de ressources necessaire
-                    List<Card> cardsToRemove = new ArrayList<>(this.materialCardList);
-                    // Pour l'ensemble des ressources gold exclu
+                    //System.out.println("Build !");
+                    // Supprime le nombre de ressources necessaires
+                    List<Card> cardsToRemove = new ArrayList<>();
+                    // Pour l'ensemble des carte de cette ressource
                     for (Card cardRess : this.materialCardList) {
-                        // S'il y a besoin de jeter des cartes et si la carte est la bonne ressource
                         String nomMat = material.name().toLowerCase();
                         String nomCard = cardRess.front.cardDisplayName.split(":")[1];
-                        //System.out.println((nbRessourceNeed > 0) + "(" + nbRessourceNeed + ") - " + nomCard + " - " + nomMat);
+                        // S'il y a besoin de jeter des cartes et si la carte est la bonne ressource
                         if (nbRessourceNeed > 0 & Objects.equals(nomCard, nomMat)) {
                             // On la met dans la defause
-                           // System.out.println("Card for trash : "material.name() + " - " + nbRessourceNeed);
                             cardsToRemove.add(cardRess);
                             // Moins une carte au compteur
                             nbRessourceNeed--;
-
                         }
                     }
-
-
-                    for (Card c: this.materialCardList){System.out.print(c.front.cardDisplayName+" - ");}
-
-                    //this.materialCardList.removeAll(cardsToRemove);
+                    // S'il manque des ressources c'est que le player a des Golds qu'il faut lui prendre
+                    for (Card cardRess : this.materialCardList) {
+                        // S'il y a besoin de jeter des cartes et si la carte est la bonne ressource
+                        String nomCard = cardRess.front.cardDisplayName.split(":")[1];
+                        if (nbRessourceNeed > 0 & Objects.equals(nomCard, "gold")) {
+                            // On la met dans la defause
+                            cardsToRemove.add(cardRess);
+                            // Moins une carte au compteur
+                            nbRessourceNeed--;
+                        }
+                    }
+                    // Affiche les cartes à jeter
+                    //System.out.println("- Ressources à supp");
+                    //for (Card c: cardsToRemove){System.out.println(c.front.cardDisplayName+" - ");}
+                    // Supprimer les cartes qui a permis la construction
                     for (Card c: cardsToRemove){this.materialCardList.remove(c);}
-
-
-                    for (Card c: this.materialCardList){System.out.print(c.front.cardDisplayName+" - ");}
-                    System.out.println("_____" + this.materialCardList.size());
-
-                    //System.out.println("construction possible sans or");
-                    // On remove le nombre de ressouce nessessaire  + le nombre d'or qui manque
+                    // Affiche les cartes restantant
+                    //System.out.println("\n- Ressources restant");
+                    //for (Card c: this.materialCardList){System.out.print(c.front.cardDisplayName+" - ");}
+                    //System.out.println("_____ : " + this.materialCardList.size());
+                    //System.out.println("\n");
                     break;
                 }
             }
-            //System.out.println("Free for no long time!");
-           // canBuild = true;
+         }
 
-
-
-
-
-        }
         // nbRessource differentes
         else {
-            System.out.println("\nFree!");
-            canBuild = true;
+            // Pour chaque materiaux -> Compte le nombre de ressources differents dans materialCardList
+            int numberOfDiffRessources = 0;
+            for (Material material: Material.values()){
+                int nbMat = this.getNbRessource(material.name().toLowerCase());
+                if (nbMat>0) {numberOfDiffRessources++;}
+            }
+            // Si j'ai au minimum nbRessourceNeed differente dans materialCardList
+            if (numberOfDiffRessources >= nbRessourceNeed) {
+                // Alors on peut construire
+                canBuild = true;
+                // List de tous les materiaux
+                List<Material> lstMat = new ArrayList<>(Arrays.stream(Material.values()).toList());
+                // Pour chaque list de materiaux
+                for (Material material: lstMat){
+                    // Si besoin de payer des ressources
+                    if (nbRessourceNeed > 0) {
+                        // Recupereration de toutes les cartes du meme type
+                        String nomMat = material.name().toLowerCase();
+                        List<Card> filteredCards = this.materialCardList.stream().filter(card ->
+                                Objects.equals(nomMat, card.front.cardDisplayName.split(":")[1])).toList();
+                        if (filteredCards.size() > 0) {
+                            // Recuperation de la first Card of the list
+                            Card cardToDel = filteredCards.get(0);
+                            // Suppression de la carte
+                            this.materialCardList.remove(cardToDel);
+                            // Moins une carte au compteur
+                            nbRessourceNeed--;
+                        }
+                    }
+                }
+                // Affiche les cartes restantant
+                //System.out.println("\n- Ressources restant");
+                //for (Card c: this.materialCardList){System.out.print(c.front.cardDisplayName+" - ");}
+                //System.out.println("_____ : " + this.materialCardList.size());
+            }
 
         }
-
-
-
         if (canBuild) {
             this.wonder.buildWonderLevel(this.wonder.countNbStepBuid());
         }
-
-
-
     }
 
 }
