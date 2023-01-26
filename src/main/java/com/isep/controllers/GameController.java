@@ -278,7 +278,7 @@ public class GameController extends ControlleurBase {
         if(this.playerTurn instanceof Bot7Wonder) {
          //   bot.cesttontour(dectgauche, deckdro, dekcen);
             ((Bot7Wonder) this.playerTurn).readGame(deckPlayer, deckRightPlayer, centraldeck);
-
+            return;
         }
 
 
@@ -310,22 +310,32 @@ public class GameController extends ControlleurBase {
 
     private void onSelectionCartePlayerButton(Event event) {
 
-            // Deselection de tous les elements mis en avant
-        // WonderPlayer
-        this.wonderPlayerImg.getStyleClass().remove("selectWonder");
-        // PlayerDeck
-        this.deckPlayerImg.getStyleClass().remove("selectDeck");
-        this.deckPlayerImg.setOnMouseClicked(null);
-        // CentralDeck
-        this.imgViewCentralDeck.getStyleClass().remove("selectDeck");
-        this.imgViewCentralDeck.setOnMouseClicked(null);
-        // RightDeck
-        this.deckRightPlayerImg.getStyleClass().remove("selectDeck");
-        this.deckRightPlayerImg.setOnMouseClicked(null);
 
-        // recupératon de la carteImg et du nom de la civilisation du deck
-        ImageView selectCardImg = (ImageView) event.getSource();
-        String civNameCard = selectCardImg.getId();
+
+        String civNameCard;
+        //sinon si bot
+        if(this.playerTurn instanceof Bot7Wonder){
+            civNameCard = ((Bot7Wonder) this.playerTurn).returnBestAction();
+        }else{
+            //if player
+
+            // Deselection de tous les elements mis en avant
+            // WonderPlayer
+            this.wonderPlayerImg.getStyleClass().remove("selectWonder");
+            // PlayerDeck
+            this.deckPlayerImg.getStyleClass().remove("selectDeck");
+            this.deckPlayerImg.setOnMouseClicked(null);
+            // CentralDeck
+            this.imgViewCentralDeck.getStyleClass().remove("selectDeck");
+            this.imgViewCentralDeck.setOnMouseClicked(null);
+            // RightDeck
+            this.deckRightPlayerImg.getStyleClass().remove("selectDeck");
+            this.deckRightPlayerImg.setOnMouseClicked(null);
+
+            // recupératon de la carteImg et du nom de la civilisation du deck
+            ImageView selectCardImg = (ImageView) event.getSource();
+            civNameCard = selectCardImg.getId();
+        }
 
         // Pioche la carte du deck selectionné
         String newCardDeckImgPath = playerTurn.piocheCarte(civNameCard);

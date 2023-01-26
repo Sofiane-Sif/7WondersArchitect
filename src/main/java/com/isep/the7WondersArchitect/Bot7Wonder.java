@@ -19,25 +19,15 @@ public class Bot7Wonder extends Player {
         super(name, age);
     }
 
-    public void play() {//méthode qui boucle jusqu'à la fin de la partie
-
-        //À chaque tour le bot récupère la liste des actions possibles et en choisit une en utilisant la méthode 'chooseBestAction' et l'applique à l'état du jeu
-        while (!gameState.isGameOver()) {
-            List<Action> possibleActions = gameState.getPossibleActions();
-            Action action = chooseBestAction(possibleActions);
-            gameState.applyAction(action);
-        }
-    }
-
     //méthode permettant de déterminer la meilleure action possible à chaque tour
     //ça dépend de notre stratégie et de nos objectifs pour le bot
-    private void chooseBestAction(List<Card> cad) {
+    private void chooseBestAction(List<Card> cardsView) { // cardsView permet de voir les différentes cartes visibles
 
         //si je n'ai pas de carte ressources dans mon deck
         if (super.materialCardList.size() - super.getNbRessource("gold") == 0){
 
             //si carte gold dans les pioches
-            for (Card i : cad) { //pour tous les i contenu dans " List<Card> cad "
+            for (Card i : cardsView) { //pour tous les i contenu dans " List<Card> cardsView "
                 String[] type = i.front.cardDisplayName.split(":");
                 if (Objects.equals(type[1], "gold")){
                     //je récupère la carte dans mon deck
@@ -47,30 +37,189 @@ public class Bot7Wonder extends Player {
             }
 
             //si carte grise dans la pioche
-            for(Card i : cad) {//pour tous les i contenu dans " List<Card> cad "
+            for(Card i : cardsView) {//pour tous les i contenu dans " List<Card> cardsView "
                 String[] type = i.front.cardDisplayName.split(":");
                 if (Objects.equals(type[0], "material")){
                     //je récupère la carte dans mon deck
                     carteSelect = i;
                     return;
                 }
-
             }
+
             //pioche carte deck milieu
             carteSelect = gameState.getCentralDeck().get(0);
             return;
-
         }
 
         //si step == ressources identiques
         else if ((boolean) (wonder.getInfoConstruction(wonder.countNbStepBuid()).get(1))){
 
+            //si carte gold dans les pioches
+            for (Card i : cardsView) { //pour tous les i contenu dans " List<Card> cardsView "
+                String[] type = i.front.cardDisplayName.split(":");
+                if (Objects.equals(type[1], "gold")){
+                    //je récupère la carte dans mon deck
+                    carteSelect = i;
+                    return;
+                }
+            }
+
+            //si carte identique au deck joueur
+            for (Card i : cardsView){
+                String[] type = i.front.cardDisplayName.split(":");
+                //si la carte est une carte ressource
+                if (Objects.equals(type[0], "material")){
+                    //si je l'ai déjà dans mon deck
+                    if(getNbRessource(type[1]) >= 1){
+                        //je récupère la carte identique dans mon deck
+                        carteSelect = i;
+                        return;
+                    }
+                }
+            }
+
+            //si carte pion chat dans la pioche
+            for (Card i : cardsView){
+                String[] type = i.front.cardDisplayName.split(":");
+                //si la carte est une carte pion chat
+                if (Objects.equals(type[1], "cat")){
+                    //je récupère la carte pion chat dans mon deck
+                    carteSelect = i;
+                    return;
+                }
+            }
+
+            //si carte différente au deck joueur
+            for (Card i : cardsView){
+                String[] type = i.front.cardDisplayName.split(":");
+                //si la carte est une carte ressource
+                if (Objects.equals(type[0], "material")){
+                    //si je ne l'ai pas dans mon deck
+                    if(getNbRessource(type[1]) == 0){
+                        //je récupère la carte différente dans mon deck
+                        carteSelect = i;
+                        return;
+                    }
+                }
+            }
+
+            //si carte rouge dans la pioche
+            for(Card i : cardsView) {//pour tous les i contenu dans " List<Card> cardsView "
+                String[] type = i.front.cardDisplayName.split(":");
+                if (Objects.equals(type[0], "war")){
+                    //je récupère la carte dans mon deck
+                    carteSelect = i;
+                    return;
+                }
+            }
+
+            //si carte verte dans la pioche
+            for(Card i : cardsView) {//pour tous les i contenu dans " List<Card> cardsView "
+                String[] type = i.front.cardDisplayName.split(":");
+                if (Objects.equals(type[0], "science")){
+                    //je récupère la carte dans mon deck
+                    carteSelect = i;
+                    return;
+                }
+            }
+
+            //si carte bleue dans la pioche
+            for(Card i : cardsView) {//pour tous les i contenu dans " List<Card> cardsView "
+                String[] type = i.front.cardDisplayName.split(":");
+                if (Objects.equals(type[0], "politic")){
+                    //je récupère la carte dans mon deck
+                    carteSelect = i;
+                    return;
+                }
+            }
         }
 
         //si step == ressources différentes
         else {
-            if()
+
+            //si carte gold dans les pioches
+            for (Card i : cardsView) { //pour tous les i contenu dans " List<Card> cardsView "
+                String[] type = i.front.cardDisplayName.split(":");
+                if (Objects.equals(type[1], "gold")){
+                    //je récupère la carte dans mon deck
+                    carteSelect = i;
+                    return;
+                }
+            }
+
+            //si carte différente au deck joueur
+            for (Card i : cardsView){
+                String[] type = i.front.cardDisplayName.split(":");
+                //si la carte est une carte ressource
+                if (Objects.equals(type[0], "material")){
+                    //si je ne l'ai pas dans mon deck
+                    if(getNbRessource(type[1]) == 0){
+                        //je récupère la carte différente dans mon deck
+                        carteSelect = i;
+                        return;
+                    }
+                }
+            }
+
+            //si carte pion chat dans la pioche
+            for (Card i : cardsView){
+                String[] type = i.front.cardDisplayName.split(":");
+                //si la carte est une carte pion chat
+                if (Objects.equals(type[1], "cat")){
+                    //je récupère la carte pion chat dans mon deck
+                    carteSelect = i;
+                    return;
+                }
+            }
+
+            //si carte identique au deck joueur
+            for (Card i : cardsView){
+                String[] type = i.front.cardDisplayName.split(":");
+                //si la carte est une carte ressource
+                if (Objects.equals(type[0], "material")){
+                    //si je l'ai déjà dans mon deck
+                    if(getNbRessource(type[1]) >= 1){
+                        //je récupère la carte identique dans mon deck
+                        carteSelect = i;
+                        return;
+                    }
+                }
+            }
+
+            //si carte rouge dans la pioche
+            for(Card i : cardsView) {//pour tous les i contenu dans " List<Card> cardsView "
+                String[] type = i.front.cardDisplayName.split(":");
+                if (Objects.equals(type[0], "war")){
+                    //je récupère la carte dans mon deck
+                    carteSelect = i;
+                    return;
+                }
+            }
+
+            //si carte verte dans la pioche
+            for(Card i : cardsView) {//pour tous les i contenu dans " List<Card> cardsView "
+                String[] type = i.front.cardDisplayName.split(":");
+                if (Objects.equals(type[0], "science")){
+                    //je récupère la carte dans mon deck
+                    carteSelect = i;
+                    return;
+                }
+            }
+
+            //si carte bleue dans la pioche
+            for(Card i : cardsView) {//pour tous les i contenu dans " List<Card> cardsView "
+                String[] type = i.front.cardDisplayName.split(":");
+                if (Objects.equals(type[0], "politic")){
+                    //je récupère la carte dans mon deck
+                    carteSelect = i;
+                    return;
+                }
+            }
         }
+    }
+
+    public String returnBestAction(){
+        return this.carteSelect.back.toString();
     }
 
     public void readGame (List<Card> deckPlayer, List<Card> deckRightPlayer, List<Card> centraldeck){
@@ -86,12 +235,6 @@ public class Bot7Wonder extends Player {
         System.out.println(deckRightPlayer.get(0).front.cardCategory);
 
         chooseBestAction(listCardICanPiocher) ;
-    }
-
-    private bestChoice(){
-
-
-        if (cartetype != CardType.valueOf("materrial"))
     }
 
     //Deep learning trop compliqué pour les jeux de plateau stratégique
