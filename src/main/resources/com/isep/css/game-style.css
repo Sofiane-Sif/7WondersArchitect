@@ -20,5 +20,9 @@
 }
 
 .selectDeck {
-    -fx-effect: dropshadow( three-pass-box , rgba(150, 100, 2000, 0.4) , 15, 0.8 , 0 , 0 );
+    -fx-effect: dropshadow( three-pass-box , rgba(150, 100, 200, 0.4) , 15, 0.8 , 0 , 0 );
+}
+
+.selectCat {
+    -fx-effect: dropshadow( three-pass-box , rgba(50, 200, 255, 0.4) , 15, 0.8 , 0 , 0 );
 }

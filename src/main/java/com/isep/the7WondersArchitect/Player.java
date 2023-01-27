@@ -5,8 +5,6 @@ import com.isep.items.cat.Cat;
 import com.isep.items.wonders.Wonders;
 
 import java.util.*;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class Player {
 
@@ -37,7 +35,7 @@ public class Player {
     }
 
     public void setCat(Cat cat) {this.cat=cat;}
-    public void looseCat(){this.cat=null;}
+    public boolean haveTheCat() {return cat != null;}
 
     public void setCivilisationName(String civilisationName) {this.civilisationName=civilisationName;}
 
@@ -153,8 +151,17 @@ public class Player {
         }
         return numRessource;
     }
+
+    public void looseWarCorn() {
+        // Supprime toutes les Cards War avec Corne
+        List<Card> filteredCards = this.warCardList.stream().filter(card ->card.front.cornCount>0).toList();
+        this.warCardList.removeAll(filteredCards);
+
+    }
     public int getNbShildPeace(){return this.getNbShildType(true);}
     public int getNbShildWar(){return this.getNbShildType(false);}
+
+    public int getTotNbShild() {return this.getNbShildPeace()+this.getNbShildWar();}
 
 
     public int getNbPolilicPoint(){
@@ -167,45 +174,29 @@ public class Player {
     }
 
     public int getmilitaryVictoryPoint() {return this.militaryVictoryPoint;}
+    public void addOneMilitaryVictoryPoint() {this.militaryVictoryPoint++;}
+
 
 
 
     public void usePowerCard() {
-
-
         // Lecture du type de la carte choisi
         String typeCard = this.getTypeCardInIsHand();
         String[] type = typeCard.split(":");
         //System.out.println("Carte pioché : " + this.cardInIsHand.front.cardCategory + " --> " + getTypeCardInIsHand());
-
         // En fonction du type de la carte : effectue des actions differentes
         switch (type[0]) {
-            case "material" -> {
-                this.wonderConstruction();
+            case "material" -> {this.wonderConstruction();}
+            case "science" -> {//System.out.println("science : Non implementé");
             }
-            case "science" -> {
-                //System.out.println("science : Non implementé");
-            }
-            case "war" -> {
-                //System.out.println("war : Non implementé");
-            }
-            case "politic" -> {
-                //System.out.println("politic : Non implementé");
-            }
-
-
+            case "war" -> {Game.option.addWarCorn(this.cardInIsHand.front.cornCount);}
+            case "politic" -> {if (this.cardInIsHand.front.cat) {Game.option.assignCat(this);}}
         }
-
     }
 
 
 
-    private void printOmplype(String msg, boolean isOneLine) {
-        if (Objects.equals(this.civilisationName, "Olympie")){
-            System.out.print(msg);}}
-    private void printOmplype(String msg) {
-        if (Objects.equals(this.civilisationName, "Olympie")){
-            System.out.println(msg);}}
+
 
     private void wonderConstruction() {
         /*
