@@ -1,8 +1,6 @@
 package com.isep.controllers;
 
 import com.isep.items.cards.Card;
-import com.isep.items.cards.Material;
-import com.isep.items.cards.ScienceCategory;
 import com.isep.items.conflictToken.ConflictTokens;
 import com.isep.items.progressToken.ProgressToken;
 import com.isep.items.wonders.Wonders;
@@ -12,7 +10,6 @@ import com.isep.the7WondersArchitect.Player;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -21,7 +18,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -126,7 +122,7 @@ public class GameController extends ControlleurBase {
         }
 
         // Positionnement du chat
-        String imgPathCat = Game.option.settingCat();
+        String imgPathCat = Game.option.createCat();
         Image imgCat = ControlleurBase.setAnImage(imgPathCat);
         this.imgViewCat.setImage(imgCat);
 
@@ -232,11 +228,11 @@ public class GameController extends ControlleurBase {
     private int numPlayer;
     private Player playerTurn;
     private ObservableList<Node> visualPlayerTurn;
-    private ImageView deckPlayerImg;
-    private List<Card> deckPlayer;
     private VBox wonderPlayerImg;
     private Wonders wonderPlayer;
+    private ImageView deckPlayerImg;
     private ImageView deckRightPlayerImg;
+    private List<Card> deckPlayer;
     private List<Card> deckRightPlayer;
     private List<Card> centraldeck;
 
@@ -268,82 +264,95 @@ public class GameController extends ControlleurBase {
     private void nextPlayerTurn() {
         // Récupération des infos du player qui doit jouer
         this.setInfoPlayerTurn();
-
-        /*
-         * L'IA / RobotPlayer est à mettre ici
-         * Soit on a un Player Humain et c'est le code plus haut
-         * Soit c'est l'IA et c'est un code qui choisit une carte puis appele onSelectionCartePlayerButton()
-         */
-
         if(this.playerTurn instanceof Bot7Wonder) {
-         //   bot.cesttontour(dectgauche, deckdro, dekcen);
+            // Selection d'une carte
             ((Bot7Wonder) this.playerTurn).readGame(deckPlayer, deckRightPlayer, centraldeck);
-            return;
+            // Recuperation du nameWonderDeck choose
+            String civNameCard = ((Bot7Wonder) this.playerTurn).returnBestAction();
+            // Recuperation de l'ImageView du deck de la civ select parmis les trois pioches possibles
+            // !!!!!!!!!!!!!!!!!!
+            // Ne fonctionne suremement -> à causes des majuscules : CentralDeck != centralDeck
+            // Ce probleme doit aussi avoir lieu dans Bot7Wonder.readGame()
+            // !!!!!!!!!!!!!!!!!!!!
+            ImageView selectCardImg;
+            if (Objects.equals(civNameCard, "CentralDeck")) {selectCardImg=this.imgViewCentralDeck;}
+            else if (Objects.equals(civNameCard, this.playerTurn.getCivilisationName())) {selectCardImg=this.deckPlayerImg;}
+            else {selectCardImg=this.deckRightPlayerImg;}
+            // Impact et controle de la carte
+            this.cartePlayerAction(civNameCard, selectCardImg);
         }
-
-
-        // Met en couleur le joueur qui joue;
-        this.wonderPlayerImg.getStyleClass().add("selectWonder");
-
+        //C'est a un Player Humain de jouer
+        else {
+            // Met en couleur le joueur qui joue;
+            this.wonderPlayerImg.getStyleClass().add("selectWonder");
             // Mets les jeux de cartes disponibles en couleur  et clickable
-        // Deck du Player
-        if (this.deckPlayer.size()>=1) {
-            this.deckPlayerImg.getStyleClass().add("selectDeck");
-            this.deckPlayerImg.setOnMouseClicked(this::onSelectionCartePlayerButton);
+            // Deck du Player
+            if (this.deckPlayer.size()>=1) {
+                this.deckPlayerImg.getStyleClass().add("selectDeck");
+                this.deckPlayerImg.setOnMouseClicked(this::onSelectionCartePlayerButton);
+            }
+            // Deck de droite
+            if (this.deckRightPlayer.size()>=1) {
+                this.deckRightPlayerImg.getStyleClass().add("selectDeck");
+                this.deckRightPlayerImg.setOnMouseClicked(this::onSelectionCartePlayerButton);
+            }
+            // Deck du millieu
+            if (this.centraldeck.size()>=1) {
+                this.imgViewCentralDeck.getStyleClass().add("selectDeck");
+                this.imgViewCentralDeck.setOnMouseClicked(this::onSelectionCartePlayerButton);
+            }
+            // Affiche the Cat et la carte central face visible
+            if (this.playerTurn.haveTheCat()) {
+                this.imgViewCat.getStyleClass().add("selectCat");
+                if (this.centraldeck.size()>0) {
+                    Card cardCentral = this.centraldeck.get(0);
+                    String imgFrontPath = cardCentral.front.imageResource;
+                    this.imgViewCentralDeck.setImage(ControlleurBase.setAnImage(imgFrontPath));
+                }
+            }
         }
-        // Deck de droite
-        if (this.deckRightPlayer.size()>=1) {
-            this.deckRightPlayerImg.getStyleClass().add("selectDeck");
-            this.deckRightPlayerImg.setOnMouseClicked(this::onSelectionCartePlayerButton);
-        }
-        // Deck du millieu
-        if (this.centraldeck.size()>=1) {
-            this.imgViewCentralDeck.getStyleClass().add("selectDeck");
-            this.imgViewCentralDeck.setOnMouseClicked(this::onSelectionCartePlayerButton);
-        }
-
-
-
-
     }
 
 
+
     private void onSelectionCartePlayerButton(Event event) {
-
-
-
-        String civNameCard;
-        //sinon si bot
-        if(this.playerTurn instanceof Bot7Wonder){
-            civNameCard = ((Bot7Wonder) this.playerTurn).returnBestAction();
-        }else{
-            //if player
-
-            // Deselection de tous les elements mis en avant
-            // WonderPlayer
-            this.wonderPlayerImg.getStyleClass().remove("selectWonder");
-            // PlayerDeck
-            this.deckPlayerImg.getStyleClass().remove("selectDeck");
-            this.deckPlayerImg.setOnMouseClicked(null);
-            // CentralDeck
-            this.imgViewCentralDeck.getStyleClass().remove("selectDeck");
-            this.imgViewCentralDeck.setOnMouseClicked(null);
-            // RightDeck
-            this.deckRightPlayerImg.getStyleClass().remove("selectDeck");
-            this.deckRightPlayerImg.setOnMouseClicked(null);
-
-            // recupératon de la carteImg et du nom de la civilisation du deck
-            ImageView selectCardImg = (ImageView) event.getSource();
-            civNameCard = selectCardImg.getId();
+        // Deselection de tous les elements mis en avant
+        // WonderPlayer
+        this.wonderPlayerImg.getStyleClass().remove("selectWonder");
+        // PlayerDeck
+        this.deckPlayerImg.getStyleClass().remove("selectDeck");
+        this.deckPlayerImg.setOnMouseClicked(null);
+        // CentralDeck
+        this.imgViewCentralDeck.getStyleClass().remove("selectDeck");
+        this.imgViewCentralDeck.setOnMouseClicked(null);
+        // RightDeck
+        this.deckRightPlayerImg.getStyleClass().remove("selectDeck");
+        this.deckRightPlayerImg.setOnMouseClicked(null);
+        // Cat et la carte central
+        if (this.playerTurn.haveTheCat()) {
+            this.imgViewCat.getStyleClass().remove("selectCat");
+            if (this.centraldeck.size()>0) {
+                this.imgViewCentralDeck.setImage(ControlleurBase.setAnImage("images/cards/card-back/card-back-question.png"));
+            }
         }
+        // recupératon de la carteImg et du nom de la civilisation du deck
+        ImageView selectCardImg = (ImageView) event.getSource();
+        String civNameCard = selectCardImg.getId();
+        // Impact et controle de la carte
+        this.cartePlayerAction(civNameCard, selectCardImg);
+    }
+
+    private void cartePlayerAction(String civNameCard, ImageView selectCardImg) {
 
         // Pioche la carte du deck selectionné
         String newCardDeckImgPath = playerTurn.piocheCarte(civNameCard);
+        // Affiche la nouvelle carte du deck choisi
         Image newCardDeckImg = ControlleurBase.setAnImage(newCardDeckImgPath);
         selectCardImg.setImage(newCardDeckImg);
+
         // Met à jour le nombre de cartes restants
-        this.majInfoSizeDeck();
-        this.majInfoRessourcesPlayer();
+        //this.majInfoSizeDeck();
+        //this.majInfoRessourcesPlayer();
 
         // Joue la carte
         this.playerTurn.usePowerCard();
@@ -352,6 +361,8 @@ public class GameController extends ControlleurBase {
         this.majInfoSizeDeck();
         this.majInfoRessourcesPlayer();
         this.majViewWonderPlayer();
+        this.majConflictTokenImage();
+        this.majConflictTokenCornPlayer();
 
         // Met la carte dans la defausse
         String pathImgGet = this.playerTurn.getCardInIsHandImgPath();
@@ -365,6 +376,7 @@ public class GameController extends ControlleurBase {
         if(Game.option.isGameOver()) {System.out.println("");}
         else {this.nextPlayerTurn();}
     }
+
 
     private void majInfoRessourcesPlayer() {
 
@@ -438,5 +450,36 @@ public class GameController extends ControlleurBase {
         wonderBox.getChildren().addAll(wonderBoxElements);
     }
 
+    private void majConflictTokenImage() {
+        List<ConflictTokens> conflictTokensList = Game.option.getConflictTokensList();
+        ObservableList<Node> imageViewListConflictToken = GridPaneConflictTokens.getChildren();
+        for (int numConflictToken = 0; numConflictToken < conflictTokensList.size(); numConflictToken++) {
+            // Recuperation du token et de son image
+            ConflictTokens conflictTokens = conflictTokensList.get(numConflictToken);
+            ImageView conflictTokensImgView = (ImageView) imageViewListConflictToken.get(numConflictToken);
+            // Recuperation de l'image du type de conflit
+            String pathImage = conflictTokens.getImagePathFace();
+            conflictTokensImgView.setImage(ControlleurBase.setAnImage(pathImage));
+        }
+    }
+
+
+    private void majConflictTokenCornPlayer() {
+        for (Player player: Game.option.getPlayerList()) {
+            // Recuperation des elements d'affichage
+            ObservableList<Node> visualPlayer = this.playerZonesList.get(Game.option.getPlayerList().indexOf(player)).getChildren();
+            GridPane gridPaneRessources = ((GridPane) visualPlayer.get(4));
+            ObservableList<Node> gridPaneChild= gridPaneRessources.getChildren();
+            // Transformation en dictionnaire avec key=n.getStyleClass().get(2) et value=Label
+            HashMap<String, Label> dicLabel = new HashMap<String, Label>();
+            for (Node n: gridPaneChild) {
+                Label labelRessource = ((Label) n);
+                String typeLabel = n.getStyleClass().get(2);
+                dicLabel.put(typeLabel, labelRessource);
+            }
+            int value2 = player.getNbShildWar();
+            dicLabel.get("war").setText(value2+"");
+        }
+    }
 
 }

@@ -16,7 +16,7 @@ public class ConflictTokens {
         this.imagePathConflictTokensFace = isWar ? imagePathWarFace : imagePathPeaceFace;
     }
 
-    public boolean getIsWar() {return this.isWar;}
+    public boolean IsInWar() {return this.isWar;}
     public String getImagePathFace() {return imagePathConflictTokensFace;}
 
 

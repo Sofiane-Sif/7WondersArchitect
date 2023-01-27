@@ -232,7 +232,7 @@ public class Bot7Wonder extends Player {
         // recup ls cartes dispo
         listCardICanPiocher.add(deckPlayer.get(0));
         listCardICanPiocher.add(deckRightPlayer.get(0));
-        if(!(super.cat == null)) {centraldeck.add(deckPlayer.get(0));}
+        if(super.haveTheCat()) {centraldeck.add(deckPlayer.get(0));}
 
         System.out.println(deckRightPlayer.get(0).front.cardCategory);
 
@@ -250,7 +250,7 @@ public class Bot7Wonder extends Player {
 
     //ia agressive / ia passive ...
     //random entre 1 2 ou 3
-*/
+
 }
 
 
