@@ -46,9 +46,10 @@ public class Game {
     public int getNumPlayerTurn() {return this.numPlayerTurn;}
 
     public int getProgressTokensListSize() {return this.progressTokensList.size();}
+
     public List<Player> getPlayerList() {return this.playerList;}
+    public List<ConflictTokens> getConflictTokensList() {return this.conflictTokensList;}
     public int getNbPlayers() {return this.nbPlayers;}
-    //public boolean isGameOver() {return this.gameOver;}
 
     public List<Card> getCentralDeck() {return this.centralDeck;}
 
@@ -77,14 +78,85 @@ public class Game {
 
     public void setNbPlayers(int nbPlayers) {this.nbPlayers = nbPlayers;}
 
-    public String settingCat() {
+    public String createCat() {
         this.cat = new Cat();
         // Return pour affichage image
         return this.cat.getImagePathCat();
     }
 
 
+    public void assignCat(Player playerCat) {
+        for (Player player: this.playerList) {
+            player.setCat(null);
+        }
+        playerCat.setCat(this.cat);
+    }
 
+
+    public void addWarCorn(int nbCorn) {
+        // Retourne le nombre de jeton necessaire
+        for (ConflictTokens conflictTokens: this.conflictTokensList) {
+            if (!conflictTokens.IsInWar() & nbCorn > 0) {
+                conflictTokens.changeFace();
+                nbCorn--;
+            }
+        }
+        // Si tous les jetons sont en mode war
+        if (this.conflictTokensList.size()==this.getNbConfict()) {
+            this.beginningOfTheBattle();
+            this.worldInPeace();
+        }
+    }
+
+    public void worldInPeace() {
+        // Met tous les ConflictTokens en mode Peace
+        for (ConflictTokens conflictTokens: this.conflictTokensList) {
+            if (conflictTokens.IsInWar()) {conflictTokens.changeFace();}
+        }
+    }
+
+    public int getNbConfict() {
+        int nbConflit = 0;
+        for (ConflictTokens conflictTokens : this.conflictTokensList){
+            if (conflictTokens.IsInWar())  {nbConflit++;}
+        }
+        return nbConflit;
+    }
+
+    private void beginningOfTheBattle() {
+        /*
+         * Pour chaque Player
+            * On regarde son nombre de bouclier
+            * On le compare à ceux du Player à Droite
+            * On le compare à ceux du Palyer à Gauche
+            * Si nbBouclierPlayer> nbBouclier Adversaire
+                * +1 militaryVictoryPoint
+        * Toutes les cartes avec une corne vont à la défausse
+         */
+
+        // Pour chaque Player
+        for (int numPlayer = 0; numPlayer < this.nbPlayers; numPlayer++) {
+            Player player = this.playerList.get(numPlayer);
+            // On regarde son nombre de bouclier
+            int nbShild = player.getTotNbShild();
+            // Ses voisons
+            Player playerRight = this.playerList.get(Math.floorMod(numPlayer+1,this.nbPlayers));
+            Player playerLeft = this.playerList.get(Math.floorMod(numPlayer-1,this.nbPlayers));
+            // Leur bouclier
+            int nbShildPlayerRight = playerRight.getTotNbShild();
+            int nbShildPlayerLeft = playerLeft.getTotNbShild();
+            // On attribut des victoirePoint s'il y a
+            if (nbShild>nbShildPlayerRight) {player.addOneMilitaryVictoryPoint();}
+            if (nbShild>nbShildPlayerLeft) {player.addOneMilitaryVictoryPoint();}
+        }
+        // Pour chaque Player
+        for (int numPlayer = 0; numPlayer < this.nbPlayers; numPlayer++) {
+            // Les shilds avec cornes sont supprimé
+            this.playerList.get(numPlayer).looseWarCorn();
+        }
+
+
+    }
 
     public ArrayList<ConflictTokens> settingConflictTokens() {
         // Calcul du nombre de ConflictTokens
@@ -145,13 +217,7 @@ public class Game {
     }
 
 
-    public int getnNbConfict() {
-        int nbConflit = 0;
-        for (ConflictTokens conflictTokens : this.conflictTokensList){
-            if (conflictTokens.getIsWar())  {nbConflit++;}
-        }
-        return nbConflit;
-    }
+
 
 
     public boolean isGameOver() {
@@ -256,7 +322,6 @@ public class Game {
 
             CardType ct =  theCard.front;
             CardBack cb = theCard.back;
-            WonderHold w = theCard.back.wonderDeck;
 
             System.out.println(
                     "Deck : "+civilisationName+" \n"
@@ -268,10 +333,9 @@ public class Game {
                     + ct.laurelCount +" - "+ ct.cat +" - "+ ct.imageResource
                     + "]"
 
-                    + "\n   back=[" + cb.centralDeck + " - " + cb.wonderDeck
+                    + "\n   back=[" + cb.centralDeck
                     + "]"
 
-                    + "\n           [" + (cb.wonderDeck!=null ? w.displayName + " - " + w.frenchName + " - " + w.effectDescription : "Pas de wonders")
                     + "]"
 
             + "\n");

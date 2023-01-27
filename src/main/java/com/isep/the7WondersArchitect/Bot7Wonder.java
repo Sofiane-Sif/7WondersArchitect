@@ -237,7 +237,7 @@ public class Bot7Wonder extends Player {
         // recup ls cartes dispo
         listCardICanPiocher.add(deckPlayer.get(0));
         listCardICanPiocher.add(deckRightPlayer.get(0));
-        if(!(super.cat == null)) {centraldeck.add(deckPlayer.get(0));}
+        if(super.haveTheCat()) {centraldeck.add(deckPlayer.get(0));}
 
         System.out.println(deckRightPlayer.get(0).front.cardCategory);
 
@@ -252,6 +252,7 @@ public class Bot7Wonder extends Player {
     //fonction permettant de faire le meilleur choix possible
     //Pour cela j'aurais besoin d'avoir l'état actuel du jeu
     //et la liste de toutes les actions
+
 }
 
 
