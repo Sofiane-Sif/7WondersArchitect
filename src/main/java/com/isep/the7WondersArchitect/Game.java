@@ -39,6 +39,8 @@ public class Game {
     private List<Card> centralDeck = new ArrayList<>();
     //private boolean gameOver = false;
     private int numPlayerTurn = 0;
+    // Soit que des Player - Soit 1 Player et que des bots
+    private boolean haveBot = false;
 
     /* _______ */
     /* Getters */
@@ -53,10 +55,13 @@ public class Game {
 
     public List<Card> getCentralDeck() {return this.centralDeck;}
 
+    public boolean isBotModActived() {return this.haveBot;}
+
     /* _______ */
     /* Setters */
     /* _______ */
 
+    public void selectBotMod() {this.haveBot=true;}
 
     /* ______ */
     /* Adders */
@@ -64,6 +69,13 @@ public class Game {
     public void addPlayer(String name, int age, String civilisationName) {
         // Alexandrie, Halicarnasse, Ephese, Olympie, Babylone, Rhodes, Gizeh
         Player newPlayer = new Player(name, age);
+        newPlayer.setCivilisationName(civilisationName);
+        this.playerList.add(newPlayer);
+    }
+
+    public void addBot(String name, int age, String civilisationName) {
+        // Alexandrie, Halicarnasse, Ephese, Olympie, Babylone, Rhodes, Gizeh
+        Bot7Wonder newPlayer = new Bot7Wonder(name, age);
         newPlayer.setCivilisationName(civilisationName);
         this.playerList.add(newPlayer);
     }

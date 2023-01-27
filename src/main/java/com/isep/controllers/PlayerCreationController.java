@@ -1,5 +1,6 @@
 package com.isep.controllers;
 
+import com.isep.items.wonders.Wonders;
 import com.isep.the7WondersArchitect.Game;
 import com.isep.the7WondersArchitect.Player;
 import javafx.event.Event;
@@ -8,7 +9,11 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class PlayerCreationController extends ControlleurBase {
 
@@ -31,6 +36,8 @@ public class PlayerCreationController extends ControlleurBase {
     @FXML
     private HBox hBoxCiv;
 
+    @FXML CheckBox CheckBoxWonderSelection;
+
     // Attribut de la class
     private String civilisationChoice;
 
@@ -39,15 +46,22 @@ public class PlayerCreationController extends ControlleurBase {
 
     @FXML
     public void initialize() {
-        // Recuperation du nombre de Player créé et un nombre total de player
-        this.nbPlayerCreate = Game.option.getPlayerList().size() + 1;
-        this.nbPlayer = Game.option.getNbPlayers();
-        infoNbHeroe.setText("Joueur " + this.nbPlayerCreate + "/" + this.nbPlayer);
-        // Changement du texte du bouton play
-        if (this.nbPlayerCreate >= this.nbPlayer) next.setText("Jouer");
-        else next.setText("Joueur Suivant");
-        // On retire les wonders déjà choisi
-        this.hideWonderSelected();
+
+        if (!Game.option.isBotModActived()) {
+            // Recuperation du nombre de Player créé et un nombre total de player
+            this.nbPlayerCreate = Game.option.getPlayerList().size() + 1;
+            this.nbPlayer = Game.option.getNbPlayers();
+            infoNbHeroe.setText("Joueur " + this.nbPlayerCreate + "/" + this.nbPlayer);
+            // Changement du texte du bouton play
+            if (this.nbPlayerCreate >= this.nbPlayer) next.setText("Jouer");
+            else next.setText("Joueur Suivant");
+            // On retire les wonders déjà choisi
+            this.hideWonderSelected();
+        }
+        else {
+            infoNbHeroe.setText("One Player VS Bots");
+            next.setText("Jouer");
+        }
     }
 
 
@@ -111,16 +125,41 @@ public class PlayerCreationController extends ControlleurBase {
         int age;
         try {age = Integer.parseInt(this.spinnerAge.getEditor().getText().trim());}
         catch (NumberFormatException ignored) {this.labelError.setText("Erreur sur l'âge"); return;}
-        // Verification de civilisationChoice
-        if (this.civilisationChoice == null) {this.labelError.setText("civilisation non selectionné"); return;}
+
         // Verification du nom du player
         String name = nameHeroe.getText();
         if (Objects.equals(name, "")) {this.labelError.setText("Nom inexistant"); return;}
+
+        // Verification de civilisationChoice
+        if (this.civilisationChoice == null) {this.labelError.setText("civilisation non selectionné"); return;}
+
+
+        //System.out.println("Choose :" + this.civilisationChoice);
         // Création du player
         Game.option.addPlayer(name, age, this.civilisationChoice);
         // Changement de scene
-        if (this.nbPlayerCreate < this.nbPlayer) {super.loadPage("playerCreation");}
-        else {super.loadPage("game");}
+        if (!Game.option.isBotModActived()) {
+            if (this.nbPlayerCreate < this.nbPlayer) {
+                super.loadPage("playerCreation");
+            } else {
+                super.loadPage("game");
+            }
+        }
+        else {this.createBot();}
+    }
+
+    private void createBot() {
+        // Creation des bots
+        for (int nbBot = 1; nbBot < Game.option.getNbPlayers(); nbBot++) {
+            // Selection d'une wonder aleatoire
+            List<Wonders> wondersList = List.of(Wonders.values());
+            Random rand = new Random();
+            int randomIndex = rand.nextInt(wondersList.size());
+            this.civilisationChoice = wondersList.get(randomIndex).name();
+            // Dans cette config, le Player commence avant les bots
+            Game.option.addBot("Bot-"+nbBot, 200, this.civilisationChoice);
+        }
+        super.loadPage("game");
     }
 
 

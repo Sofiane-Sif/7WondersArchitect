@@ -36,9 +36,9 @@ public abstract class ControlleurBase {
             this.isInit = true;
             // Full screen
             Stage window = ((Stage) stageAP.getScene().getWindow());
-            window.setFullScreen(true);
-            window.setResizable(false);
-            window.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+            //window.setFullScreen(true);
+            //window.setResizable(false);
+            //window.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
             // Aggrandi l'image au max
             background.setFitWidth(stageAP.getWidth());
             background.setFitHeight(stageAP.getHeight());

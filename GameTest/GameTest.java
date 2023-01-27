@@ -26,7 +26,7 @@ public class GameTest {
         player.createDeckPlayer();
 
         // Mise en plae du jeu
-        game.settingCat();
+        game.createCat();
         game.settingConflictTokens();
         game.settingProgressTokens();
         game.settingCentralDeck();
@@ -55,10 +55,10 @@ public class GameTest {
 
 
         assertEquals(3, game.settingConflictTokens().size()); //2 joueurs = 3 Conflict Tokens
-        assertEquals(false,game.settingConflictTokens().get(0).getIsWar());
+        assertEquals(false,game.settingConflictTokens().get(0).IsInWar());
         assertEquals("images/tokens/token-conflict-peace.png",game.settingConflictTokens().get(0).getImagePathFace());
         game.settingConflictTokens().get(0).changeFace();
-        assertEquals(true,game.settingConflictTokens().get(0).getIsWar());
+        assertEquals(true,game.settingConflictTokens().get(0).IsInWar());
 
         System.out.println(game.settingProgressTokens());
         assertTrue(game.settingProgressTokens().size() > 5);
