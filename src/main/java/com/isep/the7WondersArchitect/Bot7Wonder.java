@@ -49,7 +49,6 @@ public class Bot7Wonder extends Player {
 
             //pioche carte deck milieu
             carteSelect = gameState.getCentralDeck().get(0);
-            return;
         }
 
         //si step == ressources identiques
@@ -133,6 +132,9 @@ public class Bot7Wonder extends Player {
                     return;
                 }
             }
+
+            //pioche carte deck milieu
+            carteSelect = gameState.getCentralDeck().get(0);
         }
 
         //si step == ressources différentes
@@ -217,6 +219,9 @@ public class Bot7Wonder extends Player {
                     return;
                 }
             }
+
+            //pioche carte deck milieu
+            carteSelect = gameState.getCentralDeck().get(0);
         }
     }
 
@@ -247,9 +252,6 @@ public class Bot7Wonder extends Player {
     //fonction permettant de faire le meilleur choix possible
     //Pour cela j'aurais besoin d'avoir l'état actuel du jeu
     //et la liste de toutes les actions
-
-    //ia agressive / ia passive ...
-    //random entre 1 2 ou 3
 
 }
 
