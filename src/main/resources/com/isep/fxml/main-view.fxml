@@ -2,6 +2,7 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.image.Image?>
@@ -39,6 +40,7 @@
             </ImageView>
             <Button layoutX="599.0" layoutY="443.0" onAction="#startGameTest" prefHeight="42.0" prefWidth="157.0" text="GameTest - Admin" />
             <Button layoutX="211.0" layoutY="443.0" mnemonicParsing="false" onAction="#exitGame" text="Quitter le jeu" />
+            <CheckBox fx:id="CheckBoxBot" layoutX="376.0" layoutY="415.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="146.0" text="1 Player and all Bots ?" />
          </children>
       </AnchorPane>
    </children>

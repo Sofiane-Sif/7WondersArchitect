@@ -234,7 +234,7 @@ public class Bot7Wonder extends Player {
         listCardICanPiocher.add(deckRightPlayer.get(0));
         if(super.haveTheCat()) {centraldeck.add(deckPlayer.get(0));}
 
-        System.out.println(deckRightPlayer.get(0).front.cardCategory);
+        //System.out.println(deckRightPlayer.get(0).front.cardCategory);
 
         chooseBestAction(listCardICanPiocher) ;
     }

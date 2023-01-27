@@ -33,7 +33,7 @@ class PlayerTest {
         player.createDeckPlayer();
 
         // Mise en plae du jeu
-        game.settingCat();
+        game.createCat();
         game.settingConflictTokens();
         game.settingProgressTokens();
         game.settingCentralDeck();

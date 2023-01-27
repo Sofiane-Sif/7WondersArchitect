@@ -2,6 +2,7 @@ package com.isep.controllers;
 
 import com.isep.the7WondersArchitect.Game;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
 import javafx.stage.Stage;
 
@@ -10,6 +11,9 @@ public class MainController extends ControlleurBase {
 
     @FXML
     private Slider sliderNbPlayers;
+
+    @FXML
+    private CheckBox CheckBoxBot;
 
     @FXML
     public void initialize() {
@@ -28,6 +32,10 @@ public class MainController extends ControlleurBase {
     protected void startGame() {
         // Récureration du nombre de heros pour la partie
         int nbHeroesChoose = (int) sliderNbPlayers.getValue();
+        // Si bot choice select
+        if (this.CheckBoxBot.isSelected()) {
+            Game.option.selectBotMod();
+        }
         Game.option.setNbPlayers(nbHeroesChoose);
         // Chargement de la nouvelle scene
         super.loadPage("playerCreation");
