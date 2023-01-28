@@ -118,7 +118,8 @@
                         <Label id="labelNbCard" contentDisplay="CENTER" disable="true" layoutY="120.0" prefWidth="100.0" text="20" textAlignment="CENTER">
                            <font>
                               <Font size="24.0" />
-                           </font></Label>
+                           </font>
+                        </Label>
                         <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
                         <ImageView id="labelIcon" fitHeight="110.0" fitWidth="270.0" layoutY="160.0" pickOnBounds="true">
                            <image>
@@ -352,7 +353,7 @@
                               </Label>
                            </children>
                         </GridPane>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="25.0" prefWidth="100.0" text="Player 5" textAlignment="CENTER" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="25.0" prefWidth="270.0" text="Player 5" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="62.0" layoutY="496.0" visible="false">
@@ -596,7 +597,7 @@
                               </Label>
                            </children>
                         </GridPane>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="25.0" prefWidth="100.0" text="Player 1" textAlignment="CENTER" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="25.0" prefWidth="270.0" text="Player 1" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="5.0" layoutY="146.0" visible="false">
@@ -840,7 +841,7 @@
                               </Label>
                            </children>
                         </GridPane>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="25.0" prefWidth="100.0" text="Player 4" textAlignment="CENTER" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="25.0" prefWidth="270.0" text="Player 4" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="300.0" layoutY="55.0" visible="false">
@@ -1084,7 +1085,7 @@
                               </Label>
                            </children>
                         </GridPane>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="25.0" prefWidth="100.0" text="Player 6" textAlignment="CENTER" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="25.0" prefWidth="270.0" text="Player 6" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="612.0" layoutY="55.0" visible="false">
@@ -1328,7 +1329,7 @@
                               </Label>
                            </children>
                         </GridPane>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="25.0" prefWidth="100.0" text="Player 2" textAlignment="CENTER" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="25.0" prefWidth="270.0" text="Player 2" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="959.0" layoutY="167.0" prefWidth="227.0" visible="false">
@@ -1572,7 +1573,7 @@
                               </Label>
                            </children>
                         </GridPane>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="25.0" prefWidth="100.0" text="Player 3" textAlignment="CENTER" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="25.0" prefWidth="270.0" text="Player 3" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="790.0" layoutY="513.0" visible="false">
@@ -1816,7 +1817,7 @@
                               </Label>
                            </children>
                         </GridPane>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="25.0" prefWidth="100.0" text="Player 7" textAlignment="CENTER" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="25.0" prefWidth="270.0" text="Player 7" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
                </children>
@@ -1850,14 +1851,109 @@
                   </Label>
                </children>
             </AnchorPane>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="525.0" layoutY="375.0" mnemonicParsing="false" onAction="#onStartGameButton" prefHeight="62.0" prefWidth="270.0" text="Commencer la partie" textAlignment="CENTER" textFill="#b13333" underline="true">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button focusTraversable="false" layoutX="1100.0" layoutY="10.0" mnemonicParsing="false" onAction="#onMenuButtonClick" text="Menu principal" />
+            <AnchorPane fx:id="anchorPaneScore" layoutX="325.0" layoutY="217.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+               <children>
+                  <ImageView fitHeight="780.0" fitWidth="580.0" layoutX="10.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/background/grilleScore.png" />
+                     </image>
+                  </ImageView>
+                  <HBox layoutX="80.0" layoutY="20.0" prefHeight="331.0" prefWidth="504.0">
+                     <children>
+                        <VBox>
+                           <children>
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" text="A" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" text="B" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                              <Label id="labelScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="73.0" textAlignment="CENTER" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <ImageView fitHeight="330.0" fitWidth="300.0" layoutX="10.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/background/grilleScorelogo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="523.0" layoutY="369.0" mnemonicParsing="false" onAction="#onStartGameButton" prefHeight="62.0" prefWidth="270.0" text="Commencer la partie" textAlignment="CENTER" textFill="#b13333" underline="true">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Button>
-      <Button focusTraversable="false" layoutX="1073.0" layoutY="30.0" mnemonicParsing="false" onAction="#onMenuButtonClick" text="Menu principal" />
    </children>
    <stylesheets>
       <URL value="@../css/common-style.css" />

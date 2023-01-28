@@ -4,6 +4,11 @@
     -fx-font-size: 12px;
 }
 
+#labelScore {
+    -fx-font-size: 30px;
+    -fx-text-fill: black;
+}
+
 .labelIcon {
     -fx-font-size: 18px;
     -fx-text-fill: linear-gradient(to bottom right, white, black);
@@ -35,4 +40,16 @@
 
 .selectCat {
     -fx-effect: dropshadow( three-pass-box , rgba(50, 200, 255, 0.4) , 50, 0.8 , 0 , 0 );
+}
+
+.selectWinner {
+    -fx-effect: dropshadow( three-pass-box , rgb(10, 240, 10), 30, 0.7 , 0 , 0 );
+}
+
+.selectWinnerWonder {
+    -fx-effect: dropshadow( three-pass-box , rgb(10, 240, 10), 10, 0.3 , 0 , 0 );
+}
+
+.selectPlayerbot {
+    -fx-effect: dropshadow( three-pass-box , rgb(50, 200, 255), 5, 0.2 , 0 , 0 );
 }

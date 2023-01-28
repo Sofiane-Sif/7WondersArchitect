@@ -5,9 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
+/**
+ * MainApplication est la Class qui permet de démarage du jeu
+ */
 public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {

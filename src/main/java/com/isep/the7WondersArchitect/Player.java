@@ -3,7 +3,6 @@ package com.isep.the7WondersArchitect;
 import com.isep.items.cards.*;
 import com.isep.items.cat.Cat;
 import com.isep.items.wonders.Wonders;
-
 import java.util.*;
 
 public class Player {
@@ -17,14 +16,12 @@ public class Player {
     protected final List<Card> deckPlayer = new ArrayList<>();
     protected Card cardInIsHand = null;
     // Ressources Player
-
     protected final List<Card> materialCardList = new ArrayList<>();
     protected final List<Card> scienceCardList = new ArrayList<>();
     protected final List<Card> warCardList = new ArrayList<>();
     protected final List<Card> politicCardList = new ArrayList<>();
-
-    // Autre
-    protected final List<Card> progressTokenList = new ArrayList<>();
+    // Autres
+    protected final List<Card> progressTokenList = new ArrayList<>(); // Not implement
     protected int militaryVictoryPoint = 0;
     protected Cat cat = null;
 
@@ -35,17 +32,58 @@ public class Player {
     }
 
     public void setCat(Cat cat) {this.cat=cat;}
-    public boolean haveTheCat() {return cat != null;}
-
     public void setCivilisationName(String civilisationName) {this.civilisationName=civilisationName;}
+    public boolean haveTheCat() {return cat != null;}
+    public void addOneMilitaryVictoryPoint() {this.militaryVictoryPoint++;}
+
 
     public String getName() {return this.name;}
     public String getCivilisationName() {return this.civilisationName;}
     public Wonders getWonder() {return this.wonder;}
     public List<Card> getDeckPlayer() {return this.deckPlayer;}
-
     public int getAge() {return this.age;}
-
+    public String getTypeCardInIsHand() {return this.cardInIsHand.front.cardDisplayName;}
+    public List<Card> getScienceCardList() {return this.scienceCardList;}
+    public int getNbRessource(String materialName){return this.getNbValueCard(this.materialCardList, materialName);}
+    public int getNbScience(String scienceName){return this.getNbValueCard(this.scienceCardList, scienceName);}
+    public int getNbShildPeace(){return this.getNbShildType(true);}
+    public int getNbShildWar(){return this.getNbShildType(false);}
+    public int getTotNbShild() {return this.getNbShildPeace()+this.getNbShildWar();}
+    public int getmilitaryVictoryPoint() {return this.militaryVictoryPoint;}
+    public int getNbPolilicPoint(){
+        int numRessource = 0;
+        for (Card card: this.politicCardList) {
+            String[] type = card.front.cardDisplayName.split(":");
+            numRessource += card.front.laurelCount;
+        }
+        return numRessource;
+    }
+    public String getCardInIsHandImgPath() {
+        // Recuperation de l'image de la carte
+        String imgPath = this.cardInIsHand.front.imageResource;
+        // Vide la main du Player
+        this.cardInIsHand = null;
+        // Retourne le path pour l'afficher dans la defausse
+        return imgPath;
+    }
+    private int getNbValueCard(List<Card> lstCard, String scienceName) {
+        int numRessource = 0;
+        for (Card card: lstCard) {
+            String[] type = card.front.cardDisplayName.split(":");
+            if (Objects.equals(type[1], scienceName)) {numRessource++;}
+        }
+        return numRessource;
+    }
+    private int getNbShildType(boolean isCenturion){
+        int numRessource = 0;
+        for (Card card: this.warCardList) {
+            String[] type = card.front.cardDisplayName.split(":");
+            if (isCenturion == Objects.equals(type[1], "centurion")) {
+                numRessource += card.front.shieldCount;
+            }
+        }
+        return numRessource;
+    }
 
 
     public List<Card> createDeckPlayer() {
@@ -65,13 +103,16 @@ public class Player {
         return this.deckPlayer;
     }
 
-
     public Wonders createWonder() {
         this.wonder = Wonders.valueOf(this.civilisationName);
         return this.wonder;
     }
 
 
+    /**
+     * @param nameCivSelect nom de la civilisation du deck voulu
+     * @return le path de l'image choisi
+     */
     public String piocheCarte(String nameCivSelect) {
         // Recuperation du Carddeck
         List<Card> cardListDeckChoose = Game.option.getCentralDeck();
@@ -83,15 +124,13 @@ public class Player {
         }
         // Pioche et recupere la permiere carte du deck
         try {this.cardInIsHand = cardListDeckChoose.get(0);}
-        catch (Exception e) {
+        catch (Exception e) { // Plus d'erreur normalement
             System.out.println("\n"+this.name);
             System.out.println(this.civilisationName);
             System.out.println(this.cardInIsHand);
         }
-
         // enleve la carte du deck
         cardListDeckChoose.remove(this.cardInIsHand);
-
         // Ajout de la carte dans la bonne liste de carte
         switch (this.cardInIsHand.front.cardCategory) {
             case MaterialCard ->  this.materialCardList.add(this.cardInIsHand);
@@ -99,7 +138,6 @@ public class Player {
             case WarCard -> this.warCardList.add(this.cardInIsHand);
             case PoliticCard -> this.politicCardList.add(this.cardInIsHand);
         }
-
         // S'il y a encore des cartes dans le deck
         if ((cardListDeckChoose.size()>0)) {
             // Revoi la carte suivante pour remplacer l'affichage
@@ -109,82 +147,21 @@ public class Player {
         // Sinon on affiche le dos de la carte
         if (!Objects.equals(nameCivSelect, "CentralDeck")) {return this.cardInIsHand.back.imgBackPath;}
         else {return "images/cards/card-back/card-back-none.png";}
-
-
-
-
-
     }
 
-    public String getCardInIsHandImgPath() {
-        // Recuperation de l'image de la carte
-        String imgPath = this.cardInIsHand.front.imageResource;
-        // Vide la main du Player
-        this.cardInIsHand = null;
-        // Retourne le path pour l'afficher dans la defausse
-        return imgPath;
 
-    }
-
-    public String getTypeCardInIsHand() {return this.cardInIsHand.front.cardDisplayName;}
-
-    public List<Card> getMaterialCardList() {return this.materialCardList;}
-    public List<Card> getScienceCardList() {return this.scienceCardList;}
-    public List<Card> getWarCardList() {return this.warCardList;}
-    public List<Card> getPoliticCardList() {return this.politicCardList;}
-
-
-
-    private int getNbValueCard(List<Card> lstCard, String scienceName) {
-        int numRessource = 0;
-        for (Card card: lstCard) {
-            String[] type = card.front.cardDisplayName.split(":");
-            if (Objects.equals(type[1], scienceName)) {numRessource++;}
-        }
-        return numRessource;
-    }
-    public int getNbRessource(String materialName){return this.getNbValueCard(this.materialCardList, materialName);}
-    public int getNbScience(String scienceName){return this.getNbValueCard(this.scienceCardList, scienceName);}
-
-
-    private int getNbShildType(boolean isCenturion){
-        int numRessource = 0;
-        for (Card card: this.warCardList) {
-            String[] type = card.front.cardDisplayName.split(":");
-            if (isCenturion == Objects.equals(type[1], "centurion")) {
-                numRessource += card.front.shieldCount;
-            }
-        }
-        return numRessource;
-    }
-
+    /**
+     * Après la guerre, toutes warsCards sont perdu
+     */
     public void looseWarCorn() {
         // Supprime toutes les Cards War avec Corne
         List<Card> filteredCards = this.warCardList.stream().filter(card ->card.front.cornCount>0).toList();
         this.warCardList.removeAll(filteredCards);
-
-    }
-    public int getNbShildPeace(){return this.getNbShildType(true);}
-    public int getNbShildWar(){return this.getNbShildType(false);}
-
-    public int getTotNbShild() {return this.getNbShildPeace()+this.getNbShildWar();}
-
-
-    public int getNbPolilicPoint(){
-        int numRessource = 0;
-        for (Card card: this.politicCardList) {
-            String[] type = card.front.cardDisplayName.split(":");
-            numRessource += card.front.laurelCount;
-        }
-        return numRessource;
     }
 
-    public int getmilitaryVictoryPoint() {return this.militaryVictoryPoint;}
-    public void addOneMilitaryVictoryPoint() {this.militaryVictoryPoint++;}
-
-
-
-
+    /**
+     * Le Player à pris une carte. Action à faire en fonction du type de la carte
+     */
     public void usePowerCard() {
         // Lecture du type de la carte choisi
         String typeCard = this.getTypeCardInIsHand();
@@ -200,10 +177,10 @@ public class Player {
         }
     }
 
-
-
-
-
+    /**
+     * Si une carte grise est pioché : on verifie si un étage peut être construit.
+     * Si oui et selon les conditions on construit et on taxte le Player en ressources
+     */
     private void wonderConstruction() {
         /*
         Quand pour un etage il y a plusieurs pieces, c'est dans l'ordre que l'on veut -- NOT IMPLEMENT
@@ -220,16 +197,13 @@ public class Player {
         List<?> lstInfo = wonder.getInfoConstruction(wonder.countNbStepBuid());
         int nbRessourceNeed = (int) lstInfo.get(0);
         boolean isEqualRessource = (boolean) lstInfo.get(1);
-
         // Affiche la condition et les ressources dispos
         //printOmplype("\nCondition suivante : " + nbRessourceNeed + " resources pareil ? " + isEqualRessource);
         //printOmplype("- Ressource base");
         //for (Card c: this.materialCardList){printOmplype(c.front.cardDisplayName+" - ", true);}
         //printOmplype("");
-
         // Recherche et prelevement du prix de la construction si ok
         boolean canBuild = false;
-
         // nbRessource pareil
         if(isEqualRessource) {
             // Nombre de pieces d'or
@@ -284,7 +258,6 @@ public class Player {
                 }
             }
          }
-
         // nbRessource differentes
         else {
             // Pour chaque materiaux -> Compte le nombre de ressources differents dans materialCardList
@@ -322,11 +295,40 @@ public class Player {
                 //for (Card c: this.materialCardList){System.out.print(c.front.cardDisplayName+" - ");}
                 //System.out.println("_____ : " + this.materialCardList.size());
             }
-
         }
         if (canBuild) {
             this.wonder.buildWonderLevel(this.wonder.countNbStepBuid());
         }
     }
+
+
+    /**
+     * @return Nombre de point obtenu par étage construit
+     */
+    public int countWonderBuildPoint() {
+        int wonderPoint = 0;
+        List<Integer> listPoint = this.wonder.getListStepPoints();
+        List<Boolean> listSteps = this.wonder.getLevelCivByStep();
+        for (int index = 0; index < listPoint.size(); index++) {
+            if (listSteps.get(index)) {wonderPoint+=listPoint.get(index);}
+        }
+        return wonderPoint;
+    }
+
+    /**
+     * @return ensemble des points du player dans une list de String
+     */
+    public List<String> countMyScore() {
+        Integer scoreRedCard = this.getmilitaryVictoryPoint(); // Points conflits
+        Integer scoreWonder = this.countWonderBuildPoint(); // Points cartes bleu
+        Integer scoreBlueCard = this.getNbPolilicPoint(); // Points WonderCiv
+        Integer scoreGreenCard = this.getScienceCardList().size() * 2; // Point carte vert car progressToken non implementé
+        Integer scoreCat = this.haveTheCat() ? 2:0;
+        Integer totalScore = scoreRedCard + scoreWonder + scoreBlueCard + scoreGreenCard + scoreCat;
+
+        return List.of(scoreRedCard.toString(), scoreWonder.toString(), scoreBlueCard.toString()
+                      ,scoreGreenCard.toString(), (this.haveTheCat() ? "2":""), totalScore.toString());
+    }
+
 
 }

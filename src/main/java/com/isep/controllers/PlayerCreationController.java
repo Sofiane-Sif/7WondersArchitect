@@ -47,6 +47,9 @@ public class PlayerCreationController extends ControlleurBase {
     @FXML
     public void initialize() {
 
+        this.screenElements.setScaleX(1.5);
+        this.screenElements.setScaleY(1.5);
+
         if (!Game.option.isBotModActived()) {
             // Recuperation du nombre de Player créé et un nombre total de player
             this.nbPlayerCreate = Game.option.getPlayerList().size() + 1;
@@ -87,16 +90,23 @@ public class PlayerCreationController extends ControlleurBase {
         ImageView imgCiv = (ImageView) event.getSource();
         // Recupère le nom de la Wonder
         this.civilisationChoice = imgCiv.getId();
-        // Deselection du temoin de selection pour tous sauf celui choisi
-        for (Node child: this.hBoxCiv.getChildren()) {
-            ImageView imageView = (ImageView) child;
-            imageView.getStyleClass().remove("imgCivIsSelect");
-        }
+        this.deselectAllWonders(null);
         // Temoin de selection
         imgCiv.getStyleClass().add("imgCivIsSelect");
         // Dezoom
         imgCiv.setScaleX(1);
         imgCiv.setScaleY(1);
+        // Deselection du random Choice
+        this.CheckBoxWonderSelection.setSelected(false);
+    }
+
+    @FXML
+    protected void deselectAllWonders(Event event) {
+        // Deselection du temoin de selection pour tous sauf celui choisi
+        for (Node child: this.hBoxCiv.getChildren()) {
+            ImageView imageView = (ImageView) child;
+            imageView.getStyleClass().remove("imgCivIsSelect");
+        }
     }
 
     /** Quand la sourie rentre dans une image */

@@ -18,4 +18,5 @@ module com.isep.the7wondersarchitect {
     exports com.isep.items.cards;
     exports com.isep.items.wonders;
     exports com.isep.items.conflictToken;
+    exports com.isep.items.cat;
 }

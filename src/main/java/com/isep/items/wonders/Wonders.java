@@ -1,15 +1,11 @@
 package com.isep.items.wonders;
 
-import com.isep.MainApplication;
 import com.isep.controllers.ControlleurBase;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.*;
 import java.util.function.Predicate;
 
@@ -17,32 +13,39 @@ public enum Wonders {
 
 	Alexandrie("Alexandrie", "Alexandrie",
 			"Prenez la premi�re carte d'une pioche au choix, n'importe o� sur la table, et posez-la devant vous",
-			5,-1, 0, 0),
+			5,-1, 0, 0,
+			Arrays.asList(4, 3, 6, 5, 7)),
 
 	Halicarnasse("Halicarnasse", "Halicarnasse", //
 			"Prenez les 5 premi�res cartes de la pioche � votre gauche ou � votre droite, choisissez-en 1 et posez-la devant vous" //
 			+ "M�langez-les cartes restantes dans leur pioche",
-			4, 1, 2, 3),
+			4, 1, 2, 3,
+			Arrays.asList(3, 3, 6, 5, 7)),
 
 	Ephese("Ephese", "Eph�se", //
 			"Prenez la premi�re carte de la pioche centrale et posez-la devant vous",
-			3, 1, 3, 10),
+			3, 1, 3, 10,
+			Arrays.asList(3, 3, 5, 4, 7)),
 
 	Olympie("Olympie", "Olympie", //
 			"Prenez la premi�re carte de la pioche � votre cauche et de celle � votre droite, et posez-les devant vous",
-			4, 2, 2, 0),
+			4, 2, 2, 0,
+			Arrays.asList(3, 5, 2, 5, 7)),
 
 	Babylone("Babylone", "Babylone", //
 			"Choisissez 1 jeton Progr�s parmi les 4 disponibles, et posez-le devant vous",
-			4, 0, 2, 5),
+			4, 0, 2, 5,
+			Arrays.asList(3, 0, 5, 5, 7)),
 
 	Rhodes("Rhodes", "Rhodes", //
 			"Ajoutez 1 Bouclier � votre total de Boucliers",
-			4, 3,  2, 10),
+			4, 3,  2, 10,
+			Arrays.asList(4, 4, 5, 6, 7)),
 
 	Gizeh("Gizeh", "Gizeh", //
 			"Cette merveille n'a pas d'effet particulier, mais rapporte plus de points de victoire que les autres Merveilles",
-			5, -1, 0, 0);
+			5, -1, 0, 0,
+			Arrays.asList(4, 5, 6, 7, 8));
 
 	// ------------------------------------------------------------------------
 
@@ -57,6 +60,7 @@ public enum Wonders {
 	private final Integer numMultiLine;
 	private final Integer nbCase;
 	private final Integer padding;
+	private final List<Integer> listStepPoints;
 
 	// Autre parametres non input
 	//private int levelCiv = 0;
@@ -65,7 +69,7 @@ public enum Wonders {
 	// ------------------------------------------------------------------------
 
 	Wonders(String name, String frenchName, String effectDescription,
-			int height, Integer numMultiLine, Integer nbCase, Integer padding) {
+			int height, Integer numMultiLine, Integer nbCase, Integer padding, List<Integer> listStepPoints) {
 		this.name = name;
 		this.frenchName = frenchName;
 		this.effectDescription = effectDescription;
@@ -74,12 +78,17 @@ public enum Wonders {
 		this.numMultiLine = numMultiLine;
 		this.nbCase = nbCase;
 		this.padding = padding;
+		this.listStepPoints = listStepPoints;
 	}
 
 
+	public List<Integer> getListStepPoints() {return this.listStepPoints;}
+	public List<Boolean> getLevelCivByStep() {return this.levelCivByStep;}
 
-
-
+	/**
+	 * Creation de l'affichage d'une wonder pret pour l'affichage
+	 * @return Vbox contenant toutes les images de la wonder
+	 */
 	public VBox createImage() {
 		List<String> imgConstructionList = new ArrayList<>();
 		List<String> imgBuildList = new ArrayList<>();

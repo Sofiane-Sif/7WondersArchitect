@@ -4,6 +4,17 @@
     -fx-font-size: 15px;
 }
 
+#title {
+    -fx-font-size: 30px;
+    -fx-effect: dropshadow( three-pass-box , yellow, 8, 0.3 , 0 , 0 );
+    -fx-text-fill: linear-gradient(to top left, rgb(40, 30, 230) 45%, rgb(255, 19, 130));
+}
+
+#subtitle {
+    -fx-font-size: 20px;
+    -fx-effect: dropshadow( three-pass-box , yellow, 5, 0.2 , 0 , 0 );
+    -fx-text-fill: linear-gradient(to top right, rgb(40, 30, 230) 45%, rgb(255, 19, 130));
+}
 
 .imgCivIsSelect {
     -fx-effect: dropshadow( three-pass-box , rgba(250, 0, 0, 0.4) , 10, 0.8 , 0 , 0 );
@@ -11,15 +22,14 @@
 
 
 .spinner {
-    -fx-background-color: #55FF45;
-    -fx-faint-focus-color: dropshadow( three-pass-box , rgba(250, 0, 0, 0.4) , 10, 0.8 , 0 , 0 );
+    -fx-background-color: linear-gradient(#f0ff35, #a9ff00);
 }
 
 
 .spinner > .text-field {
-    -fx-background-color: linear-gradient(to bottom right, rgb(500, 255, 28), rgb(8, 255, 0));;
+    -fx-background-color: linear-gradient(to bottom right, rgb(40, 30, 230) 45%, rgb(36, 19, 130));
     -fx-font-size: 12pt;
-    -fx-text-fill: black;
+    -fx-text-fill: rgb(255, 255, 10);
     -fx-alignment: center;
 }
 

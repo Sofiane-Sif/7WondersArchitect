@@ -2,7 +2,9 @@
     -fx-font-size: 21px;
     -fx-font-family: "Rockwell Extra Bold";
    /* -fx-alignment: "center";*/
-    -fx-text-fill: linear-gradient(to bottom right, rgb(200, 200, 50), rgb(8, 225, 0));
+    /*-fx-text-fill: linear-gradient(to bottom right, rgb(200, 200, 50), rgb(8, 225, 0));*/
+
+    -fx-text-fill: linear-gradient(to bottom right, rgb(36, 19, 130), rgb(40, 30, 230));
 }
 
 
@@ -11,11 +13,11 @@
     -fx-font-size: 16px;
     -fx-background-color:
             linear-gradient(#f0ff35, #a9ff00),
-            radial-gradient(center 50% -40%, radius 200%, #b8ee36 45%, #80c800 50%);
+            radial-gradient(center 50% -40%, radius 200%, rgb(40, 30, 230) 45%, rgb(36, 19, 130) 50%);
     -fx-background-radius: 6, 5;
     -fx-background-insets: 0, 1;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
-    -fx-text-fill: #395306;
+    -fx-text-fill: rgb(255, 255, 10);
 }
 .button:hover {
     -fx-background-color: #A6AA6A;

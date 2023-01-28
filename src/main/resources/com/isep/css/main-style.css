@@ -13,6 +13,6 @@
 
 .slider > .thumb {
     -fx-shape: "M-1 0 H20 V13 H-1 z";
-    -fx-background-color: linear-gradient(to bottom right, rgb(500, 255, 28), rgb(8, 225, 0));
+    -fx-background-color: linear-gradient(to bottom right, rgb(40, 30, 230) 45%, rgb(36, 19, 130));
     -fx-background-insets: 0;
 }
