@@ -17,6 +17,8 @@ public class MainController extends ControlleurBase {
 
     @FXML
     public void initialize() {
+        this.screenElements.setScaleX(1.3);
+        this.screenElements.setScaleY(1.3);
         // Stop la musique est en cours
         try {Game.option.musiquePlayer.stopMedia();
         } catch (Exception ignored) {}

@@ -27,6 +27,9 @@ public class MusiquePlayer {
     );
 
 
+    /**
+     * Musique de fond
+     */
     public void playMedia() {
         String nameMusique = songs.get(new Random().nextInt(songs.size()));
         URL url = MainApplication.class.getResource("musiques/" + nameMusique);
@@ -34,6 +37,14 @@ public class MusiquePlayer {
         Media media = new Media(url.toString());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.play();
+    }
+
+    public void playWarAction() {
+        URL url = MainApplication.class.getResource("musiques/Shipcorn-SF.mp3");
+        assert url != null;
+        Media media = new Media(url.toString());
+        mediaPlayer = new MediaPlayer(media);
         mediaPlayer.play();
     }
 

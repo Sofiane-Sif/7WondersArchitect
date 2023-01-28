@@ -10,6 +10,10 @@ public class ProgressTokens {
 	public static final List<ProgressToken> TOKENS = createTokenList();
 	
 	// there is 1 token of each type, and 2 tokens of the same 'Culture' type
+
+	/**
+	 * @return La liste de toutes les ProgressToken
+	 */
 	private static List<ProgressToken> createTokenList() {
 		List<ProgressToken> res = new ArrayList<ProgressToken>();
 		res.addAll(Arrays.asList(ProgressToken.values()));

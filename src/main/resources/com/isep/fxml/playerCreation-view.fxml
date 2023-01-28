@@ -19,15 +19,15 @@
             <Image url="@../images/background/fond_papier.jpg" />
          </image>
       </ImageView>
-      <AnchorPane fx:id="screenElements" prefHeight="500.0" prefWidth="900.0">
+      <AnchorPane fx:id="screenElements" layoutX="47.0" layoutY="14.0" prefHeight="500.0" prefWidth="900.0">
          <children>
-            <TextField fx:id="nameHeroe" alignment="CENTER" layoutX="363.0" layoutY="345.0" onAction="#onCreatePlayerClick" promptText="Player Name">
+            <TextField fx:id="nameHeroe" alignment="CENTER" layoutX="363.0" layoutY="365.0" onAction="#onCreatePlayerClick" promptText="Player Name" scaleShape="false">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Label fx:id="labelError" alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="432.0" prefHeight="18.0" prefWidth="515.0" />
-            <Label id="labelSpinner" contentDisplay="RIGHT" layoutX="372.0" layoutY="389.0" prefHeight="18.0" prefWidth="155.0" text="Age">
+            <Label fx:id="labelError" alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="444.0" prefHeight="18.0" prefWidth="515.0" />
+            <Label id="labelSpinner" contentDisplay="RIGHT" layoutX="372.0" layoutY="407.0" prefHeight="18.0" prefWidth="155.0" text="Age">
                <font>
                   <Font size="18.0" />
                </font>
@@ -35,15 +35,15 @@
                   <Spinner id="arrow-button" fx:id="spinnerAge" amountToStepBy="1" editable="true" initialValue="21" max="120" min="1" prefHeight="1.0" prefWidth="117.0" />
                </graphic>
             </Label>
-            <HBox layoutX="346.0" layoutY="456.0" spacing="20.0">
+            <HBox layoutX="346.0" layoutY="467.0" spacing="20.0">
                <children>
                   <Button onAction="#onMenuButtonClick" prefHeight="37.0" prefWidth="104.0" text="retour" />
                   <Button fx:id="next" onAction="#onCreatePlayerClick" prefHeight="37.0" prefWidth="168.0" text="playerCreation" />
                </children>
             </HBox>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="349.0" layoutY="9.0" prefHeight="18.0" prefWidth="223.0" text="Création des joueurs" />
-            <Label fx:id="infoNbHeroe" alignment="CENTER" contentDisplay="CENTER" layoutX="411.0" layoutY="32.0" text="Héros Ni / N" />
-            <HBox fx:id="hBoxCiv" layoutX="147.0" layoutY="65.0" spacing="15.0">
+            <Label id="title" alignment="CENTER" contentDisplay="CENTER" layoutX="216.0" layoutY="-5.0" prefHeight="74.0" prefWidth="489.0" text="Création des joueurs" />
+            <Label id="subtitle" fx:id="infoNbHeroe" alignment="CENTER" contentDisplay="CENTER" layoutX="341.0" layoutY="46.0" prefHeight="18.0" prefWidth="240.0" text="Héros Ni / N" textAlignment="CENTER" />
+            <HBox fx:id="hBoxCiv" layoutX="147.0" layoutY="80.0" spacing="15.0">
                <children>
                   <ImageView id="Alexandrie" fx:id="Alexandrie" fitHeight="250.0" fitWidth="400.0" onMouseClicked="#onImageCivClick" onMouseEntered="#onImageCivHoover" onMouseExited="#onImageCivQuit" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -82,7 +82,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <CheckBox fx:id="CheckBoxWonderSelection" layoutX="400.0" layoutY="320.0" mnemonicParsing="false" text="Random Wonder ?" />
+            <CheckBox fx:id="CheckBoxWonderSelection" layoutX="400.0" layoutY="337.0" mnemonicParsing="false" onAction="#deselectAllWonders" selected="true" text="Random Wonder ?" />
          </children>
       </AnchorPane>
    </children>

@@ -46,7 +46,7 @@ public class Game {
     /* _______ */
     public int getNumPlayerTurn() {return this.numPlayerTurn;}
 
-    public int getProgressTokensListSize() {return this.progressTokensList.size();}
+    public int getProgressTokensListSize() {return this.progressTokensList.size();} // Not implement
 
     public List<Player> getPlayerList() {return this.playerList;}
     public List<ConflictTokens> getConflictTokensList() {return this.conflictTokensList;}
@@ -139,7 +139,8 @@ public class Game {
                 * +1 militaryVictoryPoint
         * Toutes les cartes avec une corne vont à la défausse
          */
-
+        // Musique
+        this.musiquePlayer.playWarAction();
         // Pour chaque Player
         for (int numPlayer = 0; numPlayer < this.nbPlayers; numPlayer++) {
             Player player = this.playerList.get(numPlayer);
@@ -160,8 +161,6 @@ public class Game {
             // Les shilds avec cornes sont supprimé
             this.playerList.get(numPlayer).looseWarCorn();
         }
-
-
     }
 
     public ArrayList<ConflictTokens> settingConflictTokens() {
@@ -237,38 +236,21 @@ public class Game {
     }
 
     // Calcul le Player qui a le plsu de point : renvoi sont name et son score
-    public List<?> getWinner() {
+    public Player getWinner() {
         // info Winner
         Player winner = this.playerList.get(0);
-        String winnerName = winner.getName();
         int winnerScore = 0;
-
         // Pour chaque player on calcul son score
         for (Player player: this.playerList) {
-            int playerScore = 0;
-            // Points WonderCiv
-            // Point Cat
-            if (player.haveTheCat()) {playerScore+=2;}
-            // Points cartes bleu
-            playerScore += player.getNbPolilicPoint();
-            // Points conflits
-            playerScore += player.getmilitaryVictoryPoint();
-            // Point carte vert car progressToken non implementé
-            playerScore += player.getScienceCardList().size();
-
+            List<String> scores = player.countMyScore();
+            int totalScore = Integer.parseInt(scores.get(scores.size()-1));
             // Si Player meilleur que le dernier ou egalité mais plus de wonderStep construit
-            if (playerScore > winnerScore | (playerScore == winnerScore & player.getWonder().countNbStepBuid() > winner.getWonder().countNbStepBuid()) ) {
+            if (totalScore > winnerScore | (totalScore == winnerScore & player.getWonder().countNbStepBuid() > winner.getWonder().countNbStepBuid()) ) {
                 winner = player;
-                winnerName = winner.getName();
-                winnerScore = playerScore;
+                winnerScore = totalScore;
             }
-            // Affiche le player et son score
-            System.out.println(player.getName()+"["+player.getCivilisationName() + "] : "+playerScore+" points");
-            //System.out.print("    = "+player.getNbPolilicPoint()+" + "+player.getmilitaryVictoryPoint()+" + "+(player.getScienceCardList().size()*2)+ " +" +player.haveTheCat()+"\n");
         }
-        // return info winner
-        System.out.println("\n"+winnerName+"["+winner.getCivilisationName() + "] is the Winner with : "+winnerScore+" points");
-        return Arrays.asList(winnerName, winnerScore);
+        return winner;
     }
 
 
@@ -340,9 +322,7 @@ public class Game {
             * 1 Tas avec les (max 6) jetons conflits dont le nombre est determiné par le nombre de players
             * 1 Reserve de 28 jetons victoires militaires
             * 1 Pion chat
-            *
             */
-
 
         /**
          * Explication de la gestion des cartes
@@ -380,37 +360,24 @@ public class Game {
         String civilisationName = "CentralDeck";
         List<CardDecks.CardTypeQuantity> CardDecksCivilisation = CardsCivilisation.valueOf(civilisationName).lstCards;
         CardBack cardBackCivilisation = CardBack.valueOf(civilisationName);
-
-
-
         for (CardDecks.CardTypeQuantity c: CardDecksCivilisation) {
-
             // la carte constitué dans sa ensemble
             Card theCard = new Card(c.cardType, cardBackCivilisation);
-
             CardType ct =  theCard.front;
             CardBack cb = theCard.back;
-
             System.out.println(
                     "Deck : "+civilisationName+" \n"
-
                     + c.quantity +" - "+ ct + "\n  front=["
-
                     + ct.cardDisplayName +" - "+ ct.cardCategory +" - "+ ct.material +" - "
                     + ct.scienceCategory +" - "+ ct.shieldCount +" - "+ ct.cornCount +" - "
                     + ct.laurelCount +" - "+ ct.cat +" - "+ ct.imageResource
                     + "]"
-
                     + "\n   back=[" + cb.centralDeck
                     + "]"
-
-                    + "]"
-
             + "\n");
         }
 /*
         System.out.println("--------------------------------------------");
-
         /**
          * Fonctionnement de la gestion des jetons Progrès
          */
@@ -423,10 +390,7 @@ public class Game {
                     + "]"
             + "\n");
         }
-
-
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
-
         /**
          * Ensemble des Wonders
          */
@@ -434,14 +398,9 @@ public class Game {
         // Alexandrie, Halicarnasse, Ephese, Olympie, Babylone, Rhodes, Gizeh
         civilisationName = "Olympie";
         Wonder myWonder = Wonder.valueOf(civilisationName);
-
         System.out.println(myWonder.displayName +" - "+ myWonder.frenchName +" -\n"+ myWonder.effectDescription +"\n"+ myWonder.imagePath);
-
 */
     }
-
-
-
 
 
 

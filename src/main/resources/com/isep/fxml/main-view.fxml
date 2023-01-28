@@ -38,11 +38,11 @@
                   <Image url="@../images/background/qrCode_rules.PNG" />
                </image>
             </ImageView>
-            <Button layoutX="677.0" layoutY="443.0" onAction="#startGameTest" prefHeight="42.0" prefWidth="157.0" text="GameTest - Admin" />
+            <Button layoutX="677.0" layoutY="443.0" onAction="#startGameTest" prefHeight="42.0" prefWidth="157.0" text="GameTest - Admin" visible="false" />
             <Button layoutX="300.0" layoutY="446.0" mnemonicParsing="false" onAction="#exitGame" text="Quitter le jeu" />
             <Label alignment="CENTER" contentDisplay="RIGHT" layoutX="308.0" layoutY="406.0" prefHeight="30.0" prefWidth="283.0" style="-fx-font-size: 15;" text="Just 1 Player and all Bots ?" textAlignment="CENTER">
                <graphic>
-                  <CheckBox fx:id="CheckBoxBot" contentDisplay="CENTER" mnemonicParsing="false">
+                  <CheckBox fx:id="CheckBoxBot" contentDisplay="CENTER" mnemonicParsing="false" selected="true">
                      <font>
                         <Font size="14.0" />
                      </font>

@@ -19,10 +19,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class GameController extends ControlleurBase {
 
@@ -40,7 +37,7 @@ public class GameController extends ControlleurBase {
     private Label labelProgressToken, labelCentralDeck;
 
     @FXML
-    private AnchorPane anchorPlayers;
+    private AnchorPane anchorPlayers, anchorPaneScore;
 
     private List<AnchorPane> playerZonesList = new ArrayList<>();
 
@@ -90,7 +87,7 @@ public class GameController extends ControlleurBase {
             // Place la Wonder à Gauche du tas et au dessus du paneau ressources
             //...
             int tryInY = switch (wonderPlayer.toString()){case "Alexandrie"->-50;case"Rhodes"->-35;
-                case"Halicarnasse","Ephese"->-20; default -> 0;};
+                case"Halicarnasse","Ephese"->-20; case"Olympie"->-3; default -> 0;};
             wonderBox.setLayoutX(110);
             wonderBox.setLayoutY(tryInY);
 
@@ -110,12 +107,12 @@ public class GameController extends ControlleurBase {
             ImageView imageRessources = ((ImageView) playerZoneChildren.get(3));
             Bounds coordImg = imageRessources.getLayoutBounds();
 
-            // Affichage du nom et de la civilisation du player
+            // Affichage du nom et de la civilisation du player getCivilisationName
             Label labelPlayer = (Label) playerZoneChildren.get(5);
-            labelPlayer.setText(player.getName()+"\n"+player.getCivilisationName());
+            labelPlayer.setText(player.getCivilisationName()+" - "+player.getName());
             // Positionne le label sous sa Wonder
-            labelPlayer.setLayoutX(imageRessources.getLayoutX()+coordImg.getWidth()/3);
-            labelPlayer.setLayoutY(imageRessources.getLayoutY()-3);
+            //labelPlayer.setLayoutX(imageRessources.getLayoutX()+coordImg.getWidth()/3);
+            labelPlayer.setLayoutY(imageRessources.getLayoutY()+5);
 
             // Dezoom sur les boites de ressources !!!!!
             /*double zoom = 0.9;
@@ -376,9 +373,51 @@ public class GameController extends ControlleurBase {
 
         // Passe au player suivant ou GameOver
         Game.option.setNumPlayer();
-        if(Game.option.isGameOver()) {Game.option.getWinner();}
+        if(Game.option.isGameOver()) {this.printScore();}
         else {this.nextPlayerTurn();}
     }
+
+
+    private void printScore() {
+        // Affiche la table des scores
+        this.anchorPaneScore.setVisible(true);
+        // List des VBoxScorePlayer
+        ObservableList<Node> vBoxListScore = ((HBox) this.anchorPaneScore.getChildren().get(1)).getChildren();
+        // Pour chaque Player
+        List<Player> playerList = Game.option.getPlayerList();
+        for (int numPlayer = 0; numPlayer < playerList.size(); numPlayer++) {
+            // Recuperation du Player et de sa zone de score
+            Player player = playerList.get(numPlayer);
+            VBox zoneScore = (VBox) vBoxListScore.get(numPlayer);
+            // Liste des labelScoreList
+            ObservableList<Node> lScLst = zoneScore.getChildren();
+            // Affiche la premiere lettre de la civWonder
+            this.getLabel(lScLst, 0).setText(player.getCivilisationName().substring(0, 3));
+            // Recuperation des scores du Player
+            List<String> lstScore = player.countMyScore();
+            // Affiche les scores
+            this.getLabel(lScLst, 1).setText(lstScore.get(0));
+            this.getLabel(lScLst, 2).setText(lstScore.get(1));
+            this.getLabel(lScLst, 3).setText(lstScore.get(2));
+            this.getLabel(lScLst, 4).setText(lstScore.get(3));
+            this.getLabel(lScLst, 5).setText(lstScore.get(4));
+            this.getLabel(lScLst, 6).setText(lstScore.get(5));
+        }
+        // Recup Winner
+        Player winner = Game.option.getWinner();
+        int indexWinner = Game.option.getPlayerList().indexOf(winner);
+        // Si bot -> visibility sur le player
+        if (Game.option.isBotModActived() & indexWinner!=0) {
+            this.playerZonesList.get(0).getStyleClass().add("selectPlayerbot");
+            vBoxListScore.get(0).getStyleClass().add("selectPlayerbot");
+        }
+        // Visibility sur le Winner
+        VBox zoneWinner = (VBox) vBoxListScore.get(indexWinner);
+        zoneWinner.getStyleClass().add("selectWinner");
+        this.playerZonesList.get(indexWinner).getStyleClass().add("selectWinnerWonder");
+    }
+
+    private Label getLabel(ObservableList<Node> labelList, int index) {return (Label) labelList.get(index);}
 
 
     private void majInfoRessourcesPlayer() {
