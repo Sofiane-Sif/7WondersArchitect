@@ -82,7 +82,13 @@ public class Player {
             }
         }
         // Pioche et recupere la permiere carte du deck
-        this.cardInIsHand = cardListDeckChoose.get(0);
+        try {this.cardInIsHand = cardListDeckChoose.get(0);}
+        catch (Exception e) {
+            System.out.println("\n"+this.name);
+            System.out.println(this.civilisationName);
+            System.out.println(this.cardInIsHand);
+        }
+
         // enleve la carte du deck
         cardListDeckChoose.remove(this.cardInIsHand);
 

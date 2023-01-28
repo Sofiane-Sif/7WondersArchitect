@@ -131,8 +131,12 @@ public class PlayerCreationController extends ControlleurBase {
         if (Objects.equals(name, "")) {this.labelError.setText("Nom inexistant"); return;}
 
         // Verification de civilisationChoice
-        if (this.civilisationChoice == null) {this.labelError.setText("civilisation non selectionné"); return;}
+        if (this.civilisationChoice == null & !this.CheckBoxWonderSelection.isSelected()) {
+            this.labelError.setText("civilisation non selectionné"); return;
+        }
 
+        // Random Wonder
+        if(this.CheckBoxWonderSelection.isSelected()) {this.civilisationChoice=Game.option.chooseRandomWonder();}
 
         //System.out.println("Choose :" + this.civilisationChoice);
         // Création du player
@@ -145,22 +149,12 @@ public class PlayerCreationController extends ControlleurBase {
                 super.loadPage("game");
             }
         }
-        else {this.createBot();}
+        else {
+            Game.option.createBot();
+            super.loadPage("game");}
     }
 
-    private void createBot() {
-        // Creation des bots
-        for (int nbBot = 1; nbBot < Game.option.getNbPlayers(); nbBot++) {
-            // Selection d'une wonder aleatoire
-            List<Wonders> wondersList = List.of(Wonders.values());
-            Random rand = new Random();
-            int randomIndex = rand.nextInt(wondersList.size());
-            this.civilisationChoice = wondersList.get(randomIndex).name();
-            // Dans cette config, le Player commence avant les bots
-            Game.option.addBot("Bot-"+nbBot, 200, this.civilisationChoice);
-        }
-        super.loadPage("game");
-    }
+
 
 
     @FXML

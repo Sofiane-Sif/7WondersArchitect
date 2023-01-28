@@ -73,7 +73,7 @@
                   </ImageView>
                </children>
             </GridPane>
-            <AnchorPane layoutX="898.0" layoutY="305.0">
+            <AnchorPane disable="true" layoutX="898.0" layoutY="305.0">
                <children>
                   <VBox fx:id="vBoxProgressTokens">
                      <children>
@@ -101,14 +101,14 @@
                   </VBox>
                   <Label id="labelNbToken" fx:id="labelProgressToken" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="-3.0" layoutY="-8.0" prefHeight="50.0" prefWidth="50.0" text="100" textAlignment="CENTER">
                      <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="32.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="anchorPlayers" prefHeight="800.0" prefWidth="1250.0">
                <children>
-                  <AnchorPane layoutX="376.0" layoutY="516.0">
+                  <AnchorPane layoutX="376.0" layoutY="528.0">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>

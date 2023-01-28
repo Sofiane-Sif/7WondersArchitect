@@ -82,7 +82,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <CheckBox fx:id="CheckBoxWonderSelection" disable="true" layoutX="400.0" layoutY="320.0" mnemonicParsing="false" text="Random Wonder ?" />
+            <CheckBox fx:id="CheckBoxWonderSelection" layoutX="400.0" layoutY="320.0" mnemonicParsing="false" text="Random Wonder ?" />
          </children>
       </AnchorPane>
    </children>
