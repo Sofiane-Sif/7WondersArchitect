@@ -277,10 +277,6 @@ public class GameController extends ControlleurBase {
             // Recuperation du nameWonderDeck choose
             String civNameCard = ((Bot7Wonder) this.playerTurn).returnBestAction();
             // Recuperation de l'ImageView du deck de la civ select parmis les trois pioches possibles
-            // !!!!!!!!!!!!!!!!!!
-            // Ne fonctionne suremement -> à causes des majuscules : CentralDeck != centralDeck
-            // Ce probleme doit aussi avoir lieu dans Bot7Wonder.readGame()
-            // !!!!!!!!!!!!!!!!!!!!
             ImageView selectCardImg;
             if (Objects.equals(civNameCard, "CentralDeck")) {selectCardImg=this.imgViewCentralDeck;}
             else if (Objects.equals(civNameCard, this.playerTurn.getCivilisationName())) {selectCardImg=this.deckPlayerImg;}
@@ -486,6 +482,7 @@ public class GameController extends ControlleurBase {
             }
             int value2 = player.getNbShildWar();
             dicLabel.get("war").setText(value2+"");
+            dicLabel.get("winWar").setText(player.getmilitaryVictoryPoint()+"");
         }
     }
 

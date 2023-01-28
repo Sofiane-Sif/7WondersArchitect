@@ -4,11 +4,9 @@ import com.isep.items.cards.*;
 import com.isep.items.cat.Cat;
 import com.isep.items.conflictToken.ConflictTokens;
 import com.isep.items.progressToken.*;
+import com.isep.items.wonders.Wonders;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Game {
 
@@ -74,12 +72,7 @@ public class Game {
         this.playerList.add(newPlayer);
     }
 
-    public void addBot(String name, int age, String civilisationName) {
-        // Alexandrie, Halicarnasse, Ephese, Olympie, Babylone, Rhodes, Gizeh
-        Bot7Wonder newPlayer = new Bot7Wonder(name, age);
-        newPlayer.setCivilisationName(civilisationName);
-        this.playerList.add(newPlayer);
-    }
+
 
 
     /* ______ */
@@ -236,7 +229,7 @@ public class Game {
     public boolean isGameOver() {
         for (Player player: this.playerList) {
             if (player.getWonder().countNbStepBuid()>=5) {
-                System.out.println("\nGAME OVER\n"+player.getName()+"["+player.getCivilisationName()+"] is the winner !");
+                System.out.println("\nGAME OVER\n"+player.getName()+"["+player.getCivilisationName()+"] have buils his Wonder.\n");
                 return true;
             }
         }
@@ -246,7 +239,7 @@ public class Game {
     // Calcul le Player qui a le plsu de point : renvoi sont name et son score
     public List<?> getWinner() {
         // info Winner
-        Player winner = new Player("...", -1);
+        Player winner = this.playerList.get(0);
         String winnerName = winner.getName();
         int winnerScore = 0;
 
@@ -261,15 +254,17 @@ public class Game {
             // Points conflits
             playerScore += player.getmilitaryVictoryPoint();
             // Point carte vert car progressToken non implementé
-            playerScore += player.getScienceCardList().size()*2;
+            playerScore += player.getScienceCardList().size();
 
-            // Si Player meilleur que le dernier
-            if (playerScore > winnerScore) {
-                winnerName = player.getName();
+            // Si Player meilleur que le dernier ou egalité mais plus de wonderStep construit
+            if (playerScore > winnerScore | (playerScore == winnerScore & player.getWonder().countNbStepBuid() > winner.getWonder().countNbStepBuid()) ) {
+                winner = player;
+                winnerName = winner.getName();
                 winnerScore = playerScore;
             }
             // Affiche le player et son score
-            System.out.println("\n"+player.getName()+"["+player.getCivilisationName() + "] : "+winnerScore+" points");
+            System.out.println(player.getName()+"["+player.getCivilisationName() + "] : "+playerScore+" points");
+            //System.out.print("    = "+player.getNbPolilicPoint()+" + "+player.getmilitaryVictoryPoint()+" + "+(player.getScienceCardList().size()*2)+ " +" +player.haveTheCat()+"\n");
         }
         // return info winner
         System.out.println("\n"+winnerName+"["+winner.getCivilisationName() + "] is the Winner with : "+winnerScore+" points");
@@ -278,10 +273,38 @@ public class Game {
 
 
 
+    public void addBot(String name, int age, String civilisationName) {
+        // Alexandrie, Halicarnasse, Ephese, Olympie, Babylone, Rhodes, Gizeh
+        Bot7Wonder newPlayer = new Bot7Wonder(name, age);
+        newPlayer.setCivilisationName(civilisationName);
+        this.playerList.add(newPlayer);
+    }
 
+    public void createBot() {
+        // Creation des bots
+        for (int nbBot = 1; nbBot < Game.option.getNbPlayers(); nbBot++) {
+            // Selection d'une wonder aleatoire
+            String civilisationChoice = this.chooseRandomWonder();
+            // Dans cette config, le Player commence avant les bots
+            Game.option.addBot("Bot-"+nbBot, 200, civilisationChoice);
+        }
+    }
 
-
-
+    public String chooseRandomWonder() {
+        //*** Recuperation des Wonders Disponible ***//
+        // Creation d'une list de String contenant toutes les Wonders
+        List<Wonders> wondersList = Arrays.stream(Wonders.values()).toList();
+        List<String> wonderListName = new ArrayList<>();
+        for(Wonders wonders: wondersList) {wonderListName.add(wonders.name());}
+        //for(String wonders: wonderListName) {System.out.print(wonders+" - ");}System.out.println();
+        // On supprime les wonders deja choisi
+        for (Player player: this.playerList) {wonderListName.remove(player.getCivilisationName());}
+        //for(String wonders: wonderListName) {System.out.print(wonders+" - ");}System.out.println();
+        //*** Selection d'une Wonder ***//
+        Random rand = new Random();
+        int randomIndex = rand.nextInt(wonderListName.size());
+        return wonderListName.get(randomIndex);
+    }
 
 
 
