@@ -18,19 +18,19 @@
 
 <AnchorPane fx:id="stageAP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#autoResize" onMouseExited="#autoResize" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.controllers.GameController">
    <children>
-      <ImageView fx:id="background" fitHeight="600.0" fitWidth="1000.0" pickOnBounds="true">
+      <ImageView fx:id="background" fitHeight="800.0" fitWidth="1250.0" pickOnBounds="true">
          <image>
             <Image url="@../images/background/fond_papier.jpg" />
          </image>
       </ImageView>
-      <AnchorPane fx:id="screenElements" prefHeight="500.0" prefWidth="900.0">
+      <AnchorPane fx:id="screenElements" prefHeight="800.0" prefWidth="1000.0">
          <children>
-            <ImageView fx:id="imgViewCat" fitHeight="75.0" fitWidth="100.0" layoutX="681.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgViewCat" fitHeight="75.0" fitWidth="100.0" layoutX="730.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/tokens-progress/back/token-back.png" />
                </image>
             </ImageView>
-            <GridPane fx:id="GridPaneConflictTokens" layoutX="171.0" layoutY="205.0">
+            <GridPane fx:id="GridPaneConflictTokens" layoutX="287.0" layoutY="346.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" />
                 <ColumnConstraints hgrow="SOMETIMES" />
@@ -73,7 +73,7 @@
                   </ImageView>
                </children>
             </GridPane>
-            <AnchorPane layoutX="609.0" layoutY="150.0">
+            <AnchorPane layoutX="898.0" layoutY="305.0">
                <children>
                   <VBox fx:id="vBoxProgressTokens">
                      <children>
@@ -99,30 +99,33 @@
                         </ImageView>
                      </children>
                   </VBox>
-                  <Label fx:id="labelProgressToken" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="-3.0" layoutY="-8.0" prefHeight="50.0" prefWidth="50.0" text="100" textAlignment="CENTER">
+                  <Label id="labelNbToken" fx:id="labelProgressToken" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="-3.0" layoutY="-8.0" prefHeight="50.0" prefWidth="50.0" text="100" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="anchorPlayers" prefHeight="500.0" prefWidth="900.0">
+            <AnchorPane fx:id="anchorPlayers" prefHeight="800.0" prefWidth="1250.0">
                <children>
-                  <AnchorPane layoutX="584.0" layoutY="338.0" visible="false">
+                  <AnchorPane layoutX="376.0" layoutY="516.0">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/cards/card-back/card-back-ephese.png" />
                            </image>
                         </ImageView>
-                        <Label contentDisplay="CENTER" disable="true" layoutX="37.0" layoutY="-6.0" prefWidth="100.0" text="20" textAlignment="CENTER" />
+                        <Label id="labelNbCard" contentDisplay="CENTER" disable="true" layoutY="120.0" prefWidth="100.0" text="20" textAlignment="CENTER">
+                           <font>
+                              <Font size="24.0" />
+                           </font></Label>
                         <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
-                        <ImageView id="labelIcon" fitHeight="110.0" fitWidth="270.0" layoutX="-57.0" layoutY="137.0" pickOnBounds="true">
+                        <ImageView id="labelIcon" fitHeight="110.0" fitWidth="270.0" layoutY="160.0" pickOnBounds="true">
                            <image>
                               <Image url="@../images/decks/supportCards.PNG" />
                            </image>
                         </ImageView>
-                        <GridPane alignment="CENTER" layoutX="-50.0" layoutY="160.0" styleClass="labelIcon">
+                        <GridPane alignment="CENTER" layoutX="10.0" layoutY="183.0" styleClass="labelIcon">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
@@ -349,24 +352,24 @@
                               </Label>
                            </children>
                         </GridPane>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 5" textAlignment="CENTER" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="25.0" prefWidth="100.0" text="Player 5" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="292.0" layoutY="339.0">
+                  <AnchorPane layoutX="62.0" layoutY="496.0" visible="false">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/cards/card-back/card-back-olympie.png" />
                            </image>
                         </ImageView>
-                        <Label contentDisplay="CENTER" disable="true" prefWidth="100.0" text="20" textAlignment="CENTER" />
+                        <Label id="labelNbCard" contentDisplay="CENTER" disable="true" layoutY="120.0" prefWidth="100.0" text="20" textAlignment="CENTER" />
                         <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
-                        <ImageView id="labelIcon" fitHeight="110.0" fitWidth="270.0" layoutX="-67.0" layoutY="127.0" pickOnBounds="true">
+                        <ImageView id="labelIcon" fitHeight="110.0" fitWidth="270.0" layoutY="160.0" pickOnBounds="true">
                            <image>
                               <Image url="@../images/decks/supportCards.PNG" />
                            </image>
                         </ImageView>
-                        <GridPane alignment="CENTER" layoutX="-60.0" layoutY="150.0" styleClass="labelIcon">
+                        <GridPane alignment="CENTER" layoutX="10.0" layoutY="183.0" styleClass="labelIcon">
                           <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
@@ -593,24 +596,24 @@
                               </Label>
                            </children>
                         </GridPane>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="144.0" prefWidth="100.0" text="Player 1" textAlignment="CENTER" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="25.0" prefWidth="100.0" text="Player 1" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="14.0" layoutY="337.0" visible="false">
+                  <AnchorPane layoutX="5.0" layoutY="146.0" visible="false">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/cards/card-back/card-back-ephese.png" />
                            </image>
                         </ImageView>
-                        <Label contentDisplay="CENTER" disable="true" prefWidth="100.0" text="20" textAlignment="CENTER" />
+                        <Label id="labelNbCard" contentDisplay="CENTER" disable="true" layoutY="120.0" prefWidth="100.0" text="20" textAlignment="CENTER" />
                         <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
-                        <ImageView id="labelIcon" fitHeight="110.0" fitWidth="270.0" layoutX="-57.0" layoutY="137.0" pickOnBounds="true">
+                        <ImageView id="labelIcon" fitHeight="110.0" fitWidth="270.0" layoutY="160.0" pickOnBounds="true">
                            <image>
                               <Image url="@../images/decks/supportCards.PNG" />
                            </image>
                         </ImageView>
-                        <GridPane alignment="CENTER" layoutX="-50.0" layoutY="160.0" styleClass="labelIcon">
+                        <GridPane alignment="CENTER" layoutX="10.0" layoutY="183.0" styleClass="labelIcon">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
@@ -837,24 +840,24 @@
                               </Label>
                            </children>
                         </GridPane>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 4" textAlignment="CENTER" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="25.0" prefWidth="100.0" text="Player 4" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane visible="false">
+                  <AnchorPane layoutX="300.0" layoutY="55.0" visible="false">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/cards/card-back/card-back-ephese.png" />
                            </image>
                         </ImageView>
-                        <Label contentDisplay="CENTER" disable="true" prefWidth="100.0" text="20" textAlignment="CENTER" />
+                        <Label id="labelNbCard" contentDisplay="CENTER" disable="true" layoutY="120.0" prefWidth="100.0" text="20" textAlignment="CENTER" />
                         <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
-                        <ImageView id="labelIcon" fitHeight="110.0" fitWidth="270.0" layoutX="-57.0" layoutY="137.0" pickOnBounds="true">
+                        <ImageView id="labelIcon" fitHeight="110.0" fitWidth="270.0" layoutY="160.0" pickOnBounds="true">
                            <image>
                               <Image url="@../images/decks/supportCards.PNG" />
                            </image>
                         </ImageView>
-                        <GridPane alignment="CENTER" layoutX="-50.0" layoutY="160.0" styleClass="labelIcon">
+                        <GridPane alignment="CENTER" layoutX="10.0" layoutY="183.0" styleClass="labelIcon">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
@@ -1081,24 +1084,24 @@
                               </Label>
                            </children>
                         </GridPane>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 6" textAlignment="CENTER" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="25.0" prefWidth="100.0" text="Player 6" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="232.0" visible="false">
+                  <AnchorPane layoutX="612.0" layoutY="55.0" visible="false">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/cards/card-back/card-back-ephese.png" />
                            </image>
                         </ImageView>
-                        <Label contentDisplay="CENTER" disable="true" prefWidth="100.0" text="20" textAlignment="CENTER" />
+                        <Label id="labelNbCard" contentDisplay="CENTER" disable="true" layoutY="120.0" prefWidth="100.0" text="20" textAlignment="CENTER" />
                         <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
-                        <ImageView id="labelIcon" fitHeight="110.0" fitWidth="270.0" layoutX="-57.0" layoutY="137.0" pickOnBounds="true">
+                        <ImageView id="labelIcon" fitHeight="110.0" fitWidth="270.0" layoutY="160.0" pickOnBounds="true">
                            <image>
                               <Image url="@../images/decks/supportCards.PNG" />
                            </image>
                         </ImageView>
-                        <GridPane alignment="CENTER" layoutX="-50.0" layoutY="160.0" styleClass="labelIcon">
+                        <GridPane alignment="CENTER" layoutX="10.0" layoutY="183.0" styleClass="labelIcon">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
@@ -1325,24 +1328,24 @@
                               </Label>
                            </children>
                         </GridPane>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 2" textAlignment="CENTER" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="25.0" prefWidth="100.0" text="Player 2" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="460.0" visible="false">
+                  <AnchorPane layoutX="959.0" layoutY="167.0" prefWidth="227.0" visible="false">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/cards/card-back/card-back-ephese.png" />
                            </image>
                         </ImageView>
-                        <Label contentDisplay="CENTER" disable="true" prefWidth="100.0" text="20" textAlignment="CENTER" />
+                        <Label id="labelNbCard" contentDisplay="CENTER" disable="true" layoutY="120.0" prefWidth="100.0" text="20" textAlignment="CENTER" />
                         <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
-                        <ImageView id="labelIcon" fitHeight="110.0" fitWidth="270.0" layoutX="-57.0" layoutY="137.0" pickOnBounds="true">
+                        <ImageView id="labelIcon" fitHeight="110.0" fitWidth="270.0" layoutY="160.0" pickOnBounds="true">
                            <image>
                               <Image url="@../images/decks/supportCards.PNG" />
                            </image>
                         </ImageView>
-                        <GridPane alignment="CENTER" layoutX="-50.0" layoutY="160.0" styleClass="labelIcon">
+                        <GridPane alignment="CENTER" layoutX="10.0" layoutY="183.0" styleClass="labelIcon">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
@@ -1569,24 +1572,24 @@
                               </Label>
                            </children>
                         </GridPane>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 3" textAlignment="CENTER" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="25.0" prefWidth="100.0" text="Player 3" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="680.0" layoutY="7.0" visible="false">
+                  <AnchorPane layoutX="790.0" layoutY="513.0" visible="false">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/cards/card-back/card-back-ephese.png" />
                            </image>
                         </ImageView>
-                        <Label contentDisplay="CENTER" disable="true" prefWidth="100.0" text="20" textAlignment="CENTER" />
+                        <Label id="labelNbCard" contentDisplay="CENTER" disable="true" layoutY="120.0" prefWidth="100.0" text="20" textAlignment="CENTER" />
                         <VBox alignment="BOTTOM_CENTER" layoutX="110.0" />
-                        <ImageView id="labelIcon" fitHeight="110.0" fitWidth="270.0" layoutX="-57.0" layoutY="137.0" pickOnBounds="true">
+                        <ImageView id="labelIcon" fitHeight="110.0" fitWidth="270.0" layoutY="160.0" pickOnBounds="true">
                            <image>
                               <Image url="@../images/decks/supportCards.PNG" />
                            </image>
                         </ImageView>
-                        <GridPane alignment="CENTER" layoutX="-50.0" layoutY="160.0" styleClass="labelIcon">
+                        <GridPane alignment="CENTER" layoutX="10.0" layoutY="183.0" styleClass="labelIcon">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
@@ -1813,12 +1816,12 @@
                               </Label>
                            </children>
                         </GridPane>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="-16.0" prefWidth="100.0" text="Player 7" textAlignment="CENTER" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutY="25.0" prefWidth="100.0" text="Player 7" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="336.0" layoutY="250.0">
+            <AnchorPane layoutX="550.0" layoutY="325.0">
                <children>
                   <HBox>
                      <children>
@@ -1840,21 +1843,21 @@
                         </ImageView>
                      </children>
                   </HBox>
-                  <Label fx:id="labelCentralDeck" alignment="BOTTOM_CENTER" contentDisplay="CENTER" disable="true" layoutY="100.0" prefHeight="35.0" prefWidth="103.0" text="100">
+                  <Label id="labelNbCard" fx:id="labelCentralDeck" alignment="BOTTOM_CENTER" contentDisplay="CENTER" disable="true" layoutY="100.0" prefHeight="35.0" prefWidth="103.0" text="100">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <Button focusTraversable="false" layoutX="759.0" layoutY="451.0" mnemonicParsing="false" onAction="#onMenuButtonClick" text="Menu principal" />
-            <Button layoutX="316.0" layoutY="229.0" mnemonicParsing="false" onAction="#onStartGameButton" prefHeight="62.0" prefWidth="270.0" text="Commencer la partie" textFill="#b13333" underline="true">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
          </children>
       </AnchorPane>
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="523.0" layoutY="369.0" mnemonicParsing="false" onAction="#onStartGameButton" prefHeight="62.0" prefWidth="270.0" text="Commencer la partie" textAlignment="CENTER" textFill="#b13333" underline="true">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button focusTraversable="false" layoutX="1073.0" layoutY="30.0" mnemonicParsing="false" onAction="#onMenuButtonClick" text="Menu principal" />
    </children>
    <stylesheets>
       <URL value="@../css/common-style.css" />
