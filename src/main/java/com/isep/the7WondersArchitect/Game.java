@@ -6,6 +6,7 @@ import com.isep.items.conflictToken.ConflictTokens;
 import com.isep.items.progressToken.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -242,6 +243,38 @@ public class Game {
         return false;
     }
 
+    // Calcul le Player qui a le plsu de point : renvoi sont name et son score
+    public List<?> getWinner() {
+        // info Winner
+        Player winner = new Player("...", -1);
+        String winnerName = winner.getName();
+        int winnerScore = 0;
+
+        // Pour chaque player on calcul son score
+        for (Player player: this.playerList) {
+            int playerScore = 0;
+            // Points WonderCiv
+            // Point Cat
+            if (player.haveTheCat()) {playerScore+=2;}
+            // Points cartes bleu
+            playerScore += player.getNbPolilicPoint();
+            // Points conflits
+            playerScore += player.getmilitaryVictoryPoint();
+            // Point carte vert car progressToken non implementé
+            playerScore += player.getScienceCardList().size()*2;
+
+            // Si Player meilleur que le dernier
+            if (playerScore > winnerScore) {
+                winnerName = player.getName();
+                winnerScore = playerScore;
+            }
+            // Affiche le player et son score
+            System.out.println("\n"+player.getName()+"["+player.getCivilisationName() + "] : "+winnerScore+" points");
+        }
+        // return info winner
+        System.out.println("\n"+winnerName+"["+winner.getCivilisationName() + "] is the Winner with : "+winnerScore+" points");
+        return Arrays.asList(winnerName, winnerScore);
+    }
 
 
 

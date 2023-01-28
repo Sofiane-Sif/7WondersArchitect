@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -74,7 +75,7 @@ public class GameController extends ControlleurBase {
             // Positionnement et affichage du nombre de carte restante
             Label labeNbCardDeck = (Label) playerZoneChildren.get(1);
             labeNbCardDeck.setText(" "+cardListPlayer.size());
-            labeNbCardDeck.setLayoutY(135);
+            //labeNbCardDeck.setLayoutY(125);
 
             // Affichage des cardDeckPlayer
             imgZone.setImage(imgCardPlayer);
@@ -86,6 +87,12 @@ public class GameController extends ControlleurBase {
             // generation de la VBox bien comme il faut
             ObservableList <Node> wonderBoxElements = wonderPlayer.createImage().getChildren();
             wonderBox.getChildren().addAll(wonderBoxElements);
+            // Place la Wonder à Gauche du tas et au dessus du paneau ressources
+            //...
+            int tryInY = switch (wonderPlayer.toString()){case "Alexandrie"->-50;case"Rhodes"->-35;
+                case"Halicarnasse","Ephese"->-20; default -> 0;};
+            wonderBox.setLayoutX(110);
+            wonderBox.setLayoutY(tryInY);
 
             // Recupère le joueur le plus jeune
             if (player.getAge() < firstPlayer.getAge()) {
@@ -107,17 +114,17 @@ public class GameController extends ControlleurBase {
             Label labelPlayer = (Label) playerZoneChildren.get(5);
             labelPlayer.setText(player.getName()+"\n"+player.getCivilisationName());
             // Positionne le label sous sa Wonder
-
             labelPlayer.setLayoutX(imageRessources.getLayoutX()+coordImg.getWidth()/3);
-            labelPlayer.setLayoutY(imageRessources.getLayoutY()+10);
+            labelPlayer.setLayoutY(imageRessources.getLayoutY()-3);
 
             // Dezoom sur les boites de ressources !!!!!
-            imageRessources.setScaleX(0.7);
-            imageRessources.setScaleY(0.7);
-            gridPaneRessources.setScaleX(0.7);
-            gridPaneRessources.setScaleY(0.7);
-            labelPlayer.setScaleX(0.7);
-            labelPlayer.setScaleY(0.7);
+            /*double zoom = 0.9;
+            imageRessources.setScaleX(zoom);
+            imageRessources.setScaleY(zoom);
+            gridPaneRessources.setScaleX(zoom);
+            gridPaneRessources.setScaleY(zoom);
+            labelPlayer.setScaleX(zoom);
+            labelPlayer.setScaleY(zoom);*/
 
         }
 
@@ -373,7 +380,7 @@ public class GameController extends ControlleurBase {
 
         // Passe au player suivant ou GameOver
         Game.option.setNumPlayer();
-        if(Game.option.isGameOver()) {System.out.println("");}
+        if(Game.option.isGameOver()) {Game.option.getWinner();}
         else {this.nextPlayerTurn();}
     }
 

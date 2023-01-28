@@ -19,13 +19,13 @@
       </ImageView>
       <AnchorPane fx:id="screenElements" prefHeight="500.0" prefWidth="900.0">
          <children>
-            <ImageView fitHeight="292.0" fitWidth="728.0" layoutX="86.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="292.0" fitWidth="728.0" layoutX="86.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/background/gameTitle.PNG" />
                </image>
             </ImageView>
-            <Button layoutX="392.0" layoutY="443.0" onAction="#startGame" prefHeight="42.0" prefWidth="114.0" text="Jouer" />
-            <Label alignment="CENTER" contentDisplay="BOTTOM" layoutX="300.0" layoutY="326.0" text="Nombre de joueurs :">
+            <Button layoutX="522.0" layoutY="443.0" onAction="#startGame" prefHeight="42.0" prefWidth="114.0" text="Jouer" />
+            <Label alignment="CENTER" contentDisplay="BOTTOM" layoutX="300.0" layoutY="316.0" text="Nombre de joueurs :">
                <font>
                   <Font size="18.0" />
                </font>
@@ -38,9 +38,17 @@
                   <Image url="@../images/background/qrCode_rules.PNG" />
                </image>
             </ImageView>
-            <Button layoutX="599.0" layoutY="443.0" onAction="#startGameTest" prefHeight="42.0" prefWidth="157.0" text="GameTest - Admin" />
-            <Button layoutX="211.0" layoutY="443.0" mnemonicParsing="false" onAction="#exitGame" text="Quitter le jeu" />
-            <CheckBox fx:id="CheckBoxBot" layoutX="376.0" layoutY="415.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="146.0" text="1 Player and all Bots ?" />
+            <Button layoutX="677.0" layoutY="443.0" onAction="#startGameTest" prefHeight="42.0" prefWidth="157.0" text="GameTest - Admin" />
+            <Button layoutX="300.0" layoutY="446.0" mnemonicParsing="false" onAction="#exitGame" text="Quitter le jeu" />
+            <Label alignment="CENTER" contentDisplay="RIGHT" layoutX="308.0" layoutY="406.0" prefHeight="30.0" prefWidth="283.0" style="-fx-font-size: 15;" text="Just 1 Player and all Bots ?" textAlignment="CENTER">
+               <graphic>
+                  <CheckBox fx:id="CheckBoxBot" contentDisplay="CENTER" mnemonicParsing="false">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </CheckBox>
+               </graphic>
+            </Label>
          </children>
       </AnchorPane>
    </children>

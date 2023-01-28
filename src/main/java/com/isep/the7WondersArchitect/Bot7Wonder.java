@@ -226,6 +226,7 @@ public class Bot7Wonder extends Player {
     }
 
     public String returnBestAction(){
+        //System.out.println(this.carteSelect.back.toString());
         return this.carteSelect.back.toString();
     }
 
@@ -234,13 +235,13 @@ public class Bot7Wonder extends Player {
         this.gameState = Game.option;
 
         List<Card> listCardICanPiocher = new ArrayList<>();
-        // recup ls cartes dispo
-        listCardICanPiocher.add(deckPlayer.get(0));
-        listCardICanPiocher.add(deckRightPlayer.get(0));
-        if(super.haveTheCat()) {centraldeck.add(deckPlayer.get(0));}
-
-        //System.out.println(deckRightPlayer.get(0).front.cardCategory);
-
+        // recup ls cartes dispo s'il reste des cartes
+        if (deckPlayer.size()>0){listCardICanPiocher.add(deckPlayer.get(0));}
+        if (deckRightPlayer.size()>0) {listCardICanPiocher.add(deckRightPlayer.get(0));}
+        if(super.haveTheCat() & centraldeck.size()>0) {listCardICanPiocher.add(centraldeck.get(0));}
+        /*System.out.println();
+       for(Card c: listCardICanPiocher) {System.out.print(c.back.toString() + " - ");}
+        System.out.println();*/
         chooseBestAction(listCardICanPiocher) ;
     }
 
