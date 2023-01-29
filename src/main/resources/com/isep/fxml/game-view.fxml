@@ -25,7 +25,7 @@
       </ImageView>
       <AnchorPane fx:id="screenElements" prefHeight="800.0" prefWidth="1000.0">
          <children>
-            <ImageView fx:id="imgViewCat" fitHeight="75.0" fitWidth="100.0" layoutX="730.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgViewCat" fitHeight="75.0" fitWidth="100.0" layoutX="800.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/tokens-progress/back/token-back.png" />
                </image>
@@ -1954,6 +1954,11 @@
             </AnchorPane>
          </children>
       </AnchorPane>
+      <ImageView fx:id="cardMovement" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/cards/card-back/card-back-question.png" />
+         </image>
+      </ImageView>
    </children>
    <stylesheets>
       <URL value="@../css/common-style.css" />

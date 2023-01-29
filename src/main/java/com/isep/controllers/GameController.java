@@ -7,6 +7,7 @@ import com.isep.items.wonders.Wonders;
 import com.isep.the7WondersArchitect.Bot7Wonder;
 import com.isep.the7WondersArchitect.Game;
 import com.isep.the7WondersArchitect.Player;
+import javafx.animation.TranslateTransition;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -18,14 +19,17 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class GameController extends ControlleurBase {
 
 
     @FXML
-    private ImageView imgViewCat, imgViewCentralDeck, imgViewTrash;
+    private ImageView imgViewCat, imgViewCentralDeck, imgViewTrash, cardMovement;
 
     @FXML
     private GridPane GridPaneConflictTokens;
@@ -40,7 +44,6 @@ public class GameController extends ControlleurBase {
     private AnchorPane anchorPlayers, anchorPaneScore;
 
     private List<AnchorPane> playerZonesList = new ArrayList<>();
-
 
 
 
@@ -348,11 +351,6 @@ public class GameController extends ControlleurBase {
         String newCardDeckImgPath = playerTurn.piocheCarte(civNameCard);
         // Affiche la nouvelle carte du deck choisi
         Image newCardDeckImg = ControlleurBase.setAnImage(newCardDeckImgPath);
-        selectCardImg.setImage(newCardDeckImg);
-
-        // Met à jour le nombre de cartes restants
-        //this.majInfoSizeDeck();
-        //this.majInfoRessourcesPlayer();
 
         // Joue la carte
         this.playerTurn.usePowerCard();
@@ -364,17 +362,68 @@ public class GameController extends ControlleurBase {
         this.majConflictTokenImage();
         this.majConflictTokenCornPlayer();
 
-        // Met la carte dans la defausse
-        String pathImgGet = this.playerTurn.getCardInIsHandImgPath();
-        Image newRubbichImg = ControlleurBase.setAnImage(pathImgGet);
-        this.imgViewTrash.setImage(newRubbichImg);
-
-
+        this.moveCardsIntoTrash(selectCardImg, newCardDeckImg);
 
         // Passe au player suivant ou GameOver
         Game.option.setNumPlayer();
         if(Game.option.isGameOver()) {this.printScore();}
         else {this.nextPlayerTurn();}
+    }
+
+    /**
+     * Affiche la carte choisi dans un new ImageView au meme endroit
+     * Retour la nouvelle carte
+     * deplace le new ImageView vers la trash
+     * change l'image de la trash avec la nouvelle carte
+     * supprimer l'ImageView de deplacement
+     * @param CardDeckView Pioche de la carte choisie
+     * @param newCardDeck Nouvelle Card de cette pioche
+     */
+    private void moveCardsIntoTrash(ImageView CardDeckView, Image newCardDeck) {
+
+        // Retour la nouvelle carte du deck
+        CardDeckView.setImage(newCardDeck);
+
+
+        // Image de la nouvelle Card
+        String pathImgGet = this.playerTurn.getCardInIsHandImgPath();
+        Image newRubbichImg = ControlleurBase.setAnImage(pathImgGet);
+        // Deplace le cardMovement sur la position du deck selectionné
+        double posImgMoveX = CardDeckView.getLocalToSceneTransform().getTx();
+        double posImgMoveY = CardDeckView.getLocalToSceneTransform().getTy();
+
+        // Met l'imageS de CardSelect et la rend visible
+        this.cardMovement.setImage(newRubbichImg);
+        this.cardMovement.setVisible(true);
+        //this.cardMovement.setX(posImgMoveX);
+       // this.cardMovement.setY(posImgMoveY);
+        // Coordonnée de la trash
+        double posTrashX = this.imgViewTrash.getLocalToSceneTransform().getTx();
+        double posTrashY = this.imgViewTrash.getLocalToSceneTransform().getTy();
+
+        // Deplacement de la carte
+        int  timeStep = 750;
+        TranslateTransition tt = new TranslateTransition(Duration.millis(timeStep), this.cardMovement);
+        tt.setFromX(posImgMoveX);
+        tt.setFromY(posImgMoveY);
+        tt.setToX(posTrashX);
+        tt.setToY(posTrashY);
+        tt.play();
+
+        // Met la carte dans la defausse
+        new Timer().schedule(new TimerTask() {
+            @Override public void run() {imgViewTrash.setImage(newRubbichImg);}}
+                , timeStep);
+
+        if (this.playerTurn instanceof Bot7Wonder) {
+            try {
+                ((Stage) stageAP.getScene().getWindow()).show();
+                Thread.sleep(1000);
+            }
+            catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
 
@@ -418,6 +467,8 @@ public class GameController extends ControlleurBase {
     }
 
     private Label getLabel(ObservableList<Node> labelList, int index) {return (Label) labelList.get(index);}
+
+
 
 
     private void majInfoRessourcesPlayer() {
