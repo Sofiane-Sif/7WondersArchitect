@@ -355,10 +355,10 @@ public class GameController extends ControlleurBase {
         this.playerTurn.usePowerCard();
         // Maj de la Wonder
         this.majInfoSizeDeck();
-        this.majInfoRessourcesPlayer();
         this.majViewWonderPlayer();
         this.majConflictTokenImage();
         this.majConflictTokenCornPlayer();
+        this.majInfoRessourcesPlayer();
         // Annimation
         this.moveCardsIntoTrash(selectCardImg, newCardDeckImg);
     }
@@ -494,7 +494,6 @@ public class GameController extends ControlleurBase {
             case "war" -> {
                 int value1 = this.playerTurn.getNbShildPeace();
                 int value2 = this.playerTurn.getNbShildWar();
-
                 this.zoomRessourceAdd(dicLabel.get("peace"), value1+"");
                 this.zoomRessourceAdd(dicLabel.get("war"), value2+"");
             }
@@ -576,8 +575,8 @@ public class GameController extends ControlleurBase {
                 dicLabel.put(typeLabel, labelRessource);
             }
             int value2 = player.getNbShildWar();
-            dicLabel.get("war").setText(value2+"");
-            dicLabel.get("winWar").setText(player.getmilitaryVictoryPoint()+"");
+            this.zoomRessourceAdd(dicLabel.get("war"), value2+"");
+            this.zoomRessourceAdd(dicLabel.get("winWar"), player.getmilitaryVictoryPoint()+"");
         }
     }
 
