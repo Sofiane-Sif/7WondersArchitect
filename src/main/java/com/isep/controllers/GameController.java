@@ -7,6 +7,7 @@ import com.isep.items.wonders.Wonders;
 import com.isep.the7WondersArchitect.Bot7Wonder;
 import com.isep.the7WondersArchitect.Game;
 import com.isep.the7WondersArchitect.Player;
+import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -479,29 +480,46 @@ public class GameController extends ControlleurBase {
         switch (type[0]) {
             case "material" -> {
                 // On  met à jour tous les valeurs
-                dicLabel.get("wood").setText(this.playerTurn.getNbRessource("wood")+"");
-                dicLabel.get("paper").setText(this.playerTurn.getNbRessource("paper")+"");
-                dicLabel.get("brick").setText(this.playerTurn.getNbRessource("brick")+"");
-                dicLabel.get("stone").setText(this.playerTurn.getNbRessource("stone")+"");
-                dicLabel.get("glass").setText(this.playerTurn.getNbRessource("glass")+"");
-                dicLabel.get("gold").setText(this.playerTurn.getNbRessource("gold")+"");
+                this.zoomRessourceAdd(dicLabel.get("wood"), this.playerTurn.getNbRessource("wood")+"");
+                this.zoomRessourceAdd(dicLabel.get("paper"), this.playerTurn.getNbRessource("paper")+"");
+                this.zoomRessourceAdd(dicLabel.get("brick"), this.playerTurn.getNbRessource("brick")+"");
+                this.zoomRessourceAdd(dicLabel.get("stone"), this.playerTurn.getNbRessource("stone")+"");
+                this.zoomRessourceAdd(dicLabel.get("glass"), this.playerTurn.getNbRessource("glass")+"");
+                this.zoomRessourceAdd(dicLabel.get("gold"), this.playerTurn.getNbRessource("gold")+"");
             }
             case "science" -> {
                 int value = this.playerTurn.getNbScience(type[1]);
-                dicLabel.get(type[1]).setText(value+"");
+                this.zoomRessourceAdd(dicLabel.get(type[1]), value+"");
             }
             case "war" -> {
                 int value1 = this.playerTurn.getNbShildPeace();
                 int value2 = this.playerTurn.getNbShildWar();
-                dicLabel.get("peace").setText(value1+"");
-                dicLabel.get("war").setText(value2+"");
+
+                this.zoomRessourceAdd(dicLabel.get("peace"), value1+"");
+                this.zoomRessourceAdd(dicLabel.get("war"), value2+"");
             }
             case "politic" -> {
                 int value = this.playerTurn.getNbPolilicPoint();
-                dicLabel.get("winScience").setText(value+"");
+                this.zoomRessourceAdd(dicLabel.get("winScience"), value+"");
             }
         }
+    }
 
+    private void zoomRessourceAdd(Label label, String newValue) {
+        if(!Objects.equals(label.getText(), newValue)) {
+            // Chagement de la value
+            label.setText(newValue);
+            // Ammination
+            int  timeStep = 500;
+            ScaleTransition zoomAnnimation = new ScaleTransition();
+            zoomAnnimation.setDuration(Duration.millis(timeStep));
+            zoomAnnimation.setNode(label);
+            zoomAnnimation.setAutoReverse(true);
+            zoomAnnimation.setCycleCount(2);
+            zoomAnnimation.setByX(3);
+            zoomAnnimation.setByY(3);
+            zoomAnnimation.play();
+        }
     }
 
     private void majInfoSizeDeck() {
