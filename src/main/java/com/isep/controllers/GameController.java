@@ -271,6 +271,10 @@ public class GameController extends ControlleurBase {
     private void nextPlayerTurn() {
         // Récupération des infos du player qui doit jouer
         this.setInfoPlayerTurn();
+
+        // Met en couleur le joueur qui joue;
+        this.wonderPlayerImg.getStyleClass().add("selectWonder");
+
         if(this.playerTurn instanceof Bot7Wonder) {
             // Selection d'une carte
             ((Bot7Wonder) this.playerTurn).readGame(deckPlayer, deckRightPlayer, centraldeck);
@@ -286,8 +290,6 @@ public class GameController extends ControlleurBase {
         }
         //C'est a un Player Humain de jouer
         else {
-            // Met en couleur le joueur qui joue;
-            this.wonderPlayerImg.getStyleClass().add("selectWonder");
             // Mets les jeux de cartes disponibles en couleur  et clickable
             // Deck du Player
             if (this.deckPlayer.size()>=1) {
@@ -320,8 +322,6 @@ public class GameController extends ControlleurBase {
 
     private void onSelectionCartePlayerButton(Event event) {
         // Deselection de tous les elements mis en avant
-        // WonderPlayer
-        this.wonderPlayerImg.getStyleClass().remove("selectWonder");
         // PlayerDeck
         this.deckPlayerImg.getStyleClass().remove("selectDeck");
         this.deckPlayerImg.setOnMouseClicked(null);
@@ -346,24 +346,25 @@ public class GameController extends ControlleurBase {
     }
 
     private void cartePlayerAction(String civNameCard, ImageView selectCardImg) {
-
         // Pioche la carte du deck selectionné
         String newCardDeckImgPath = playerTurn.piocheCarte(civNameCard);
         // Affiche la nouvelle carte du deck choisi
         Image newCardDeckImg = ControlleurBase.setAnImage(newCardDeckImgPath);
-
         // Joue la carte
         this.playerTurn.usePowerCard();
-
         // Maj de la Wonder
         this.majInfoSizeDeck();
         this.majInfoRessourcesPlayer();
         this.majViewWonderPlayer();
         this.majConflictTokenImage();
         this.majConflictTokenCornPlayer();
-
+        // Annimation
         this.moveCardsIntoTrash(selectCardImg, newCardDeckImg);
+    }
 
+    private void endTurn() {
+        // WonderPlayer
+        this.wonderPlayerImg.getStyleClass().remove("selectWonder");
         // Passe au player suivant ou GameOver
         Game.option.setNumPlayer();
         if(Game.option.isGameOver()) {this.printScore();}
@@ -380,50 +381,36 @@ public class GameController extends ControlleurBase {
      * @param newCardDeck Nouvelle Card de cette pioche
      */
     private void moveCardsIntoTrash(ImageView CardDeckView, Image newCardDeck) {
-
         // Retour la nouvelle carte du deck
         CardDeckView.setImage(newCardDeck);
-
-
         // Image de la nouvelle Card
         String pathImgGet = this.playerTurn.getCardInIsHandImgPath();
         Image newRubbichImg = ControlleurBase.setAnImage(pathImgGet);
         // Deplace le cardMovement sur la position du deck selectionné
         double posImgMoveX = CardDeckView.getLocalToSceneTransform().getTx();
         double posImgMoveY = CardDeckView.getLocalToSceneTransform().getTy();
-
         // Met l'imageS de CardSelect et la rend visible
         this.cardMovement.setImage(newRubbichImg);
         this.cardMovement.setVisible(true);
-        //this.cardMovement.setX(posImgMoveX);
-       // this.cardMovement.setY(posImgMoveY);
         // Coordonnée de la trash
         double posTrashX = this.imgViewTrash.getLocalToSceneTransform().getTx();
         double posTrashY = this.imgViewTrash.getLocalToSceneTransform().getTy();
-
         // Deplacement de la carte
-        int  timeStep = 750;
+        int  timeStep = 500;
+        // Création et parameters de l'annimation
         TranslateTransition tt = new TranslateTransition(Duration.millis(timeStep), this.cardMovement);
         tt.setFromX(posImgMoveX);
         tt.setFromY(posImgMoveY);
         tt.setToX(posTrashX);
         tt.setToY(posTrashY);
+        // Suite du jeu après la fin de l'annimation
+        tt.setOnFinished(event-> {
+            imgViewTrash.setImage(newRubbichImg);
+            cardMovement.setVisible(false);
+            this.endTurn();
+        });
+        // Joue l'annimation
         tt.play();
-
-        // Met la carte dans la defausse
-        new Timer().schedule(new TimerTask() {
-            @Override public void run() {imgViewTrash.setImage(newRubbichImg);}}
-                , timeStep);
-
-        if (this.playerTurn instanceof Bot7Wonder) {
-            try {
-                ((Stage) stageAP.getScene().getWindow()).show();
-                Thread.sleep(1000);
-            }
-            catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
     }
 
 
