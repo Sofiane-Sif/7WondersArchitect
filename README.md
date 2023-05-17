@@ -4,5 +4,5 @@
 
 January 2023
 
-To open the project, you have to run _MainApplication.java_
+To open the project, you have to run src/com/java/isep/_MainApplication.java_
 
